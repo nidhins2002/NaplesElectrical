@@ -1,0 +1,180 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { Phone, ArrowRight, Menu, X, Shield, ChevronDown } from "lucide-react";
+
+interface HeaderProps {
+  onOpenQuote: (service?: string) => void;
+}
+
+export default function Header({ onOpenQuote }: HeaderProps) {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState("Home");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const navItems = [
+    { label: "Home", href: "#" },
+    { label: "About Us", href: "#about" },
+    { label: "Our Services", href: "#services" },
+    { label: "Why Choose Us", href: "#why-us" },
+    { label: "Contact", href: "#contact" },
+  ];
+
+  return (
+    <>
+      {/* Top Banner Notice */}
+      <div className="bg-slate-900 text-slate-300 text-xs py-2 px-4 border-b border-slate-800 hidden md:block">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-6">
+            <span className="flex items-center gap-1.5 text-amber-400 font-semibold">
+              <Shield className="w-3.5 h-3.5" /> Licensed, Bonded & Insured (#EC13009982)
+            </span>
+            <span>Serving Naples, Marco Island & Collier County</span>
+          </div>
+          <div className="flex items-center gap-4">
+            <span>24/7 Emergency Service Available</span>
+            <a
+              href="tel:2395551234"
+              className="font-bold text-amber-400 hover:text-amber-300 transition"
+            >
+              Direct Line: (239) 555-1234
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Header */}
+      <header
+        className={`sticky top-0 z-40 transition-all duration-300 ${
+          isScrolled
+            ? "bg-white/95 backdrop-blur-md shadow-md py-3 border-b border-slate-100"
+            : "bg-white py-4 border-b border-slate-100"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+          {/* Brand Logo */}
+          <Link href="/" className="flex items-center group">
+            <div className="relative w-[52px] h-[52px] group-hover:scale-105 transition-transform duration-200 shrink-0">
+              <Image
+                src="/Logo.png"
+                alt="Naples Electrical Logo"
+                width={52}
+                height={52}
+                className="object-contain"
+                priority
+              />
+            </div>
+            <div className="flex flex-col ml-2">
+              <span className="text-xl font-black tracking-tight text-slate-900 leading-none group-hover:text-amber-600 transition-colors">
+                NAPLES
+              </span>
+              <span className="text-[10px] font-extrabold tracking-[0.25em] text-slate-500 uppercase leading-tight mt-0.5">
+                ELECTRICAL
+              </span>
+            </div>
+          </Link>
+
+          {/* Desktop Navigation Menu */}
+          <nav className="hidden md:flex items-center gap-8">
+            {navItems.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                onClick={() => setActiveTab(item.label)}
+                className={`relative text-sm font-semibold transition-colors duration-200 py-1 ${
+                  activeTab === item.label
+                    ? "text-slate-950 font-bold"
+                    : "text-slate-600 hover:text-slate-950"
+                }`}
+              >
+                {item.label}
+                {activeTab === item.label && (
+                  <span className="absolute bottom-0 left-0 w-full h-[3px] bg-amber-400 rounded-full animate-fadeIn" />
+                )}
+              </a>
+            ))}
+          </nav>
+
+          {/* Action Buttons */}
+          <div className="hidden lg:flex items-center gap-4">
+            <button
+              onClick={() => onOpenQuote()}
+              className="inline-flex items-center gap-2 px-6 py-2.5 bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-sm rounded-full shadow-md shadow-amber-400/20 hover:shadow-lg hover:shadow-amber-400/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+            >
+              <span>Call Us Today</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+
+          {/* Mobile Action Controls */}
+          <div className="flex md:hidden items-center gap-2">
+            <a
+              href="tel:2395551234"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-blue-600 text-white font-bold text-xs rounded-full shadow-sm"
+            >
+              <Phone className="w-3.5 h-3.5 fill-white" />
+              <span>Call</span>
+            </a>
+
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 text-slate-700 hover:text-slate-950 focus:outline-none"
+              aria-label="Toggle Menu"
+            >
+              {mobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Dropdown Navigation */}
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3 shadow-xl animate-fadeIn">
+            {navItems.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                onClick={() => {
+                  setActiveTab(item.label);
+                  setMobileMenuOpen(false);
+                }}
+                className={`block py-2.5 px-3 text-base font-semibold rounded-xl ${
+                  activeTab === item.label
+                    ? "bg-amber-50 text-amber-900 font-bold"
+                    : "text-slate-700 hover:bg-slate-50"
+                }`}
+              >
+                {item.label}
+              </a>
+            ))}
+            <div className="pt-2 space-y-2">
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenQuote();
+                }}
+                className="w-full py-3 bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-center rounded-xl shadow-md flex items-center justify-center gap-2"
+              >
+                <span>Get a Free Quote</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+        )}
+      </header>
+    </>
+  );
+}
