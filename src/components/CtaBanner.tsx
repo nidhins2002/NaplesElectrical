@@ -25,8 +25,8 @@ export default function CtaBanner({ onOpenQuote }: CtaBannerProps) {
           </div>
 
           {/* Content */}
-          <div className="relative z-10 p-10 sm:p-16 lg:p-20">
-            <div className="max-w-2xl space-y-5">
+          <div className="relative z-10 p-6 sm:p-10 lg:p-20">
+            <div className="max-w-2xl space-y-4 sm:space-y-5">
               <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-amber-400/10 border border-amber-400/20 text-amber-400 font-extrabold text-xs tracking-widest uppercase rounded-full">
                 <MapPin className="w-3.5 h-3.5" />
                 NAPLES, FL &amp; SURROUNDING AREAS
@@ -41,18 +41,18 @@ export default function CtaBanner({ onOpenQuote }: CtaBannerProps) {
                 Contact us today to schedule a consultation or get a free estimate. We serve all of Naples, FL and surrounding areas including Marco Island and Collier County.
               </p>
 
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-4">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-4">
                 <a
-                  href="tel:2395551234"
-                  className="inline-flex items-center gap-3 px-8 py-4 bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-base rounded-full shadow-xl shadow-amber-500/25 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+                  href="tel:+12394841808"
+                  className="inline-flex items-center justify-center gap-3 px-7 sm:px-8 py-4 bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-base rounded-full shadow-xl shadow-amber-500/25 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
                 >
                   <Phone className="w-5 h-5 fill-slate-950" />
-                  <span>Call (239) 555-1234</span>
+                  <span>Call (239) 484-1808</span>
                 </a>
 
                 <button
                   onClick={onOpenQuote}
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-semibold text-base rounded-full border border-white/20 hover:border-white/40 transition-all duration-200"
+                  className="inline-flex items-center justify-center gap-2 px-7 sm:px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-semibold text-base rounded-full border border-white/20 hover:border-white/40 transition-all duration-200"
                 >
                   <span>Request a Quote</span>
                   <ArrowRight className="w-5 h-5" />

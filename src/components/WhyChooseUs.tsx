@@ -37,14 +37,14 @@ export default function WhyChooseUs({ onOpenQuote }: WhyChooseUsProps) {
   ];
 
   return (
-    <section id="why-us" className="py-20 lg:py-28 bg-white border-y border-slate-100">
+    <section id="why-us" className="py-14 sm:py-20 lg:py-28 bg-white border-y border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-16 items-center">
+
           {/* Left Column: Media & Highlights */}
           <div className="lg:col-span-6 relative">
-            <div className="relative mx-auto max-w-lg lg:max-w-none">
-              
+            <div className="relative mx-auto max-w-sm sm:max-w-lg lg:max-w-none">
+
               {/* Main Image */}
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200">
                 <Image
@@ -52,7 +52,7 @@ export default function WhyChooseUs({ onOpenQuote }: WhyChooseUsProps) {
                   alt="Quality Electrical Work Naples FL"
                   width={600}
                   height={500}
-                  className="w-full h-[400px] sm:h-[480px] object-cover"
+                  className="w-full h-[280px] sm:h-[380px] md:h-[480px] object-cover"
                 />
                 
                 {/* Floating Badge overlay */}
@@ -67,10 +67,10 @@ export default function WhyChooseUs({ onOpenQuote }: WhyChooseUsProps) {
               </div>
 
               {/* Floating Stat Card */}
-              <div className="absolute -bottom-6 -left-4 sm:left-6 bg-slate-900 text-white p-6 rounded-2xl shadow-xl max-w-xs border border-slate-800">
-                <div className="text-3xl font-black text-amber-400">15+ Years</div>
+              <div className="absolute -bottom-5 left-2 sm:-bottom-6 sm:left-6 bg-slate-900 text-white p-4 sm:p-6 rounded-2xl shadow-xl max-w-[200px] sm:max-w-xs border border-slate-800">
+                <div className="text-2xl sm:text-3xl font-black text-amber-400">15+ Years</div>
                 <div className="text-xs text-slate-300 font-medium mt-1">
-                  Trusted Electrical Contracting Experience in Naples, Florida
+                  Trusted Electrical Experience in Naples, Florida
                 </div>
               </div>
 
@@ -78,12 +78,12 @@ export default function WhyChooseUs({ onOpenQuote }: WhyChooseUsProps) {
           </div>
 
           {/* Right Column: Text & Features List */}
-          <div className="lg:col-span-6 space-y-6">
+          <div className="lg:col-span-6 space-y-5 sm:space-y-6 mt-6 sm:mt-8 lg:mt-0">
             <div className="space-y-3">
               <span className="inline-block px-3 py-1 bg-blue-50 text-blue-700 font-extrabold text-xs tracking-wider uppercase rounded-full border border-blue-100">
                 WHY CHOOSE US
               </span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight">
                 Quality Electrical Work You Can Trust
               </h2>
               <p className="text-slate-600 text-base sm:text-lg leading-relaxed pt-1">
@@ -119,7 +119,7 @@ export default function WhyChooseUs({ onOpenQuote }: WhyChooseUsProps) {
             <div className="pt-4">
               <button
                 onClick={onOpenQuote}
-                className="px-8 py-4 bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-base rounded-full shadow-lg shadow-amber-400/20 hover:scale-[1.02] active:scale-[0.98] transition"
+                className="w-full sm:w-auto px-8 py-4 bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-base rounded-full shadow-lg shadow-amber-400/20 hover:scale-[1.02] active:scale-[0.98] transition"
               >
                 Schedule Service Today
               </button>

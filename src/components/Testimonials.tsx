@@ -90,7 +90,7 @@ export default function Testimonials() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* ── Header ── */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-14 gap-4 sm:gap-6">
           <div>
             <span className="inline-block px-3 py-1 bg-amber-100 text-amber-900 font-extrabold text-xs tracking-wider uppercase rounded-full mb-3">
               Google Reviews
@@ -100,7 +100,7 @@ export default function Testimonials() {
             </h2>
 
             {/* Aggregate rating bar */}
-            <div className="flex items-center gap-4 mt-4">
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4 mt-4">
               <div className="flex items-center gap-1.5">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-5 h-5 text-amber-400 fill-amber-400" />
@@ -149,7 +149,7 @@ export default function Testimonials() {
 
         {/* ── Loading skeleton ── */}
         {loading && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 sm:gap-6">
             {[...Array(3)].map((_, i) => (
               <div key={i} className="bg-white rounded-2xl p-7 border border-slate-200 animate-pulse space-y-4">
                 <div className="flex gap-1">{[...Array(5)].map((_, j) => <div key={j} className="w-4 h-4 bg-slate-200 rounded-sm" />)}</div>
@@ -173,7 +173,7 @@ export default function Testimonials() {
         {/* ── 3-card carousel ── */}
         {!loading && reviews.length > 0 && (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 sm:gap-6">
               {visibleIndices.map((revIdx, slot) => {
                 const review = reviews[revIdx];
                 const isCentre = slot === 1;
@@ -258,7 +258,7 @@ export default function Testimonials() {
             </div>
 
             {/* Trust footer strip */}
-            <div className="mt-12 flex flex-wrap items-center justify-center gap-6 text-sm text-slate-500">
+            <div className="mt-10 sm:mt-12 flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs sm:text-sm text-slate-500">
               <span className="flex items-center gap-2 font-semibold text-slate-700">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-pulse" />
                 Live Google Reviews

@@ -42,12 +42,12 @@ export default function EvChargerProcess({ onOpenQuote }: EvChargerProcessProps)
   ];
 
   return (
-    <section className="py-20 lg:py-28 bg-slate-900 text-white relative overflow-hidden">
+    <section className="py-14 sm:py-20 lg:py-28 bg-slate-900 text-white relative overflow-hidden">
       {/* Background accents */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-16 items-center">
           
           {/* Left Column: Text & Step Timeline */}
           <div className="lg:col-span-7 space-y-8">
@@ -103,7 +103,7 @@ export default function EvChargerProcess({ onOpenQuote }: EvChargerProcessProps)
             <div>
               <button
                 onClick={() => onOpenQuote("EV Charger Installation")}
-                className="px-8 py-4 bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-base rounded-full shadow-lg shadow-amber-400/20 flex items-center gap-2 transition"
+                className="w-full sm:w-auto px-8 py-4 bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-base rounded-full shadow-lg shadow-amber-400/20 flex items-center justify-center gap-2 transition"
               >
                 <span>Book EV Charger Installation</span>
                 <ArrowRight className="w-5 h-5" />
@@ -120,7 +120,7 @@ export default function EvChargerProcess({ onOpenQuote }: EvChargerProcessProps)
                 alt="EV Charger Installation Naples FL"
                 width={600}
                 height={550}
-                className="w-full h-[450px] lg:h-[550px] object-cover"
+                className="w-full h-[280px] sm:h-[380px] lg:h-[550px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80" />
               <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-slate-900/90 backdrop-blur-md border border-slate-700">

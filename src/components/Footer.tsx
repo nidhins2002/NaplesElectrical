@@ -79,13 +79,13 @@ export default function Footer({ onOpenQuote }: FooterProps) {
             {/* Contact info */}
             <div className="space-y-3">
               <a
-                href="tel:2395551234"
+                href="tel:+12394841808"
                 className="flex items-center gap-3 text-sm font-semibold text-white hover:text-amber-400 transition"
               >
                 <div className="p-2 rounded-lg bg-slate-800 border border-slate-700 shrink-0">
                   <Phone className="w-4 h-4 text-amber-400" />
                 </div>
-                (239) 555-1234
+                (239) 484-1808
               </a>
 
               <a
@@ -169,17 +169,17 @@ export default function Footer({ onOpenQuote }: FooterProps) {
             </button>
 
             <a
-              href="tel:2395551234"
+              href="tel:+12394841808"
               className="w-full py-3.5 px-5 bg-slate-800 hover:bg-slate-700 text-white font-semibold text-sm rounded-xl flex items-center justify-center gap-2 transition border border-slate-700"
             >
               <Phone className="w-4 h-4 text-amber-400" />
-              Call (239) 555-1234
+              Call (239) 484-1808
             </a>
 
             {/* License Badge */}
             <div className="bg-slate-900 border border-slate-800 rounded-xl p-4">
               <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">State Licensed</div>
-              <div className="text-sm font-bold text-white">#EC13009982</div>
+              <div className="text-sm font-bold text-white">#EC13015315</div>
               <div className="text-xs text-slate-400 mt-1">Licensed Electrical Contractor<br />State of Florida</div>
             </div>
           </div>

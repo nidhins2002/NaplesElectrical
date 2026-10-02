@@ -24,7 +24,6 @@ export default function Header({ onOpenQuote }: HeaderProps) {
 
   const navItems = [
     { label: "Home", href: "#" },
-    { label: "About Us", href: "#about" },
     { label: "Our Services", href: "#services" },
     { label: "Why Choose Us", href: "#why-us" },
     { label: "Contact", href: "#contact" },
@@ -33,21 +32,21 @@ export default function Header({ onOpenQuote }: HeaderProps) {
   return (
     <>
       {/* Top Banner Notice */}
-      <div className="bg-slate-900 text-slate-300 text-xs py-2 px-4 border-b border-slate-800 hidden md:block">
+      <div className="bg-slate-900 text-slate-300 text-xs py-3 px-4 border-b border-slate-800 hidden md:block">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-6">
             <span className="flex items-center gap-1.5 text-amber-400 font-semibold">
-              <Shield className="w-3.5 h-3.5" /> Licensed, Bonded & Insured (#EC13009982)
+              <Shield className="w-3.5 h-3.5" /> Licensed, Bonded & Insured (#EC13015315)
             </span>
             <span>Serving Naples, Marco Island & Collier County</span>
           </div>
           <div className="flex items-center gap-4">
             <span>24/7 Emergency Service Available</span>
             <a
-              href="tel:2395551234"
+              href="tel:+12394841808"
               className="font-bold text-amber-400 hover:text-amber-300 transition"
             >
-              Direct Line: (239) 555-1234
+              Direct Line: (239) 484-1808
             </a>
           </div>
         </div>
@@ -55,30 +54,29 @@ export default function Header({ onOpenQuote }: HeaderProps) {
 
       {/* Main Header */}
       <header
-        className={`sticky top-0 z-40 transition-all duration-300 ${
-          isScrolled
-            ? "bg-white/95 backdrop-blur-md shadow-md py-3 border-b border-slate-100"
-            : "bg-white py-4 border-b border-slate-100"
-        }`}
+        className={`sticky top-0 z-40 transition-all duration-300 ${isScrolled
+          ? "bg-white/95 backdrop-blur-md shadow-md py-3 border-b border-slate-100"
+          : "bg-white border-b border-slate-100"
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Brand Logo */}
-          <Link href="/" className="flex items-center group">
-            <div className="relative w-[52px] h-[52px] group-hover:scale-105 transition-transform duration-200 shrink-0">
+          <Link href="/" className="flex items-center group gap-3">
+            <div className="relative w-[80px] h-[80px] sm:w-[96px] sm:h-[96px] group-hover:scale-105 transition-transform duration-200 shrink-0">
               <Image
                 src="/Logo.png"
                 alt="Naples Electrical Logo"
-                width={52}
-                height={52}
-                className="object-contain"
+                width={96}
+                height={96}
+                className="object-contain w-full h-full"
                 priority
               />
             </div>
-            <div className="flex flex-col ml-2">
-              <span className="text-xl font-black tracking-tight text-slate-900 leading-none group-hover:text-amber-600 transition-colors">
+            <div className="flex flex-col">
+              <span className="text-2xl sm:text-3xl font-black tracking-tight text-slate-900 leading-none group-hover:text-amber-600 transition-colors">
                 NAPLES
               </span>
-              <span className="text-[10px] font-extrabold tracking-[0.25em] text-slate-500 uppercase leading-tight mt-0.5">
+              <span className="text-[11px] sm:text-xs font-extrabold tracking-[0.25em] text-slate-500 uppercase leading-tight mt-1">
                 ELECTRICAL
               </span>
             </div>
@@ -91,11 +89,10 @@ export default function Header({ onOpenQuote }: HeaderProps) {
                 key={item.label}
                 href={item.href}
                 onClick={() => setActiveTab(item.label)}
-                className={`relative text-sm font-semibold transition-colors duration-200 py-1 ${
-                  activeTab === item.label
-                    ? "text-slate-950 font-bold"
-                    : "text-slate-600 hover:text-slate-950"
-                }`}
+                className={`relative text-sm font-semibold transition-colors duration-200 py-1 ${activeTab === item.label
+                  ? "text-slate-950 font-bold"
+                  : "text-slate-600 hover:text-slate-950"
+                  }`}
               >
                 {item.label}
                 {activeTab === item.label && (
@@ -151,11 +148,10 @@ export default function Header({ onOpenQuote }: HeaderProps) {
                   setActiveTab(item.label);
                   setMobileMenuOpen(false);
                 }}
-                className={`block py-2.5 px-3 text-base font-semibold rounded-xl ${
-                  activeTab === item.label
-                    ? "bg-amber-50 text-amber-900 font-bold"
-                    : "text-slate-700 hover:bg-slate-50"
-                }`}
+                className={`block py-2.5 px-3 text-base font-semibold rounded-xl ${activeTab === item.label
+                  ? "bg-amber-50 text-amber-900 font-bold"
+                  : "text-slate-700 hover:bg-slate-50"
+                  }`}
               >
                 {item.label}
               </a>

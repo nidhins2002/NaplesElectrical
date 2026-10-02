@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@theme {
+  --breakpoint-xs: 475px;
+}
+
 @layer base {
   :root {
     --brand-yellow: #f59e0b;
