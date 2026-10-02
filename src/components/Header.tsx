@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Phone, ArrowRight, Menu, X, Shield, ChevronDown } from "lucide-react";
+import { Phone, ArrowRight, Menu, X, Shield } from "lucide-react";
 
 interface HeaderProps {
   onOpenQuote: (service?: string) => void;
@@ -23,10 +23,10 @@ export default function Header({ onOpenQuote }: HeaderProps) {
   }, []);
 
   const navItems = [
-    { label: "Home", href: "#" },
-    { label: "Our Services", href: "#services" },
-    { label: "Why Choose Us", href: "#why-us" },
-    { label: "Contact", href: "#contact" },
+    { label: "Home", href: "/" },
+    { label: "Our Services", href: "/#services" },
+    { label: "Why Choose Us", href: "/#why-us" },
+    { label: "Contact", href: "/#contact" },
   ];
 
   return (
@@ -54,20 +54,21 @@ export default function Header({ onOpenQuote }: HeaderProps) {
 
       {/* Main Header */}
       <header
-        className={`sticky top-0 z-40 transition-all duration-300 ${isScrolled
-          ? "bg-white/95 backdrop-blur-md shadow-md py-3 border-b border-slate-100"
-          : "bg-white border-b border-slate-100"
-          }`}
+        className={`sticky top-0 z-40 transition-all duration-300 ${
+          isScrolled
+            ? "bg-white/95 backdrop-blur-md shadow-md border-b border-slate-100"
+            : "bg-white border-b border-slate-100"
+        }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between py-2 sm:py-3">
           {/* Brand Logo */}
           <Link href="/" className="flex items-center group gap-3">
-            <div className="relative w-[80px] h-[80px] sm:w-[96px] sm:h-[96px] group-hover:scale-105 transition-transform duration-200 shrink-0">
+            <div className="relative w-[70px] h-[70px] sm:w-[84px] sm:h-[84px] group-hover:scale-105 transition-transform duration-200 shrink-0">
               <Image
                 src="/Logo.png"
                 alt="Naples Electrical Logo"
-                width={96}
-                height={96}
+                width={84}
+                height={84}
                 className="object-contain w-full h-full"
                 priority
               />
@@ -85,30 +86,38 @@ export default function Header({ onOpenQuote }: HeaderProps) {
           {/* Desktop Navigation Menu */}
           <nav className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.label}
                 href={item.href}
                 onClick={() => setActiveTab(item.label)}
-                className={`relative text-sm font-semibold transition-colors duration-200 py-1 ${activeTab === item.label
-                  ? "text-slate-950 font-bold"
-                  : "text-slate-600 hover:text-slate-950"
-                  }`}
+                className={`relative text-sm font-semibold transition-colors duration-200 py-1 ${
+                  activeTab === item.label
+                    ? "text-slate-950 font-bold"
+                    : "text-slate-600 hover:text-slate-950"
+                }`}
               >
                 {item.label}
                 {activeTab === item.label && (
                   <span className="absolute bottom-0 left-0 w-full h-[3px] bg-amber-400 rounded-full animate-fadeIn" />
                 )}
-              </a>
+              </Link>
             ))}
           </nav>
 
           {/* Action Buttons */}
           <div className="hidden lg:flex items-center gap-4">
+            <a
+              href="tel:+12394841808"
+              className="text-xs font-bold text-slate-700 hover:text-amber-600 flex items-center gap-1.5"
+            >
+              <Phone className="w-3.5 h-3.5 text-amber-500" />
+              (239) 484-1808
+            </a>
             <button
               onClick={() => onOpenQuote()}
-              className="inline-flex items-center gap-2 px-6 py-2.5 bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-sm rounded-full shadow-md shadow-amber-400/20 hover:shadow-lg hover:shadow-amber-400/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-sm rounded-full shadow-md shadow-amber-400/20 hover:shadow-lg hover:shadow-amber-400/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
             >
-              <span>Call Us Today</span>
+              <span>Get Free Quote</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
@@ -116,10 +125,10 @@ export default function Header({ onOpenQuote }: HeaderProps) {
           {/* Mobile Action Controls */}
           <div className="flex md:hidden items-center gap-2">
             <a
-              href="tel:2395551234"
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-blue-600 text-white font-bold text-xs rounded-full shadow-sm"
+              href="tel:+12394841808"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-amber-400 text-slate-950 font-bold text-xs rounded-full shadow-sm"
             >
-              <Phone className="w-3.5 h-3.5 fill-white" />
+              <Phone className="w-3.5 h-3.5 fill-slate-950" />
               <span>Call</span>
             </a>
 
@@ -141,20 +150,21 @@ export default function Header({ onOpenQuote }: HeaderProps) {
         {mobileMenuOpen && (
           <div className="md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3 shadow-xl animate-fadeIn">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.label}
                 href={item.href}
                 onClick={() => {
                   setActiveTab(item.label);
                   setMobileMenuOpen(false);
                 }}
-                className={`block py-2.5 px-3 text-base font-semibold rounded-xl ${activeTab === item.label
-                  ? "bg-amber-50 text-amber-900 font-bold"
-                  : "text-slate-700 hover:bg-slate-50"
-                  }`}
+                className={`block py-2.5 px-3 text-base font-semibold rounded-xl ${
+                  activeTab === item.label
+                    ? "bg-amber-50 text-amber-900 font-bold"
+                    : "text-slate-700 hover:bg-slate-50"
+                }`}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
             <div className="pt-2 space-y-2">
               <button
