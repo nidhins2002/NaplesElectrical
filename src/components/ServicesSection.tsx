@@ -71,7 +71,7 @@ export default function ServicesSection({ onOpenQuote }: ServicesSectionProps) {
               onClick={() => setActiveTab("commercial")}
               className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-200 ${
                 activeTab === "commercial"
-                  ? "bg-blue-600 text-white shadow-md"
+                  ? "bg-slate-600 text-white shadow-md"
                   : "text-slate-500 hover:text-slate-800 hover:bg-slate-50"
               }`}
             >
@@ -86,12 +86,12 @@ export default function ServicesSection({ onOpenQuote }: ServicesSectionProps) {
           className={`mb-8 p-4 rounded-2xl border flex items-center gap-4 transition-all duration-300 ${
             activeTab === "residential"
               ? "bg-amber-50 border-amber-200"
-              : "bg-blue-50 border-blue-200"
+              : "bg-slate-50 border-slate-200"
           }`}
         >
           <div
             className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${
-              activeTab === "residential" ? "bg-amber-500 text-white" : "bg-blue-600 text-white"
+              activeTab === "residential" ? "bg-amber-500 text-white" : "bg-slate-600 text-white"
             }`}
           >
             {activeTab === "residential" ? (
@@ -103,7 +103,7 @@ export default function ServicesSection({ onOpenQuote }: ServicesSectionProps) {
           <div>
             <p
               className={`font-extrabold text-sm ${
-                activeTab === "residential" ? "text-amber-900" : "text-blue-900"
+                activeTab === "residential" ? "text-amber-900" : "text-slate-900"
               }`}
             >
               {activeTab === "residential"
@@ -112,7 +112,7 @@ export default function ServicesSection({ onOpenQuote }: ServicesSectionProps) {
             </p>
             <p
               className={`text-xs leading-relaxed mt-0.5 ${
-                activeTab === "residential" ? "text-amber-800/70" : "text-blue-800/70"
+                activeTab === "residential" ? "text-amber-800/70" : "text-slate-800/70"
               }`}
             >
               {activeTab === "residential"

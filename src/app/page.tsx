@@ -6,7 +6,7 @@ import Hero from "@/components/Hero";
 import ValueBar from "@/components/ValueBar";
 import ServicesSection from "@/components/ServicesSection";
 import WhyChooseUs from "@/components/WhyChooseUs";
-import EvChargerProcess from "@/components/EvChargerProcess";
+
 import Testimonials from "@/components/Testimonials";
 import CtaBanner from "@/components/CtaBanner";
 import Footer from "@/components/Footer";
@@ -45,8 +45,7 @@ export default function HomePage() {
         {/* Why Choose Us split section */}
         <WhyChooseUs onOpenQuote={() => openQuote()} />
 
-        {/* EV Charger dark process section */}
-        <EvChargerProcess onOpenQuote={openQuote} />
+
 
         {/* Customer Testimonials */}
         <Testimonials />

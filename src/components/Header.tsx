@@ -62,7 +62,7 @@ export default function Header({ onOpenQuote }: HeaderProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Brand Logo */}
           <Link href="/" className="flex items-center group gap-2.5 sm:gap-3.5">
-            <div className="relative w-[90px] h-[90px] sm:w-[110px] sm:h-[110px] md:w-[150px] md:h-[150px] group-hover:scale-105 transition-transform duration-200 shrink-0">
+            <div className="relative w-[90px] h-[90px] sm:w-[110px] sm:h-[110px] md:w-[150px] md:h-[150px] group-hover:scale-120 transition-transform duration-200 shrink-0">
               <Image
                 src="/Logo.png"
                 alt="Naples Electrical Logo"
