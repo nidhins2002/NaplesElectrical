@@ -72,12 +72,11 @@ export default function Header({ onOpenQuote }: HeaderProps) {
                 priority
               />
             </div>
-            {/* Text brand — hidden on mobile since logo already contains the name */}
-            <div className="hidden sm:flex flex-col">
-              <span className="font-brand text-3xl md:text-4xl font-black tracking-tight text-amber-600 leading-none">
+            <div className="flex flex-col">
+              <span className="font-brand text-xl sm:text-3xl md:text-4xl font-black tracking-tight text-amber-600 leading-none">
                 NAPLES
               </span>
-              <span className="font-brand text-xs md:text-sm font-extrabold tracking-[0.28em] text-amber-500 uppercase leading-tight mt-1">
+              <span className="font-brand text-[9px] sm:text-xs md:text-sm font-extrabold tracking-[0.15em] sm:tracking-[0.28em] text-amber-500 uppercase leading-tight mt-0.5 sm:mt-1">
                 ELECTRICAL
               </span>
             </div>
