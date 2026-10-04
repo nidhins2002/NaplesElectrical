@@ -288,7 +288,7 @@ export default function QuoteModal({
           {/* Footer note */}
           <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
             <span className="flex items-center gap-1.5">
-              <ShieldCheck className="w-4 h-4 text-emerald-600" /> State Licensed EC13009982
+              <ShieldCheck className="w-4 h-4 text-emerald-600" /> State Licensed EC13016758
             </span>
             <span className="flex items-center gap-1.5">
               <Clock className="w-4 h-4 text-amber-500" /> Fast Response Guaranteed

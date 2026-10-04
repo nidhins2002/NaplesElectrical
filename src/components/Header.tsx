@@ -36,7 +36,7 @@ export default function Header({ onOpenQuote }: HeaderProps) {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-6">
             <span className="flex items-center gap-1.5 text-amber-400 font-semibold">
-              <Shield className="w-3.5 h-3.5" /> Licensed, Bonded & Insured (#EC13015315)
+              <Shield className="w-3.5 h-3.5" /> Licensed, Bonded & Insured (#EC13016758)
             </span>
             <span>Serving Naples, Marco Island & Collier County</span>
           </div>
@@ -54,30 +54,29 @@ export default function Header({ onOpenQuote }: HeaderProps) {
 
       {/* Main Header */}
       <header
-        className={`sticky top-0 z-40 transition-all duration-300 ${
-          isScrolled
-            ? "bg-white/95 backdrop-blur-md shadow-md border-b border-slate-100"
-            : "bg-white border-b border-slate-100"
-        }`}
+        className={`sticky top-0 z-40 transition-all duration-300 ${isScrolled
+          ? "bg-white/95 backdrop-blur-md shadow-md border-b border-slate-100"
+          : "bg-white border-b border-slate-100"
+          }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between py-2 sm:py-3">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between ">
           {/* Brand Logo */}
           <Link href="/" className="flex items-center group gap-3.5">
-            <div className="relative w-[90px] h-[90px] sm:w-[110px] sm:h-[110px] md:w-[125px] md:h-[125px] group-hover:scale-105 transition-transform duration-200 shrink-0">
+            <div className="relative w-[130px] h-[130px] sm:w-[130px] sm:h-[130px] md:w-[150px] md:h-[150px] group-hover:scale-105 transition-transform duration-200 shrink-0">
               <Image
                 src="/Logo.png"
                 alt="Naples Electrical Logo"
-                width={125}
-                height={125}
+                width={150}
+                height={150}
                 className="object-contain w-full h-full"
                 priority
               />
             </div>
             <div className="flex flex-col">
-              <span className="font-brand text-3xl sm:text-4xl font-black tracking-tight text-amber-500 leading-none">
+              <span className="font-brand text-3xl sm:text-4xl font-black tracking-tight text-amber-600 leading-none">
                 NAPLES
               </span>
-              <span className="font-brand text-xs sm:text-sm font-extrabold tracking-[0.28em] text-amber-600 uppercase leading-tight mt-1">
+              <span className="font-brand text-xs sm:text-sm font-extrabold tracking-[0.28em] text-amber-500 uppercase leading-tight mt-1">
                 ELECTRICAL
               </span>
             </div>
@@ -90,11 +89,10 @@ export default function Header({ onOpenQuote }: HeaderProps) {
                 key={item.label}
                 href={item.href}
                 onClick={() => setActiveTab(item.label)}
-                className={`relative text-sm font-semibold transition-colors duration-200 py-1 ${
-                  activeTab === item.label
-                    ? "text-slate-950 font-bold"
-                    : "text-slate-600 hover:text-slate-950"
-                }`}
+                className={`relative text-sm font-semibold transition-colors duration-200 py-1 ${activeTab === item.label
+                  ? "text-slate-950 font-bold"
+                  : "text-slate-600 hover:text-slate-950"
+                  }`}
               >
                 {item.label}
                 {activeTab === item.label && (
@@ -126,7 +124,7 @@ export default function Header({ onOpenQuote }: HeaderProps) {
           <div className="flex md:hidden items-center gap-2">
             <a
               href="tel:+12394841808"
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-amber-400 text-slate-950 font-bold text-xs rounded-full shadow-sm"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-amber-500 text-slate-950 font-bold text-xs rounded-full shadow-sm"
             >
               <Phone className="w-3.5 h-3.5 fill-slate-950" />
               <span>Call</span>
@@ -157,11 +155,10 @@ export default function Header({ onOpenQuote }: HeaderProps) {
                   setActiveTab(item.label);
                   setMobileMenuOpen(false);
                 }}
-                className={`block py-2.5 px-3 text-base font-semibold rounded-xl ${
-                  activeTab === item.label
-                    ? "bg-amber-50 text-amber-900 font-bold"
-                    : "text-slate-700 hover:bg-slate-50"
-                }`}
+                className={`block py-2.5 px-3 text-base font-semibold rounded-xl ${activeTab === item.label
+                  ? "bg-amber-50 text-amber-900 font-bold"
+                  : "text-slate-700 hover:bg-slate-50"
+                  }`}
               >
                 {item.label}
               </Link>

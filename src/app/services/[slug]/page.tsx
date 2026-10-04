@@ -292,7 +292,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                 </a>
               </div>
               <p className="text-xs text-slate-400 pt-2">
-                State Certified Electrical Contractor #EC13015315 • Fully Insured & Bonded
+                State Certified Electrical Contractor #EC13016758 • Fully Insured & Bonded
               </p>
             </div>
           </section>

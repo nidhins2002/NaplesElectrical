@@ -70,7 +70,7 @@ export const SERVICES: ServiceData[] = [
       },
       {
         question: "Are your electricians licensed and insured in Collier County?",
-        answer: "Yes, Naples Electrical holds State Certified Electrical Contractor License #EC13015315 and full liability & worker's comp insurance."
+        answer: "Yes, Naples Electrical holds State Certified Electrical Contractor License #EC13016758 and full liability & worker's comp insurance."
       }
     ]
   },

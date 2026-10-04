@@ -179,7 +179,7 @@ export default function Footer({ onOpenQuote }: FooterProps) {
             {/* License Badge */}
             <div className="bg-slate-900 border border-slate-800 rounded-xl p-4">
               <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">State Licensed</div>
-              <div className="text-sm font-bold text-white">#EC13015315</div>
+              <div className="text-sm font-bold text-white">#EC13016758</div>
               <div className="text-xs text-slate-400 mt-1">Licensed Electrical Contractor<br />State of Florida</div>
             </div>
           </div>
