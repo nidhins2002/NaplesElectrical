@@ -1,134 +1,296 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import { ShieldCheck, Users, Clock, Star, CheckCircle2 } from "lucide-react";
+import { ShieldCheck, Users, Clock, Star, X, FileCheck2, FileText } from "lucide-react";
 
 interface WhyChooseUsProps {
   onOpenQuote: () => void;
 }
 
+function CredentialsModal({ onClose }: { onClose: () => void }) {
+  const [activeTab, setActiveTab] = useState<"license" | "insurance">("license");
+
+  return (
+    <div
+      className="fixed inset-0 z-[999] flex items-center justify-center p-4"
+      onClick={onClose}
+    >
+      {/* Backdrop */}
+      <div className="absolute inset-0 bg-slate-900/70 backdrop-blur-sm" />
+
+      {/* Modal */}
+      <div
+        className="relative bg-white rounded-3xl shadow-2xl w-full max-w-3xl max-h-[90vh] flex flex-col overflow-hidden"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Header */}
+        <div className="flex items-center justify-between px-6 py-5 border-b border-slate-100 shrink-0">
+          <div>
+            <h2 className="text-xl font-black text-slate-900">Our Credentials</h2>
+            <p className="text-sm text-slate-500 mt-0.5">State-licensed & fully insured in Florida</p>
+          </div>
+          <button
+            onClick={onClose}
+            className="p-2 rounded-full hover:bg-slate-100 transition text-slate-500"
+            aria-label="Close"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Tabs */}
+        <div className="flex gap-2 px-6 pt-4 shrink-0">
+          <button
+            onClick={() => setActiveTab("license")}
+            className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold transition-all ${
+              activeTab === "license"
+                ? "bg-blue-600 text-white shadow-lg shadow-blue-600/25"
+                : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+            }`}
+          >
+            <FileCheck2 className="w-4 h-4" />
+            State License
+          </button>
+          <button
+            onClick={() => setActiveTab("insurance")}
+            className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold transition-all ${
+              activeTab === "insurance"
+                ? "bg-emerald-600 text-white shadow-lg shadow-emerald-600/25"
+                : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+            }`}
+          >
+            <FileText className="w-4 h-4" />
+            Insurance Certificate
+          </button>
+        </div>
+
+        {/* Content */}
+        <div className="flex-1 overflow-y-auto p-6">
+          {activeTab === "license" && (
+            <div className="space-y-4">
+              <div className="bg-blue-50 border border-blue-100 rounded-2xl p-4 flex flex-wrap gap-4">
+                <div>
+                  <div className="text-xs text-blue-500 font-semibold uppercase tracking-wider">License Number</div>
+                  <div className="text-lg font-black text-blue-800 mt-0.5">EC13016758</div>
+                </div>
+                <div>
+                  <div className="text-xs text-blue-500 font-semibold uppercase tracking-wider">Issued To</div>
+                  <div className="text-lg font-black text-blue-800 mt-0.5">Naples Electrical, LLC</div>
+                </div>
+                <div>
+                  <div className="text-xs text-blue-500 font-semibold uppercase tracking-wider">Expiration Date</div>
+                  <div className="text-lg font-black text-blue-800 mt-0.5">August 31, 2028</div>
+                </div>
+                <div>
+                  <div className="text-xs text-blue-500 font-semibold uppercase tracking-wider">Issuing Authority</div>
+                  <div className="text-base font-bold text-blue-800 mt-0.5">State of Florida DBPR</div>
+                </div>
+              </div>
+              <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-md">
+                <Image
+                  src="/images/license.jpg"
+                  alt="Florida Electrical Contractors License EC13016758 - Naples Electrical LLC"
+                  width={900}
+                  height={500}
+                  className="w-full h-auto object-contain"
+                />
+              </div>
+              <p className="text-xs text-slate-400 text-center">
+                Verify at{" "}
+                <a
+                  href="https://www.myfloridalicense.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:text-blue-600 transition"
+                >
+                  MyFloridaLicense.com
+                </a>
+              </p>
+            </div>
+          )}
+
+          {activeTab === "insurance" && (
+            <div className="space-y-4">
+              <div className="bg-emerald-50 border border-emerald-100 rounded-2xl p-4 flex flex-wrap gap-4">
+                <div>
+                  <div className="text-xs text-emerald-600 font-semibold uppercase tracking-wider">Insured</div>
+                  <div className="text-lg font-black text-emerald-900 mt-0.5">Naples Electrical LLC</div>
+                </div>
+                <div>
+                  <div className="text-xs text-emerald-600 font-semibold uppercase tracking-wider">General Liability</div>
+                  <div className="text-lg font-black text-emerald-900 mt-0.5">$1M / $2M</div>
+                </div>
+                <div>
+                  <div className="text-xs text-emerald-600 font-semibold uppercase tracking-wider">Umbrella</div>
+                  <div className="text-lg font-black text-emerald-900 mt-0.5">$1M</div>
+                </div>
+                <div>
+                  <div className="text-xs text-emerald-600 font-semibold uppercase tracking-wider">Provider</div>
+                  <div className="text-base font-bold text-emerald-900 mt-0.5">Berkshire Hathaway / NLFIC</div>
+                </div>
+              </div>
+              <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-md">
+                <Image
+                  src="/images/insurance.jpg"
+                  alt="Naples Electrical LLC Insurance Certificate - BiBerk"
+                  width={900}
+                  height={700}
+                  className="w-full h-auto object-contain"
+                />
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function WhyChooseUs({ onOpenQuote }: WhyChooseUsProps) {
+  const [showCredentials, setShowCredentials] = useState(false);
+
   const points = [
     {
       icon: ShieldCheck,
       title: "Licensed & Insured",
-      desc: "Your safety and peace of mind come first. Licensed state electrical contractor #EC13009982.",
+      desc: "State-certified electrical contractor — License #EC13016758, fully insured with $2M general liability coverage.",
       color: "text-blue-600 bg-blue-50 border-blue-100",
+      action: () => setShowCredentials(true),
     },
     {
       icon: Users,
       title: "Experienced Team",
       desc: "Skilled electricians with years of local experience in Naples and Collier County.",
       color: "text-indigo-600 bg-indigo-50 border-indigo-100",
+      action: null,
     },
     {
       icon: Clock,
       title: "Reliable & On Time",
       desc: "We respect your busy schedule and show up right when we say we will, guaranteed.",
       color: "text-amber-600 bg-amber-50 border-amber-100",
+      action: null,
     },
     {
       icon: Star,
       title: "Customer Focused",
       desc: "Quality work and excellent service on every job, backed by 5-star customer reviews.",
       color: "text-emerald-600 bg-emerald-50 border-emerald-100",
+      action: null,
     },
   ];
 
   return (
-    <section id="why-us" className="py-14 sm:py-20 lg:py-28 bg-white border-y border-slate-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-16 items-center">
+    <>
+      {showCredentials && <CredentialsModal onClose={() => setShowCredentials(false)} />}
 
-          {/* Left Column: Media & Highlights */}
-          <div className="lg:col-span-6 relative">
-            <div className="relative mx-auto max-w-sm sm:max-w-lg lg:max-w-none">
+      <section id="why-us" className="py-14 sm:py-20 lg:py-28 bg-white border-y border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-16 items-center">
 
-              {/* Main Image */}
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200">
-                <Image
-                  src="/images/hero-electrician.jpg"
-                  alt="Quality Electrical Work Naples FL"
-                  width={600}
-                  height={500}
-                  className="w-full h-[280px] sm:h-[380px] md:h-[480px] object-cover"
-                />
-                
-                {/* Floating Badge overlay */}
-                <div className="absolute top-6 right-6 bg-white/95 backdrop-blur-md px-5 py-3.5 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3">
-                  <div className="flex -space-x-1">
-                    {[1, 2, 3, 4, 5].map((i) => (
-                      <Star key={i} className="w-4 h-4 text-amber-400 fill-amber-400" />
-                    ))}
+            {/* Left Column: Media & Highlights */}
+            <div className="lg:col-span-6 relative">
+              <div className="relative mx-auto max-w-sm sm:max-w-lg lg:max-w-none">
+
+                {/* Main Image */}
+                <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200">
+                  <Image
+                    src="/images/hero-electrician.jpg"
+                    alt="Quality Electrical Work Naples FL"
+                    width={600}
+                    height={500}
+                    className="w-full h-[280px] sm:h-[380px] md:h-[480px] object-cover"
+                  />
+                  
+                  {/* Floating Badge overlay */}
+                  <div className="absolute top-6 right-6 bg-white/95 backdrop-blur-md px-5 py-3.5 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3">
+                    <div className="flex -space-x-1">
+                      {[1, 2, 3, 4, 5].map((i) => (
+                        <Star key={i} className="w-4 h-4 text-amber-400 fill-amber-400" />
+                      ))}
+                    </div>
+                    <span className="text-xs font-bold text-slate-900">5-Star Rated Service</span>
                   </div>
-                  <span className="text-xs font-bold text-slate-900">5-Star Rated Service</span>
                 </div>
+
+                {/* Floating Stat Card */}
+                <div className="absolute -bottom-5 left-2 sm:-bottom-6 sm:left-6 bg-slate-900 text-white p-4 sm:p-6 rounded-2xl shadow-xl max-w-[200px] sm:max-w-xs border border-slate-800">
+                  <div className="text-2xl sm:text-3xl font-black text-amber-400">15+ Years</div>
+                  <div className="text-xs text-slate-300 font-medium mt-1">
+                    Trusted Electrical Experience in Naples, Florida
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            {/* Right Column: Text & Features List */}
+            <div className="lg:col-span-6 space-y-5 sm:space-y-6 mt-6 sm:mt-8 lg:mt-0">
+              <div className="space-y-3">
+                <span className="inline-block px-3 py-1 bg-blue-50 text-blue-700 font-extrabold text-xs tracking-wider uppercase rounded-full border border-blue-100">
+                  WHY CHOOSE US
+                </span>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+                  Quality Electrical Work You Can Trust
+                </h2>
+                <p className="text-slate-600 text-base sm:text-lg leading-relaxed pt-1">
+                  We're committed to providing safe, reliable and professional electrical services for homeowners and businesses in Naples, FL.
+                </p>
               </div>
 
-              {/* Floating Stat Card */}
-              <div className="absolute -bottom-5 left-2 sm:-bottom-6 sm:left-6 bg-slate-900 text-white p-4 sm:p-6 rounded-2xl shadow-xl max-w-[200px] sm:max-w-xs border border-slate-800">
-                <div className="text-2xl sm:text-3xl font-black text-amber-400">15+ Years</div>
-                <div className="text-xs text-slate-300 font-medium mt-1">
-                  Trusted Electrical Experience in Naples, Florida
-                </div>
+              {/* List */}
+              <div className="space-y-4 pt-2">
+                {points.map((pt) => {
+                  const Icon = pt.icon;
+                  const isClickable = !!pt.action;
+                  return (
+                    <div
+                      key={pt.title}
+                      onClick={pt.action ?? undefined}
+                      className={`p-4 rounded-2xl bg-slate-50 border border-slate-150 transition-all duration-200 flex items-start gap-4 ${
+                        isClickable
+                          ? "cursor-pointer hover:bg-blue-50 hover:border-blue-200 hover:shadow-md group"
+                          : "hover:bg-white hover:shadow-md"
+                      }`}
+                    >
+                      <div className={`p-3 rounded-xl border shrink-0 ${pt.color}`}>
+                        <Icon className="w-5 h-5" />
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2">
+                          <h3 className="text-base font-bold text-slate-900">
+                            {pt.title}
+                          </h3>
+                          {isClickable && (
+                            <span className="text-xs font-semibold text-blue-600 bg-blue-50 border border-blue-100 px-2 py-0.5 rounded-full group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                              View Documents →
+                            </span>
+                          )}
+                        </div>
+                        <p className="text-xs sm:text-sm text-slate-500 mt-1 leading-relaxed">
+                          {pt.desc}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <div className="pt-4">
+                <button
+                  onClick={onOpenQuote}
+                  className="w-full sm:w-auto px-8 py-4 bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-base rounded-full shadow-lg shadow-amber-400/20 hover:scale-[1.02] active:scale-[0.98] transition"
+                >
+                  Schedule Service Today
+                </button>
               </div>
 
             </div>
-          </div>
-
-          {/* Right Column: Text & Features List */}
-          <div className="lg:col-span-6 space-y-5 sm:space-y-6 mt-6 sm:mt-8 lg:mt-0">
-            <div className="space-y-3">
-              <span className="inline-block px-3 py-1 bg-blue-50 text-blue-700 font-extrabold text-xs tracking-wider uppercase rounded-full border border-blue-100">
-                WHY CHOOSE US
-              </span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight">
-                Quality Electrical Work You Can Trust
-              </h2>
-              <p className="text-slate-600 text-base sm:text-lg leading-relaxed pt-1">
-                We're committed to providing safe, reliable and professional electrical services for homeowners and businesses in Naples, FL.
-              </p>
-            </div>
-
-            {/* List */}
-            <div className="space-y-4 pt-2">
-              {points.map((pt) => {
-                const Icon = pt.icon;
-                return (
-                  <div
-                    key={pt.title}
-                    className="p-4 rounded-2xl bg-slate-50 border border-slate-150 hover:bg-white hover:shadow-md transition-all duration-200 flex items-start gap-4"
-                  >
-                    <div className={`p-3 rounded-xl border shrink-0 ${pt.color}`}>
-                      <Icon className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <h3 className="text-base font-bold text-slate-900">
-                        {pt.title}
-                      </h3>
-                      <p className="text-xs sm:text-sm text-slate-500 mt-1 leading-relaxed">
-                        {pt.desc}
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-
-            <div className="pt-4">
-              <button
-                onClick={onOpenQuote}
-                className="w-full sm:w-auto px-8 py-4 bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-base rounded-full shadow-lg shadow-amber-400/20 hover:scale-[1.02] active:scale-[0.98] transition"
-              >
-                Schedule Service Today
-              </button>
-            </div>
 
           </div>
-
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
