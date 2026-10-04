@@ -79,14 +79,7 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  icons: {
-    icon: [
-      { url: "/icon.png?v=6", type: "image/png" },
-      { url: "/favicon.ico?v=6" },
-    ],
-    shortcut: "/icon.png?v=6",
-    apple: "/icon.png?v=6",
-  },
+
 };
 
 // LocalBusiness JSON-LD structured data
