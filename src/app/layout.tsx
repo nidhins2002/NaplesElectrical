@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans, Outfit } from "next/font/google";
 import "./globals.css";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   variable: "--font-jakarta",
   weight: ["400", "500", "600", "700", "800"],
+});
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
+  weight: ["700", "800", "900"],
 });
 
 const SITE_URL = "https://www.napleselectrical.com";
@@ -152,7 +158,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${jakarta.variable} scroll-smooth`}>
+    <html lang="en" className={`${jakarta.variable} ${outfit.variable} scroll-smooth`}>
       <body className="font-sans antialiased bg-slate-50 text-slate-900 selection:bg-amber-400 selection:text-slate-900">
         {/* JSON-LD Structured Data */}
         <script

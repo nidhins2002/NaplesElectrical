@@ -62,22 +62,22 @@ export default function Header({ onOpenQuote }: HeaderProps) {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between py-2 sm:py-3">
           {/* Brand Logo */}
-          <Link href="/" className="flex items-center group gap-3">
-            <div className="relative w-[70px] h-[70px] sm:w-[84px] sm:h-[84px] group-hover:scale-105 transition-transform duration-200 shrink-0">
+          <Link href="/" className="flex items-center group gap-3.5">
+            <div className="relative w-[90px] h-[90px] sm:w-[110px] sm:h-[110px] md:w-[125px] md:h-[125px] group-hover:scale-105 transition-transform duration-200 shrink-0">
               <Image
                 src="/Logo.png"
                 alt="Naples Electrical Logo"
-                width={84}
-                height={84}
+                width={125}
+                height={125}
                 className="object-contain w-full h-full"
                 priority
               />
             </div>
             <div className="flex flex-col">
-              <span className="text-2xl sm:text-3xl font-black tracking-tight text-slate-900 leading-none group-hover:text-amber-600 transition-colors">
+              <span className="font-brand text-3xl sm:text-4xl font-black tracking-tight text-slate-900 leading-none group-hover:text-amber-600 transition-colors">
                 NAPLES
               </span>
-              <span className="text-[11px] sm:text-xs font-extrabold tracking-[0.25em] text-slate-500 uppercase leading-tight mt-1">
+              <span className="font-brand text-xs sm:text-sm font-extrabold tracking-[0.28em] text-slate-500 uppercase leading-tight mt-1">
                 ELECTRICAL
               </span>
             </div>

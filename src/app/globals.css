@@ -45,3 +45,7 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #f59e0b;
 }
+
+.font-brand {
+  font-family: var(--font-outfit), var(--font-jakarta), system-ui, sans-serif;
+}

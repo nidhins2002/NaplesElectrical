@@ -67,8 +67,8 @@ export default function Footer({ onOpenQuote }: FooterProps) {
                 />
               </div>
               <div>
-                <div className="text-lg font-black text-white tracking-tight leading-none">NAPLES</div>
-                <div className="text-[9px] font-extrabold tracking-[0.28em] text-slate-400 uppercase mt-0.5">ELECTRICAL</div>
+                <div className="font-brand text-xl font-black text-white tracking-tight leading-none">NAPLES</div>
+                <div className="font-brand text-[10px] font-extrabold tracking-[0.28em] text-slate-400 uppercase mt-0.5">ELECTRICAL</div>
               </div>
             </div>
 
