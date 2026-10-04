@@ -74,10 +74,10 @@ export default function Header({ onOpenQuote }: HeaderProps) {
               />
             </div>
             <div className="flex flex-col">
-              <span className="font-brand text-3xl sm:text-4xl font-black tracking-tight text-slate-900 leading-none group-hover:text-amber-600 transition-colors">
+              <span className="font-brand text-3xl sm:text-4xl font-black tracking-tight text-amber-500 leading-none">
                 NAPLES
               </span>
-              <span className="font-brand text-xs sm:text-sm font-extrabold tracking-[0.28em] text-slate-500 uppercase leading-tight mt-1">
+              <span className="font-brand text-xs sm:text-sm font-extrabold tracking-[0.28em] text-amber-600 uppercase leading-tight mt-1">
                 ELECTRICAL
               </span>
             </div>
