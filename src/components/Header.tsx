@@ -59,10 +59,10 @@ export default function Header({ onOpenQuote }: HeaderProps) {
           : "bg-white border-b border-slate-100"
           }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between ">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Brand Logo */}
-          <Link href="/" className="flex items-center group gap-3.5">
-            <div className="relative w-[130px] h-[130px] sm:w-[130px] sm:h-[130px] md:w-[150px] md:h-[150px] group-hover:scale-105 transition-transform duration-200 shrink-0">
+          <Link href="/" className="flex items-center group gap-2.5 sm:gap-3.5">
+            <div className="relative w-[64px] h-[64px] sm:w-[100px] sm:h-[100px] md:w-[150px] md:h-[150px] group-hover:scale-105 transition-transform duration-200 shrink-0">
               <Image
                 src="/Logo.png"
                 alt="Naples Electrical Logo"
@@ -73,10 +73,10 @@ export default function Header({ onOpenQuote }: HeaderProps) {
               />
             </div>
             <div className="flex flex-col">
-              <span className="font-brand text-3xl sm:text-4xl font-black tracking-tight text-amber-600 leading-none">
+              <span className="font-brand text-2xl sm:text-3xl md:text-4xl font-black tracking-tight text-amber-600 leading-none">
                 NAPLES
               </span>
-              <span className="font-brand text-xs sm:text-sm font-extrabold tracking-[0.28em] text-amber-500 uppercase leading-tight mt-1">
+              <span className="font-brand text-[10px] sm:text-xs md:text-sm font-extrabold tracking-[0.22em] sm:tracking-[0.28em] text-amber-500 uppercase leading-tight mt-0.5 sm:mt-1">
                 ELECTRICAL
               </span>
             </div>
