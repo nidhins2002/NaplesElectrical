@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  const canonicalUrl = `https://www.napleselectrical.com/services/${service.slug}`;
+  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://naples-electrical.vercel.app";
+  const canonicalUrl = `${SITE_URL}/services/${service.slug}`;
 
   return {
     title: service.metaTitle,
@@ -89,7 +90,7 @@ export default async function ServiceDetailPage({ params }: Props) {
       "@type": "ElectricalContractor",
       name: "Naples Electrical",
       telephone: "+1-239-484-1808",
-      url: "https://www.napleselectrical.com",
+      url: process.env.NEXT_PUBLIC_SITE_URL || "https://naples-electrical.vercel.app",
     },
     areaServed: [
       { "@type": "City", name: "Naples" },

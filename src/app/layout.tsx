@@ -14,7 +14,7 @@ const outfit = Outfit({
   weight: ["700", "800", "900"],
 });
 
-const SITE_URL = "https://www.napleselectrical.com";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://naples-electrical.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
