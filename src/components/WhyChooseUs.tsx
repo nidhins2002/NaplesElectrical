@@ -277,18 +277,132 @@ export default function WhyChooseUs({ onOpenQuote }: WhyChooseUsProps) {
                 })}
               </div>
 
-              <div className="pt-4">
+              <div className="pt-4 flex flex-col sm:flex-row gap-3">
                 <button
                   onClick={onOpenQuote}
                   className="w-full sm:w-auto px-8 py-4 bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-base rounded-full shadow-lg shadow-amber-400/20 hover:scale-[1.02] active:scale-[0.98] transition"
                 >
                   Schedule Service Today
                 </button>
+                <button
+                  onClick={() => setShowCredentials(true)}
+                  className="w-full sm:w-auto px-6 py-4 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-base rounded-full border border-slate-200 transition flex items-center justify-center gap-2"
+                >
+                  <FileCheck2 className="w-5 h-5 text-amber-600" />
+                  <span>Verify State License & Insurance</span>
+                </button>
               </div>
 
             </div>
 
           </div>
+
+          {/* Direct On-Page License & Insurance Credentials Showcase */}
+          <div className="mt-16 pt-12 border-t border-slate-200">
+            <div className="text-center max-w-3xl mx-auto space-y-3 mb-10">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-100 text-emerald-900 font-black text-xs uppercase tracking-wider">
+                <ShieldCheck className="w-4 h-4 text-emerald-600 fill-emerald-500" />
+                VERIFIED & PROTECTED CONTRACTOR
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+                Official State License & Insurance Verification
+              </h3>
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                Work with confidence. Naples Electrical is fully licensed by the State of Florida DBPR and backed by $2,000,000 in General Liability insurance.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
+              {/* Card 1: State License */}
+              <div
+                onClick={() => setShowCredentials(true)}
+                className="group cursor-pointer bg-slate-50 hover:bg-white rounded-3xl p-6 border border-slate-200 hover:border-amber-400 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-2.5">
+                      <div className="p-2.5 rounded-xl bg-amber-100 text-amber-900 font-bold">
+                        <FileCheck2 className="w-5 h-5 text-amber-600" />
+                      </div>
+                      <div>
+                        <h4 className="font-extrabold text-slate-900 text-lg leading-tight">State Electrical License</h4>
+                        <p className="text-xs font-bold text-amber-600">DBPR License #EC13016758</p>
+                      </div>
+                    </div>
+                    <span className="px-3 py-1 bg-emerald-100 text-emerald-900 font-extrabold text-xs rounded-full">
+                      Active & Verified
+                    </span>
+                  </div>
+
+                  {/* License Document Preview Image */}
+                  <div className="relative h-48 sm:h-56 w-full rounded-2xl overflow-hidden border border-slate-200 bg-white mb-4 shadow-inner">
+                    <Image
+                      src="/images/license.jpg"
+                      alt="Florida Electrical License EC13016758 - Naples Electrical"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-slate-900/30 group-hover:bg-slate-900/10 transition-colors flex items-center justify-center">
+                      <span className="px-4 py-2 bg-slate-900/90 text-white font-bold text-xs rounded-full backdrop-blur-md shadow-lg flex items-center gap-1.5 group-hover:scale-105 transition">
+                        <FileText className="w-3.5 h-3.5 text-amber-400" /> Click to Expand License
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between text-xs text-slate-500 pt-2 border-t border-slate-200/60">
+                  <span>Issuing Agency: State of Florida DBPR</span>
+                  <span className="font-bold text-slate-800">Naples Electrical, LLC</span>
+                </div>
+              </div>
+
+              {/* Card 2: Insurance Certificate */}
+              <div
+                onClick={() => setShowCredentials(true)}
+                className="group cursor-pointer bg-slate-50 hover:bg-white rounded-3xl p-6 border border-slate-200 hover:border-emerald-400 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-2.5">
+                      <div className="p-2.5 rounded-xl bg-emerald-100 text-emerald-900 font-bold">
+                        <ShieldCheck className="w-5 h-5 text-emerald-600 fill-emerald-500" />
+                      </div>
+                      <div>
+                        <h4 className="font-extrabold text-slate-900 text-lg leading-tight">General Liability Insurance</h4>
+                        <p className="text-xs font-bold text-emerald-600">$2,000,000 Coverage Limit</p>
+                      </div>
+                    </div>
+                    <span className="px-3 py-1 bg-emerald-100 text-emerald-900 font-extrabold text-xs rounded-full">
+                      $2M Insured
+                    </span>
+                  </div>
+
+                  {/* Insurance Certificate Preview Image */}
+                  <div className="relative h-48 sm:h-56 w-full rounded-2xl overflow-hidden border border-slate-200 bg-white mb-4 shadow-inner">
+                    <Image
+                      src="/images/insurance.jpg"
+                      alt="Naples Electrical Insurance Certificate - biBERK Berkshire Hathaway"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-slate-900/30 group-hover:bg-slate-900/10 transition-colors flex items-center justify-center">
+                      <span className="px-4 py-2 bg-slate-900/90 text-white font-bold text-xs rounded-full backdrop-blur-md shadow-lg flex items-center gap-1.5 group-hover:scale-105 transition">
+                        <FileText className="w-3.5 h-3.5 text-emerald-400" /> Click to Expand Certificate
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between text-xs text-slate-500 pt-2 border-t border-slate-200/60">
+                  <span>Provider: Berkshire Hathaway / biBERK</span>
+                  <span className="font-bold text-slate-800">Liability & Worker's Comp</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
     </>

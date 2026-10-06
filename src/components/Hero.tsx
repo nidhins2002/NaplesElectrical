@@ -60,34 +60,40 @@ export default function Hero({ onOpenQuote }: HeroProps) {
             </div>
 
             {/* Trust Badges Bar */}
-            <div className="pt-6 sm:pt-8 border-t border-slate-800/80 grid grid-cols-3 gap-3 sm:gap-6 max-w-xl">
-              <div className="flex items-center gap-2 sm:gap-3">
-                <div className="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 text-amber-400 border border-slate-700/60 shrink-0">
+            <div className="pt-6 sm:pt-8 border-t border-slate-800/80 grid grid-cols-3 gap-3 sm:gap-6 max-w-2xl">
+              <a
+                href="#why-us"
+                className="flex items-center gap-2 sm:gap-3 group cursor-pointer"
+              >
+                <div className="p-2 sm:p-2.5 rounded-xl bg-amber-400/10 text-amber-400 border border-amber-400/20 shrink-0 group-hover:bg-amber-400 group-hover:text-slate-950 transition-colors">
                   <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
                 <div>
-                  <div className="text-xs sm:text-sm font-bold text-white leading-tight">Licensed</div>
-                  <div className="text-[10px] sm:text-xs text-slate-400">& Insured</div>
+                  <div className="text-xs sm:text-sm font-extrabold text-white leading-tight group-hover:text-amber-400 transition-colors">EC13016758</div>
+                  <div className="text-[10px] sm:text-xs text-amber-400/90 font-medium">State Licensed</div>
                 </div>
-              </div>
+              </a>
+
+              <a
+                href="#why-us"
+                className="flex items-center gap-2 sm:gap-3 group cursor-pointer"
+              >
+                <div className="p-2 sm:p-2.5 rounded-xl bg-emerald-400/10 text-emerald-400 border border-emerald-400/20 shrink-0 group-hover:bg-emerald-400 group-hover:text-slate-950 transition-colors">
+                  <Award className="w-4 h-4 sm:w-5 sm:h-5" />
+                </div>
+                <div>
+                  <div className="text-xs sm:text-sm font-extrabold text-white leading-tight group-hover:text-emerald-400 transition-colors">$2M Coverage</div>
+                  <div className="text-[10px] sm:text-xs text-emerald-400/90 font-medium">Fully Insured</div>
+                </div>
+              </a>
 
               <div className="flex items-center gap-2 sm:gap-3">
                 <div className="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 text-amber-400 border border-slate-700/60 shrink-0">
                   <Users className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
                 <div>
-                  <div className="text-xs sm:text-sm font-bold text-white leading-tight">Trusted in</div>
-                  <div className="text-[10px] sm:text-xs text-slate-400">Naples, FL</div>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2 sm:gap-3">
-                <div className="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 text-amber-400 border border-slate-700/60 shrink-0">
-                  <Award className="w-4 h-4 sm:w-5 sm:h-5" />
-                </div>
-                <div>
-                  <div className="text-xs sm:text-sm font-bold text-white leading-tight">Quality</div>
-                  <div className="text-[10px] sm:text-xs text-slate-400">Workmanship</div>
+                  <div className="text-xs sm:text-sm font-extrabold text-white leading-tight">Naples, FL</div>
+                  <div className="text-[10px] sm:text-xs text-slate-400 font-medium">Owner-Operated</div>
                 </div>
               </div>
             </div>
