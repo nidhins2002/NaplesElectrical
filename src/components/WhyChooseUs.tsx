@@ -45,7 +45,7 @@ function CredentialsModal({ onClose }: { onClose: () => void }) {
             onClick={() => setActiveTab("license")}
             className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold transition-all ${
               activeTab === "license"
-                ? "bg-blue-600 text-white shadow-lg shadow-blue-600/25"
+                ? "bg-slate-600 text-white shadow-lg shadow-slate-600/30"
                 : "bg-slate-100 text-slate-600 hover:bg-slate-200"
             }`}
           >
@@ -69,22 +69,22 @@ function CredentialsModal({ onClose }: { onClose: () => void }) {
         <div className="flex-1 overflow-y-auto p-6">
           {activeTab === "license" && (
             <div className="space-y-4">
-              <div className="bg-blue-50 border border-blue-100 rounded-2xl p-4 flex flex-wrap gap-4">
+              <div className="bg-slate-50 border border-slate-100 rounded-2xl p-4 flex flex-wrap gap-4">
                 <div>
-                  <div className="text-xs text-blue-500 font-semibold uppercase tracking-wider">License Number</div>
-                  <div className="text-lg font-black text-blue-800 mt-0.5">EC13016758</div>
+                  <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider">License Number</div>
+                  <div className="text-lg font-black text-slate-800 mt-0.5">EC13016758</div>
                 </div>
                 <div>
-                  <div className="text-xs text-blue-500 font-semibold uppercase tracking-wider">Issued To</div>
-                  <div className="text-lg font-black text-blue-800 mt-0.5">Naples Electrical, LLC</div>
+                  <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Issued To</div>
+                  <div className="text-lg font-black text-slate-800 mt-0.5">Naples Electrical, LLC</div>
                 </div>
                 <div>
-                  <div className="text-xs text-blue-500 font-semibold uppercase tracking-wider">Expiration Date</div>
-                  <div className="text-lg font-black text-blue-800 mt-0.5">August 31, 2028</div>
+                  <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Expiration Date</div>
+                  <div className="text-lg font-black text-slate-800 mt-0.5">August 31, 2028</div>
                 </div>
                 <div>
-                  <div className="text-xs text-blue-500 font-semibold uppercase tracking-wider">Issuing Authority</div>
-                  <div className="text-base font-bold text-blue-800 mt-0.5">State of Florida DBPR</div>
+                  <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Issuing Authority</div>
+                  <div className="text-base font-bold text-slate-800 mt-0.5">State of Florida DBPR</div>
                 </div>
               </div>
               <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-md">
@@ -102,7 +102,7 @@ function CredentialsModal({ onClose }: { onClose: () => void }) {
                   href="https://www.myfloridalicense.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="underline hover:text-blue-600 transition"
+                  className="underline hover:text-slate-600 transition"
                 >
                   MyFloridaLicense.com
                 </a>
@@ -155,14 +155,14 @@ export default function WhyChooseUs({ onOpenQuote }: WhyChooseUsProps) {
       icon: ShieldCheck,
       title: "Licensed & Insured",
       desc: "State-certified electrical contractor — License #EC13016758, fully insured with $2M general liability coverage.",
-      color: "text-blue-600 bg-blue-50 border-blue-100",
+      color: "text-slate-600 bg-slate-50 border-slate-100",
       action: () => setShowCredentials(true),
     },
     {
       icon: Users,
       title: "Experienced Team",
       desc: "Skilled electricians with years of local experience in Naples and Collier County.",
-      color: "text-indigo-600 bg-indigo-50 border-indigo-100",
+      color: "text-slate-600 bg-slate-50 border-slate-100",
       action: null,
     },
     {
@@ -228,7 +228,7 @@ export default function WhyChooseUs({ onOpenQuote }: WhyChooseUsProps) {
             {/* Right Column: Text & Features List */}
             <div className="lg:col-span-6 space-y-5 sm:space-y-6 mt-6 sm:mt-8 lg:mt-0">
               <div className="space-y-3">
-                <span className="inline-block px-3 py-1 bg-blue-50 text-blue-700 font-extrabold text-xs tracking-wider uppercase rounded-full border border-blue-100">
+                <span className="inline-block px-3 py-1 bg-slate-50 text-slate-700 font-extrabold text-xs tracking-wider uppercase rounded-full border border-slate-100">
                   WHY CHOOSE US
                 </span>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight">
@@ -250,7 +250,7 @@ export default function WhyChooseUs({ onOpenQuote }: WhyChooseUsProps) {
                       onClick={pt.action ?? undefined}
                       className={`p-4 rounded-2xl bg-slate-50 border border-slate-150 transition-all duration-200 flex items-start gap-4 ${
                         isClickable
-                          ? "cursor-pointer hover:bg-blue-50 hover:border-blue-200 hover:shadow-md group"
+                          ? "cursor-pointer hover:bg-slate-50 hover:border-slate-200 hover:shadow-md group"
                           : "hover:bg-white hover:shadow-md"
                       }`}
                     >
@@ -263,7 +263,7 @@ export default function WhyChooseUs({ onOpenQuote }: WhyChooseUsProps) {
                             {pt.title}
                           </h3>
                           {isClickable && (
-                            <span className="text-xs font-semibold text-blue-600 bg-blue-50 border border-blue-100 px-2 py-0.5 rounded-full group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                            <span className="text-xs font-semibold text-slate-600 bg-slate-50 border border-slate-100 px-2 py-0.5 rounded-full group-hover:bg-slate-600 group-hover:text-white transition-colors">
                               View Documents →
                             </span>
                           )}

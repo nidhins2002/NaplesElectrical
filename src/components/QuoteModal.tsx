@@ -114,13 +114,18 @@ export default function QuoteModal({
                       onChange={(e) => setService(e.target.value)}
                       className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500 font-medium text-slate-900"
                     >
-                      <option value="Lighting Installation">Lighting Installation & Fixtures</option>
-                      <option value="Electrical Repairs">Electrical Repairs & Troubleshooting</option>
-                      <option value="Panel Upgrades">Panel Upgrades & Breakers</option>
-                      <option value="Ceiling Fans">Ceiling Fan Installation</option>
-                      <option value="EV Charger Installation">EV Charger Station Installation</option>
-                      <option value="Whole Home Wiring">Whole Home Wiring & Rewiring</option>
-                      <option value="Emergency Service">Emergency Electrical Service</option>
+                      <option value="Custom Lighting & Chandeliers Installation">Custom Lighting & Chandeliers Installation</option>
+                      <option value="Troubleshooting & Fast Repairs">Troubleshooting & Fast Repairs</option>
+                      <option value="Electrical Panel Replacements & Upgrades">Electrical Panel Replacements & Upgrades</option>
+                      <option value="Ceiling Fan Installation">Ceiling Fan Installation</option>
+                      <option value="EV Charger Installation (Level 2)">EV Charger Installation (Level 2)</option>
+                      <option value="Outlet, Switch & GFCI Upgrades">Outlet, Switch & GFCI Upgrades</option>
+                      <option value="Smart Home & Automation Infrastructure">Smart Home & Automation Infrastructure</option>
+                      <option value="Safety Inspections and 4 Point Repairs">Safety Inspections and 4 Point Repairs</option>
+                      <option value="Whole‑Home Surge Protection">Whole‑Home Surge Protection</option>
+                      <option value="Generator, Inlet & Transfer Switch Installation">Generator, Inlet & Transfer Switch Installation</option>
+                      <option value="Pool & Spa Wiring and Repairs">Pool & Spa Wiring and Repairs</option>
+                      <option value="Boat Dock Electrical">Boat Dock Electrical</option>
                     </select>
                   </div>
 

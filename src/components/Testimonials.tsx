@@ -14,7 +14,7 @@ interface Review {
 // Avatar colour palette (cycles by index)
 const AVATAR_COLORS = [
   "from-amber-400 to-orange-500",
-  "from-blue-500 to-indigo-600",
+  "from-slate-500 to-slate-600",
   "from-emerald-400 to-teal-600",
   "from-rose-400 to-pink-600",
   "from-violet-500 to-purple-600",

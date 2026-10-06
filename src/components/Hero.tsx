@@ -13,7 +13,7 @@ export default function Hero({ onOpenQuote }: HeroProps) {
     <section className="relative bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white overflow-hidden py-10 sm:py-14 md:py-20 lg:py-24">
       {/* Background glow effects */}
       <div className="absolute top-1/4 left-1/4 w-64 sm:w-96 h-64 sm:h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-64 sm:w-96 h-64 sm:h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-64 sm:w-96 h-64 sm:h-96 bg-slate-600/30 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-8 items-center">
@@ -99,7 +99,7 @@ export default function Hero({ onOpenQuote }: HeroProps) {
             <div className="relative mx-auto max-w-sm sm:max-w-md lg:max-w-none">
 
               {/* Outer Glow / Frame */}
-              <div className="absolute -inset-2 bg-gradient-to-r from-amber-400 to-blue-500 rounded-3xl blur-lg opacity-25" />
+              <div className="absolute -inset-2 bg-gradient-to-r from-amber-400 to-slate-500 rounded-3xl blur-lg opacity-25" />
 
               {/* Image Container */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-700/80 bg-slate-900 group">

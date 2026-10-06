@@ -29,48 +29,48 @@ export const SERVICES: ServiceData[] = [
   // RESIDENTIAL SERVICES
   {
     slug: "lighting-installation",
-    title: "Custom Interior & Exterior Lighting",
-    tagline: "Transform your home ambiance with modern, energy-efficient lighting solutions.",
+    title: "Custom Lighting & Chandeliers Installation",
+    tagline: "Transform your home ambiance with luxury chandeliers, recessed lighting, and modern illumination.",
     heroImage: "/images/lighting-installation.jpg",
     badge: "Popular Residential Service",
     category: "residential",
-    metaTitle: "Custom Interior & Exterior Lighting Installation Naples FL | Naples Electrical",
-    metaDescription: "Professional recessed lighting, chandeliers, landscape lighting, and LED upgrades in Naples, Marco Island, and Bonita Springs. Licensed & insured electricians.",
-    description: "Recessed lighting, accent LEDs, chandeliers, and outdoor landscape illumination tailored for coastal homes.",
-    longDescription: "Lighting defines the atmosphere and functionality of your SWFL luxury home. Naples Electrical specializes in high-end interior lighting designs—including low-profile recessed cans, custom chandeliers, under-cabinet LED strips—as well as weather-resistant exterior accent and landscape lighting that withstands Florida's tropical environment.",
+    metaTitle: "Custom Lighting & Chandeliers Installation Naples FL | Naples Electrical",
+    metaDescription: "Professional chandelier mounting, recessed pot lighting, landscape illumination, and luxury fixture upgrades in Naples, Marco Island, and Bonita Springs.",
+    description: "Custom chandeliers, recessed pot lights, pendant fixtures, under-cabinet LEDs, and lanai landscape illumination.",
+    longDescription: "Lighting defines the atmosphere and elegance of your luxury home. Naples Electrical specializes in high-end interior and exterior lighting designs—including heavy chandelier mounting on vaulted ceilings, recessed pot lights, under-cabinet LED accents, and weather-resistant landscape illumination built to withstand Florida's coastal environment.",
     features: [
-      "Low-voltage LED landscape & architectural lighting",
-      "Recessed pot light & downlight retrofits",
-      "Custom chandelier, pendant & linear island fixtures",
+      "High-ceiling & vaulted room chandelier mounting & heavy safety bracing",
+      "Low-voltage LED landscape & architectural illumination",
+      "Recessed pot light & ultra-thin LED downlight retrofits",
+      "Custom kitchen island pendants & linear dining chandeliers",
       "Under-cabinet & cove ambient LED accent lighting",
-      "Smart dimmer switch & automated lighting scene integration",
-      "Pool deck, lanai & patio perimeter illumination"
+      "Smart dimmer switch & automated scene lighting integration"
     ],
     benefits: [
-      { title: "Energy Efficiency", desc: "Reduce electricity bills by up to 80% with premium dimmable LED fixtures." },
-      { title: "Enhanced Home Value", desc: "Modern lighting updates significantly boost aesthetic appeal and resale value." },
-      { title: "Coastal Weather Resistance", desc: "Marine-grade stainless steel & brass exterior fixtures designed for salt air." }
+      { title: "Elegance & Safety", desc: "Heavy-duty structural ceiling box supports for large crystal & glass chandeliers." },
+      { title: "Energy Efficiency", desc: "Save up to 80% on energy costs with premium dimmable LED fixture retrofits." },
+      { title: "Coastal Weather Resistance", desc: "Brass and stainless marine-grade exterior fixtures resistant to Naples salt air." }
     ],
     faqs: [
       {
-        question: "How long does a typical recessed lighting installation take?",
-        answer: "Most standard room installations (4–8 lights with dimmers) can be completed within a single day with minimal disruption to your home."
+        question: "Can you install heavy chandeliers on high vaulted ceilings?",
+        answer: "Yes! We specialize in high-ceiling installations using heavy-duty fan and chandelier support boxes, motorized chandelier lifts, and scaffolding for safe, precise mounting."
       },
       {
-        question: "Can you upgrade existing halogen lighting to energy-efficient LEDs?",
-        answer: "Yes! We specialize in retrofitting old halogen and incandescent fixtures with modern high-CRI LEDs that cut energy use while improving light quality."
+        question: "How long does a typical recessed lighting installation take?",
+        answer: "Most standard room installations (4–8 lights with dimmers) are completed in a single day with clean, dust-controlled drywall work."
       },
       {
         question: "Do you offer smart lighting controls like Lutron Caséta?",
-        answer: "Absolutely. We regularly install Lutron Caséta, Control4, and other smart switches allowing mobile phone and voice control of all home lighting scenes."
+        answer: "Absolutely. We install Lutron Caséta, Control4, and Leviton smart switches for mobile and voice-controlled lighting scenes."
       },
       {
-        question: "What kind of landscape lighting lasts best in Naples salt air?",
-        answer: "We recommend solid brass or copper low-voltage LED fixtures sealed against moisture and salt spray, which come with long-term manufacturer warranties."
+        question: "Can you upgrade existing halogen fixtures to LEDs?",
+        answer: "Yes, retrofitting outdated halogen fixtures with energy-efficient LEDs reduces heat emission, lowers power bills, and improves light quality."
       },
       {
-        question: "Are your electricians licensed and insured in Collier County?",
-        answer: "Yes, Naples Electrical holds State Certified Electrical Contractor License #EC13016758 and full liability & worker's comp insurance."
+        question: "Are your electricians state licensed and insured in Collier County?",
+        answer: "Yes, Naples Electrical holds State Certified Electrical Contractor License #EC13016758 with full liability & worker's comp insurance."
       }
     ]
   },
@@ -81,22 +81,22 @@ export const SERVICES: ServiceData[] = [
     heroImage: "/images/electrical-repairs.jpg",
     badge: "Emergency Service Available",
     category: "residential",
-    metaTitle: "Electrical Repairs & Troubleshooting Naples FL | Naples Electrical",
-    metaDescription: "Fix tripping breakers, buzzing outlets, burning odors, or flickering lights fast in Naples & SWFL. Same-day emergency repairs by master electricians.",
+    metaTitle: "Troubleshooting & Fast Electrical Repairs Naples FL | Naples Electrical",
+    metaDescription: "Fix tripping breakers, buzzing outlets, burning odors, or flickering lights fast in Naples & SWFL. Same-day emergency repairs by licensed master electricians.",
     description: "Rapid diagnostics for tripping breakers, dead outlets, buzzing panels, and mystery power failures.",
-    longDescription: "Electrical issues aren't just inconvenient—they can pose severe fire and shock risks. Our master electricians carry state-of-the-art diagnostic equipment to quickly pinpoint open neutrals, overloaded circuits, faulty arc-fault breakers, and hidden wire damage caused by Florida humidity or pests.",
+    longDescription: "Electrical issues aren't just inconvenient—they can pose severe fire and shock risks. Our licensed electricians carry state-of-the-art diagnostic equipment to quickly pinpoint open neutrals, overloaded circuits, faulty arc-fault breakers, and hidden wire damage caused by Florida humidity or pests.",
     features: [
-      "Thermal imaging inspection to locate hidden hot spots",
+      "Thermal imaging inspection to locate hidden hot spots and loose connections",
       "Circuit breaker & fuse replacement",
       "GFCI / AFCI safety fault troubleshooting",
-      "Flickering light & voltage drop diagnosis",
+      "Flickering light & whole-house voltage drop diagnosis",
       "Burnt outlet, switch, & junction box repairs",
       "Complete electrical safety hazard resolution"
     ],
     benefits: [
       { title: "Peace of Mind", desc: "Eliminate immediate fire and shock hazards with safe, code-compliant repairs." },
       { title: "Rapid Response", desc: "Same-day service options and prompt emergency response throughout Naples." },
-      { title: "Transparent Pricing", desc: "Upfront pricing with no hidden fees before any repair work starts." }
+      { title: "Upfront Pricing", desc: "Clear fixed-price quotes before any repair work starts—no surprise charges." }
     ],
     faqs: [
       {
@@ -108,41 +108,41 @@ export const SERVICES: ServiceData[] = [
         answer: "Turn off the corresponding circuit breaker immediately and do not use the outlet. Contact Naples Electrical right away for an urgent safety dispatch."
       },
       {
-        question: "Do you offer 24/7 emergency electrical service in Naples?",
+        question: "Do you offer emergency electrical service in Naples?",
         answer: "Yes, we have emergency electricians on call to assist with power loss, dangerous sparking, or severe breaker failure."
       },
       {
         question: "Can loose wiring cause lights to flicker throughout the house?",
-        answer: "Yes. Loose main neutral wires or corroded panel bus bars frequently cause whole-house flickering, especially when large appliances kick on."
+        answer: "Yes. Loose main neutral wires or corroded panel bus bars frequently cause whole-house flickering, especially when high-draw AC units kick on."
       },
       {
         question: "How do you charge for diagnostic troubleshooting?",
-        answer: "We charge a standard dispatch and diagnostic fee. Once our electrician pinpoints the issue, we provide a clear fixed-price quote for approval before repairing."
+        answer: "We charge a standard dispatch and diagnostic fee. Once our electrician pinpoints the issue, we provide a clear quote for approval before repairing."
       }
     ]
   },
   {
     slug: "panel-upgrades",
-    title: "Electrical Panel & Heavy-Up Services",
+    title: "Electrical Panel Replacements & Upgrades",
     tagline: "Safely upgrade your home's main panel to 200A or 400A to support modern power demands.",
     heroImage: "/images/panel-upgrades.jpg",
     badge: "Essential Home Upgrade",
     category: "residential",
-    metaTitle: "Electrical Panel Upgrades 200A/400A Naples FL | Naples Electrical",
+    metaTitle: "Electrical Panel Replacements & Upgrades Naples FL | 200A/400A",
     metaDescription: "Upgrade outdated panels, replace Federal Pacific/Zinsco boards, and increase service capacity to 200A/400A in Naples, FL. Full permitting & FPL coordination.",
-    description: "200A / 400A service upgrades, surge protection, and replacement of outdated/recalled panels.",
+    description: "200A / 400A service upgrades, breaker replacements, and hazardous recalled panel changeouts.",
     longDescription: "Older Naples homes and condos often have 100A or 150A panels that struggle to power modern air conditioning, EV chargers, pool heaters, and induction cooktops. We specialize in upgrading main breaker panels to 200A or 400A service, replacing hazardous recalled panels (FPE, Zinsco, Challenger), and installing whole-home surge suppressors.",
     features: [
-      "Main panel upgrade from 100A/150A to 200A/400A",
-      "Federal Pacific (FPE) & Zinsco dangerous panel replacement",
+      "Main panel upgrades from 100A/150A to 200A/400A service",
+      "Federal Pacific (FPE), Zinsco & Challenger dangerous panel replacements",
       "Subpanel installation for additions, garages, & pool equipment",
-      "Type 1 & Type 2 Whole-House Surge Protection installation",
+      "Whole-house surge protection installation",
       "FPL (Florida Power & Light) service entrance coordination",
       "Complete Collier County permit handling & inspection management"
     ],
     benefits: [
-      { title: "Expanded Capacity", desc: "Power high-draw equipment like EV chargers, heat pumps, and hot tubs safely." },
-      { title: "Insurance Approval", desc: "Many FL home insurers reject coverage for homes with obsolete or 100A panels." },
+      { title: "Expanded Power Capacity", desc: "Power high-draw equipment like EV chargers, heat pumps, and hot tubs safely." },
+      { title: "Insurance Compliance", desc: "Florida home insurers often mandate replacing obsolete or recalled electrical panels." },
       { title: "Surge Defense", desc: "Protect sensitive luxury electronics against Naples lightning strikes." }
     ],
     faqs: [
@@ -159,60 +159,59 @@ export const SERVICES: ServiceData[] = [
         answer: "Yes, we handle the entire process—permitting, plan submittal, utility coordination with FPL, and final county inspection."
       },
       {
-        question: "What is whole-home surge protection and why is it needed in SWFL?",
-        answer: "Naples is in America's lightning capital. A whole-home surge protector absorbs massive voltage spikes at the main panel before they destroy appliances, TVs, and smart systems."
-      },
-      {
         question: "Will a panel upgrade increase my home's resale value?",
         answer: "Yes! A modern 200A panel with clear labeling and whole-house surge protection is a major selling point for Florida homebuyers."
+      },
+      {
+        question: "What is the difference between a main panel and a subpanel?",
+        answer: "The main panel receives power directly from the utility meter, while a subpanel distributes power from the main panel to dedicated zones like a garage or pool house."
       }
     ]
   },
   {
     slug: "ceiling-fan-installation",
-    title: "Ceiling & Exhaust Fan Installation",
-    tagline: "Keep your indoor and outdoor living spaces cool and ventilated year-round.",
+    title: "Ceiling Fan Installation",
+    tagline: "Keep your indoor and outdoor living spaces cool, ventilated, and comfortable.",
     heroImage: "/images/ceiling-fans.jpg",
     badge: "Comfort & Efficiency",
     category: "residential",
-
-    metaTitle: "Ceiling Fan & Exhaust Fan Installation Naples FL | Naples Electrical",
-    metaDescription: "Professional ceiling fan installation on high ceilings, lanais, and bedrooms in Naples. Includes fan bracing, smart controls, and bathroom exhaust venting.",
-    description: "Heavy-duty box installation, high ceiling mounts, lanai fans, and smart wall switches.",
-    longDescription: "Ceiling fans are essential for comfort and energy conservation in South Florida's warm climate. Our technicians safely install indoor fans on vault/cathedral ceilings, outdoor damp/wet rated fans on screened lanais and pergolas, as well as high-efficiency bathroom exhaust fans to eliminate humidity and prevent mold.",
+    metaTitle: "Ceiling Fan Installation Naples FL | High Ceilings & Lanai Fans",
+    metaDescription: "Professional ceiling fan installation on high ceilings, lanais, and bedrooms in Naples. Includes fan bracing, downrods, and smart wall controls.",
+    description: "Heavy-duty fan box installation, high ceiling mounts, lanai outdoor fans, and smart wall switches.",
+    longDescription: "Ceiling fans are essential for comfort and energy conservation in South Florida's warm climate. Our technicians safely install indoor fans on high vaulted/cathedral ceilings, outdoor damp/wet rated fans on screened lanais and pergolas, as well as smart wall switches for effortless control.",
     features: [
-      "UL-listed ceiling fan support box installation",
-      "High, vaulted & cathedral ceiling fan mounting",
-      "Outdoor lanai, patio, & gazebos fan installations (Damp & Wet rated)",
-      "Downrod sizing & precision dynamic blade balancing",
-      "Multi-speed wall controls & smart remote pairing",
-      "Quiet bathroom humidity-sensing exhaust fan installation"
+      "UL-listed ceiling fan support box & steel brace installation",
+      "High, vaulted & cathedral ceiling fan mounting with custom downrods",
+      "Outdoor lanai, patio, & gazebo fan installations (Damp & Wet rated)",
+      "Precision dynamic blade balancing for wobble-free rotation",
+      "Multi-speed wall sliders, remotes & smart Wi-Fi switch pairing",
+      "Replacement of outdated fixtures with modern high-efficiency fan models"
     ],
     benefits: [
-      { title: "Lower Cooling Costs", desc: "Create a wind-chill effect allowing you to raise thermostat settings by 4 degrees." },
-      { title: "Vibration-Free Mounting", desc: "Proper fan-rated junction boxes prevent dangerous wobbling and humming." },
-      { title: "Lanai Comfort", desc: "Keep bugs away and air circulating during warm coastal evenings." }
+      { title: "Lower Cooling Costs", desc: "Create a wind-chill effect allowing you to raise AC thermostat settings by 4 degrees." },
+      { title: "Wobble-Free Mounting", desc: "Proper fan-rated junction boxes prevent dangerous wobbling and motor hum." },
+      { title: "Outdoor Lanai Airflow", desc: "Keep mosquitoes away and tropical breezes moving during warm Naples evenings." }
     ],
     faqs: [
       {
         question: "Can you install a ceiling fan where there is currently only a light fixture?",
-        answer: "Yes! Standard light fixture boxes cannot support fan weight. We replace the light box with a heavy-duty, fan-rated steel brace box anchored to ceiling joists."
+        answer: "Yes! Standard light boxes cannot support fan weight. We replace the light box with a heavy-duty, fan-rated steel brace anchored to ceiling joists."
       },
       {
         question: "What fan rating is needed for an outdoor lanai in Naples?",
-        answer: "Screened lanais require at least a 'Damp-Rated' fan, while open pergolas or areas exposed to rain require a 'Wet-Rated' fan to withstand Florida humidity."
+        answer: "Screened lanais require at least a 'Damp-Rated' fan, while open pergolas exposed to rain require a 'Wet-Rated' fan to withstand humidity and moisture."
       },
       {
         question: "How high off the floor should a ceiling fan be hung?",
-        answer: "For optimal airflow, fan blades should sit 8 to 9 feet off the floor. For high 12ft+ ceilings, we supply and fit custom extended downrods."
+        answer: "For optimal airflow, fan blades should sit 8 to 9 feet off the floor. For high 12ft+ ceilings, we supply and fit extended downrods."
       },
       {
         question: "Do you install smart ceiling fans compatible with Alexa/Google Home?",
-        answer: "Yes, we install smart ceiling fans (Hunter Simpleconnect, Modern Forms, etc.) and smart wall switches for remote control."
+        answer: "Yes, we install smart ceiling fans (Hunter SimpleConnect, Modern Forms, etc.) and smart wall switches."
       },
       {
         question: "Why is my ceiling fan wobbling or clicking?",
-        answer: "Wobbling usually stems from an unrated mounting box, loose mounting hardware, or unbalanced blades. We can diagnose and re-hang fans securely."
+        answer: "Wobbling usually stems from an unrated mounting box, loose hardware, or unbalanced blades. We diagnose and secure fan assemblies."
       }
     ]
   },
@@ -223,43 +222,43 @@ export const SERVICES: ServiceData[] = [
     heroImage: "/images/ev-charger.jpg",
     badge: "Certified EV Installers",
     category: "residential",
-    metaTitle: "Level 2 EV Charger Installation Naples FL | Tesla, ChargePoint, JuiceBox",
+    metaTitle: "EV Charger Installation Level 2 Naples FL | Tesla & Universal",
     metaDescription: "Professional Level 2 EV charging station installation in Naples & SWFL. Tesla Wall Connector, ChargePoint, 240V NEMA 14-50 outlets. Permitted & certified.",
-    description: "Tesla Wall Connectors, ChargePoint, JuiceBox, and NEMA 14-50 outlet installations.",
-    longDescription: "Charge your EV overnight in your garage or driveway. Naples Electrical provides turnkey Level 2 charging solutions for all electric vehicles including Tesla, Rivian, Ford Lightning, BMW, Porsche, and Hyundai. We calculate panel load, run high-gauge 240V copper lines, install hardwired chargers or NEMA 14-50 outlets, and manage county permits.",
+    description: "Tesla Wall Connectors, ChargePoint, JuiceBox, and 240V NEMA 14-50 outlet installations.",
+    longDescription: "Charge your electric vehicle overnight in your garage or driveway. Naples Electrical provides turnkey Level 2 charging solutions for all electric vehicles including Tesla, Rivian, Ford Lightning, BMW, Porsche, and Hyundai. We calculate panel load, run heavy-gauge 240V copper circuits, install chargers, and manage county permits.",
     features: [
       "Tesla Wall Connector & Universal Wall Connector installation",
-      "240V / 50A & 60A high-speed dedicated circuit runs",
+      "240V / 50A & 60A high-speed dedicated circuit wiring",
       "NEMA 14-50 & NEMA 6-50 industrial receptacle installation",
       "Panel load calculation & subpanel additions if required",
-      "Dual EV charger installation with dynamic load management",
-      "Garage, carport, & outdoor weatherproof pedestals"
+      "Dual EV charger setup with dynamic load sharing",
+      "Garage, carport, & outdoor weatherproof charging pedestals"
     ],
     benefits: [
-      { title: "Fast Overnight Charging", desc: "Gain 30–44 miles of range per hour compared to 3–4 miles with standard 120V." },
+      { title: "Fast Overnight Charging", desc: "Gain 30–44 miles of range per hour compared to just 3–4 miles with standard 120V wall outlets." },
       { title: "Safety & Reliability", desc: "Proper wire gauge, breaker sizing, and GFCI protection prevent garage overheating." },
       { title: "Tax Credit Eligible", desc: "Professional installations qualify for federal tax incentives and local utility rebates." }
     ],
     faqs: [
       {
-        question: "How fast will a Level 2 charger charge my electric car?",
-        answer: "A 48A / 240V Level 2 charger adds approximately 35 to 45 miles of range per hour, fully charging most EV batteries overnight in 4 to 8 hours."
+        question: "How fast will a Level 2 charger charge my electric vehicle?",
+        answer: "A 48A / 240V Level 2 charger adds 35 to 45 miles of range per hour, fully charging most EV batteries overnight in 4 to 8 hours."
       },
       {
         question: "Do I need to upgrade my electrical panel for an EV charger?",
-        answer: "It depends on your current panel capacity and home electrical loads. We conduct an NEC load calculation to determine if your panel has space or if a subpanel/upgrade is required."
+        answer: "It depends on your current panel capacity. We perform an NEC load calculation to determine if your panel has capacity or requires an upgrade/subpanel."
       },
       {
         question: "Should I install a hardwired charger or a NEMA 14-50 outlet?",
-        answer: "Hardwired chargers allow higher amperage (up to 48A continuous), are more weather-resistant outdoors, and avoid plug connection points. Outlets offer portability if you move."
+        answer: "Hardwired chargers allow higher amperage (up to 48A continuous) and are weather-sealed for outdoor use. Outlets offer portability if you plug/unplug plug-in chargers."
       },
       {
-        question: "Is a permit required for EV charger installation in Naples / Collier County?",
-        answer: "Yes, Collier County requires an electrical permit for 240V high-amp EV charger circuits. We pull all required permits and schedule the final inspection."
+        question: "Is a permit required for EV charger installation in Collier County?",
+        answer: "Yes, Collier County requires an electrical permit for 240V high-amp EV circuits. We pull all permits and handle final inspection."
       },
       {
-        question: "Can you install an EV charger on an outdoor driveway or carport?",
-        answer: "Yes, using NEMA 4X weather-sealed enclosures or outdoor-rated charging pedestals built to endure heavy rain and sun exposure."
+        question: "Can you install an EV charger outdoors or under a carport?",
+        answer: "Yes, using NEMA 4X weather-sealed enclosures or outdoor-rated charging pedestals designed to endure Florida rain and heat."
       }
     ]
   },
@@ -267,72 +266,72 @@ export const SERVICES: ServiceData[] = [
     slug: "outlet-switch-upgrades",
     title: "Outlet, Switch & GFCI Upgrades",
     tagline: "Enhance safety and convenience with modern USB outlets, GFCI protection, and smart switches.",
-    heroImage: "/images/electrical-repairs.jpg",
+    heroImage: "/images/outlet-switch.jpg",
     badge: "Home Safety Upgrade",
     category: "residential",
     metaTitle: "Outlet, Switch & GFCI Upgrades Naples FL | Naples Electrical",
-    metaDescription: "Upgrade outdated receptacles, tamper-resistant outlets, USB-C wall ports, and kitchen/bath GFCI devices in Naples homes. Certified electricians.",
+    metaDescription: "Upgrade outdated receptacles, tamper-resistant outlets, USB-C wall ports, and kitchen/bath GFCI devices in Naples homes. Licensed electricians.",
     description: "Child-safe tamper resistant outlets, USB-A/C ports, smart dimmers, and GFCI damp location protection.",
-    longDescription: "Outdated, worn-out, or loose outlets are major electrical fire triggers. We upgrade homes across Naples with sleek screwless faceplates, high-speed USB-C charging receptacles, tamper-resistant safety outlets, and life-saving GFCI/AFCI breakers required in kitchens, baths, garages, and outdoors near pools.",
+    longDescription: "Outdated, worn-out, or loose wall outlets are leading causes of electrical fires. We upgrade homes across Naples with sleek screwless faceplates, high-speed USB-C charging receptacles, tamper-resistant safety outlets, and life-saving GFCI/AFCI protection required in kitchens, baths, garages, and near pools.",
     features: [
-      "Tamper-resistant (TR) safety receptacle replacement",
-      "Built-in USB-A & 60W USB-C fast-charging wall outlets",
+      "Tamper-resistant (TR) child safety receptacle replacement",
+      "Built-in USB-A & high-speed USB-C wall outlet installations",
       "GFCI (Ground Fault Circuit Interrupter) protection for wet areas",
-      "Decora rocker switch & slider dimmer conversions",
+      "Decora rocker switch & slide dimmer conversions",
       "Lutron Caséta & smart Wi-Fi switch integration",
-      "Pop-up counter outlets for kitchen islands & outdoor kitchens"
+      "Pop-up counter outlets for kitchen islands & outdoor bars"
     ],
     benefits: [
       { title: "Code Compliance", desc: "Bring older homes up to current NEC standards for moisture & child safety." },
-      { title: "Modern Convenience", desc: "Charge devices directly from wall outlets without bulky charging bricks." },
-      { title: "Fire Prevention", desc: "Replace worn receptacles that produce dangerous heat and arcing." }
+      { title: "Modern Convenience", desc: "Charge phones and tablets directly from wall outlets without bulky adapter bricks." },
+      { title: "Fire Hazard Prevention", desc: "Replace worn receptacles that cause loose plugs, arcing, and dangerous heat build-up." }
     ],
     faqs: [
       {
         question: "Where are GFCI outlets required in a home?",
-        answer: "Under NEC codes, GFCI protection is mandatory in kitchens, bathrooms, garages, exterior walls, crawl spaces, unfinished basements, and within 6ft of sinks/pools."
+        answer: "Under NEC codes, GFCI protection is mandatory in kitchens, bathrooms, garages, exterior walls, laundry rooms, and within 6ft of sinks and pools."
       },
       {
         question: "Why do plugs fall out loosely from my wall outlets?",
-        answer: "Internal contact springs wear out over time. Loose plugs create electrical resistance, arcing, and heat—replacing the receptacle resolves the hazard."
+        answer: "Internal contact springs wear out over time. Loose plugs create electrical resistance, arcing, and heat—replacing the receptacle eliminates the hazard."
       },
       {
         question: "Can you replace 2-prong outlets with grounded 3-prong outlets?",
-        answer: "Yes. In older homes without ground wires, we can install GFCI-protected 3-prong outlets or re-wire circuits to provide safe equipment grounding."
+        answer: "Yes. In older homes without ground wires, we can install GFCI-protected 3-prong outlets or re-wire circuits for safe equipment grounding."
       },
       {
         question: "Do USB wall outlets consume power when nothing is plugged in?",
-        answer: "Modern quality USB receptacles consume negligible standby power (less than 0.1 Watts), making them extremely efficient."
+        answer: "Modern quality USB receptacles consume negligible standby power (less than 0.1W), making them extremely efficient."
       },
       {
         question: "What is the difference between GFCI and AFCI breakers?",
-        answer: "GFCI protects people from electric shocks in wet areas, while AFCI (Arc Fault) protects against electrical fires caused by damaged internal wiring."
+        answer: "GFCI protects people from electric shock in wet areas, while AFCI (Arc Fault) protects against fires caused by damaged internal wiring."
       }
     ]
   },
   {
     slug: "smart-home-wiring",
     title: "Smart Home & Automation Infrastructure",
-    tagline: "Future-proof your luxury home with automated lighting, motorized shades, and smart controls.",
-    heroImage: "/images/panel-upgrades.jpg",
+    tagline: "Future-proof your luxury home with automated lighting, smart panels, and motor control wiring.",
+    heroImage: "/images/smart-home.jpg",
     badge: "Luxury Living Technology",
     category: "residential",
-    metaTitle: "Smart Home Wiring & Automation Naples FL | Naples Electrical",
-    metaDescription: "Professional installation of smart lighting systems, smart panel monitoring, video doorbell hardwiring, and automated controls in Naples FL.",
-    description: "Whole-home smart automation, smart panel meters, motorized shade power, and video doorbells.",
-    longDescription: "Elevate your Naples home with seamlessly integrated smart home technology. We install neutral wire infrastructure for smart switches, hardwire video doorbells and security cameras, set up smart energy monitoring (Span/Leviton panels), and wire motorized hurricane blinds and indoor shades.",
+    metaTitle: "Smart Home & Automation Infrastructure Naples FL | Smart Lighting & Panels",
+    metaDescription: "Professional installation of smart lighting systems, smart panel energy monitors, video doorbell hardwiring, and automated controls in Naples FL.",
+    description: "Whole-home smart automation, smart energy meters, motorized shade power, and video doorbells.",
+    longDescription: "Elevate your Naples home with seamlessly integrated smart home technology. We install neutral wire infrastructure for smart switches, hardwire video doorbells and security cameras, set up smart energy monitoring (SPAN/Leviton panels), and wire motorized hurricane blinds and indoor shades.",
     features: [
       "Lutron, Control4, & Crestron lighting infrastructure wiring",
       "SPAN & Leviton smart electrical panel installation",
       "Hardwired Ring, Nest, & Arlo video doorbell/camera power",
       "Motorized window shade & hurricane shutter control wiring",
-      "Whole-home smart hub & repeater network optimization",
+      "Whole-home smart hub & Wi-Fi repeater network optimization",
       "Automated outdoor lighting timer & photo sensor programming"
     ],
     benefits: [
-      { title: "Energy Monitoring", desc: "Track circuit-level electricity consumption in real time from your smartphone." },
-      { title: "Remote Home Management", desc: "Control lights, AC schedules, and security remotely while away from your seasonal residence." },
-      { title: "Enhanced Security", desc: "Simulate occupancy with automated lighting scenes while traveling." }
+      { title: "Real-Time Energy Monitoring", desc: "Track circuit-level electricity consumption directly from your smartphone." },
+      { title: "Remote Home Control", desc: "Control lights, AC schedules, and security remotely while away from your seasonal residence." },
+      { title: "Enhanced Home Security", desc: "Simulate occupancy with automated lighting scenes while traveling." }
     ],
     faqs: [
       {
@@ -341,66 +340,254 @@ export const SERVICES: ServiceData[] = [
       },
       {
         question: "What is a SPAN Smart Panel and why install one?",
-        answer: "SPAN panels replace traditional breaker boxes, allowing you to monitor and control every circuit via smartphone, automatically prioritize power during outages, and maximize solar/battery systems."
+        answer: "SPAN panels replace traditional breaker boxes, allowing you to monitor and control every circuit via smartphone, automatically prioritize power during outages, and integrate solar/batteries."
       },
       {
         question: "Can you hardwire my video doorbell so I don't have to recharge batteries?",
-        answer: "Yes, we install 16V–24V door chime transformers and low-voltage wiring so your Ring or Nest doorbell receives continuous power."
+        answer: "Yes, we install proper low-voltage transformers and wiring so your Ring or Nest doorbell receives continuous power."
       },
       {
         question: "Do you wire motorized indoor shades and outdoor lanai screens?",
-        answer: "Yes, we run hidden low-voltage or line-voltage power lines behind drywall and lanais for motorized shade motors."
+        answer: "Yes, we run concealed low-voltage or line-voltage power lines behind drywall and lanais for motorized shade motors."
       },
       {
         question: "Can smart home automation work when I am away from Naples during summer?",
-        answer: "Yes! As long as your home internet remains active, you can monitor power usage, receive moisture alerts, and trigger light schedules from anywhere globally."
+        answer: "Yes! As long as your home internet remains active, you can monitor power usage, receive alerts, and control lighting schedules from anywhere globally."
       }
     ]
   },
   {
     slug: "safety-inspections",
-    title: "Whole-Home Electrical Safety Inspections",
-    tagline: "Comprehensive 50-point electrical inspections for home purchases, insurance, and peace of mind.",
-    heroImage: "/images/electrical-repairs.jpg",
-    badge: "Preventative Protection",
+    title: "Safety Inspections and 4 Point Repairs",
+    tagline: "Comprehensive 50-point electrical safety inspections and insurance 4-point requirement repairs.",
+    heroImage: "/images/safety-inspections.jpg",
+    badge: "Insurance & Code Audit",
     category: "residential",
-    metaTitle: "Electrical Safety Inspection Naples FL | Home Buyer & Insurance Audit",
-    metaDescription: "Comprehensive 50-point electrical inspection in Naples, FL. Infrared thermal scanning, insurance certification, dock power audit & NEC code check.",
-    description: "Detailed 50-point inspection covering panels, grounding, GFCI protection, dock wiring, and thermal imaging.",
-    longDescription: "Whether purchasing a new waterfront property in Naples, preparing for hurricane season, or fulfilling home insurance inspection requirements (4-Point Inspection), our master electricians execute rigorous 50-point diagnostic audits to discover hidden wiring defects, corrosion, overloading, and code violations.",
+    metaTitle: "Safety Inspections & 4 Point Electrical Repairs Naples FL",
+    metaDescription: "Comprehensive 50-point electrical inspection and 4-point insurance repairs in Naples, FL. Infrared thermal scanning, certification, and NEC code compliance.",
+    description: "Detailed 50-point inspection covering panels, grounding, GFCI protection, dock wiring, and 4-point insurance repairs.",
+    longDescription: "Whether purchasing a new home in Naples, fulfilling Florida home insurance inspection requirements (4-Point Inspection), or preparing for storm season, our licensed master electricians execute rigorous 50-point diagnostic audits and fast hazard repairs to keep your family and property fully protected.",
     features: [
       "Infrared thermal imaging scan of main panel & subpanels",
-      "Main grounding electrode system & bonding test",
-      "GFCI / AFCI protection test on all damp & wet location outlets",
-      "Dock, boat lift, & pool equipment electrical safety audit",
-      "Aluminum wiring & ungrounded circuit evaluation",
+      "Florida Insurance 4-Point electrical defect repairs & panel changeouts",
+      "Main grounding electrode system & bonding integrity test",
+      "GFCI / AFCI safety fault testing on all damp location outlets",
+      "Aluminum wiring & ungrounded circuit audit & repair",
       "Written inspection report with itemized repair recommendations"
     ],
     benefits: [
-      { title: "Insurance Compliance", desc: "Satisfy 4-Point inspection requirements for Florida homeowners insurance policies." },
-      { title: "Fire Hazard Elimination", desc: "Catch dangerous hot spots and loose bus bar connections before fires occur." },
-      { title: "Home Buyer Leverage", desc: "Use detailed inspection findings during real estate purchase negotiations." }
+      { title: "Insurance Approval", desc: "Fix panel defects to pass Florida 4-Point homeowner insurance audits smoothly." },
+      { title: "Fire Hazard Elimination", desc: "Identify hidden thermal hot spots and loose main bus bar connections before fires occur." },
+      { title: "Real Estate Buyer Protection", desc: "Use itemized inspection findings during real estate contract negotiations." }
     ],
     faqs: [
       {
-        question: "What is included in a 50-point electrical safety inspection?",
-        answer: "We test panel connections with thermal imaging, verify main ground rods, test every outlet for correct polarity & GFCI tripping, check attic/crawlspace wiring, inspect dock/pool bonding, and audit surge protection."
+        question: "What is included in an electrical safety inspection?",
+        answer: "We scan panels with infrared cameras, verify ground rods, test every outlet for correct polarity & GFCI tripping, inspect attic wiring, check dock/pool bonding, and audit surge protection."
       },
       {
-        question: "Do Florida insurance companies require electrical inspections for older homes?",
-        answer: "Yes. Most Florida insurers require a 4-Point Inspection for homes older than 20–30 years to verify panel type, wiring age, and absence of active hazards."
+        question: "What is a 4-Point Insurance Inspection in Florida?",
+        answer: "Florida insurers require 4-Point inspections (Roof, Electrical, Plumbing, HVAC) on older homes. We repair double-tapped breakers, obsolete panels (FPE/Zinsco), and cloth wiring to satisfy coverage requirements."
       },
       {
         question: "What is thermal imaging electrical inspection?",
-        answer: "Our FLIR thermal camera detects invisible heat generated by loose wire connections, overloaded breakers, or corroded terminals before they melt insulation or start fires."
+        answer: "Our FLIR thermal cameras detect invisible heat caused by loose wires, overloaded breakers, or corroded connections before insulation melts."
       },
       {
-        question: "Do you inspect dock wiring and boat lift electrical systems in Naples?",
-        answer: "Yes! Coastal dock power is highly vulnerable to corrosion and dangerous stray electrical currents in water. We perform full marine electrical safety checks."
+        question: "Do you inspect boat dock and pool electrical safety?",
+        answer: "Yes! Waterfront electrical systems are vulnerable to salt corrosion and stray currents in water. We perform comprehensive marine & pool electrical audits."
       },
       {
         question: "How long does a home electrical inspection take?",
-        answer: "A complete inspection of a standard Naples single-family home typically takes 1.5 to 2.5 hours, followed by a written photo report."
+        answer: "A complete inspection of a standard Naples home takes 1.5 to 2.5 hours, followed by a formal written digital report."
+      }
+    ]
+  },
+  {
+    slug: "surge-protection",
+    title: "Whole‑Home Surge Protection",
+    tagline: "Protect your delicate home appliances and luxury electronics against Southwest Florida lightning strikes.",
+    heroImage: "/images/panel-upgrades.jpg",
+    badge: "Lightning Capital Defense",
+    category: "residential",
+    metaTitle: "Whole‑Home Surge Protection Naples FL | Main Panel Surge Protectors",
+    metaDescription: "Install Type 1 & Type 2 whole-home surge protective devices (SPD) in Naples, FL. Guard appliances, HVAC, and smart tech against lightning spikes.",
+    description: "Type 1 & Type 2 main panel surge protective device (SPD) installation for whole-house surge defense.",
+    longDescription: "Naples sits in the heart of America's lightning capital. A single nearby lightning strike or utility grid spike can instantly destroy HVAC circuit boards, luxury kitchen appliances, TVs, and smart home hubs. Naples Electrical installs heavy-duty Type 1 and Type 2 Whole-Home Surge Protectors directly into your main electrical panel.",
+    features: [
+      "Type 1 & Type 2 surge protective devices installed directly at main panel",
+      "High kA surge current rating (up to 108,000A peak surge capacity)",
+      "Guards HVAC compressors, refrigeration, washers & luxury electronics",
+      "Visual status indicator LEDs & audible alarm notification",
+      "Includes manufacturer connected-equipment warranty backing",
+      "Meets current National Electrical Code mandatory surge protection rules"
+    ],
+    benefits: [
+      { title: "Complete House Defense", desc: "Protects every electrical outlet, hardwired appliance, and electronic device in your home." },
+      { title: "Avoid Costly Replacements", desc: "Prevent thousand-dollar storm damage claims and appliance repair bills." },
+      { title: "NEC Code Compliance", desc: "Ensures your main breaker panel complies with modern electrical safety codes." }
+    ],
+    faqs: [
+      {
+        question: "Why is whole-home surge protection mandatory in Southwest Florida?",
+        answer: "Southwest Florida experiences more lightning strikes per square mile than almost anywhere in the US. Grid power surges and lightning spikes enter homes daily."
+      },
+      {
+        question: "Can power strip surge protectors protect my whole home?",
+        answer: "No. Power strips only protect plugged-in electronics and cannot absorb large lightning surges. Main panel surge protectors stop surges before entering home branch circuits."
+      },
+      {
+        question: "How long does a whole-home surge protector last?",
+        answer: "Quality surge protectors are built to withstand multiple smaller power spikes over 5 to 10 years, featuring LED status lights to signal when replacement is needed."
+      },
+      {
+        question: "How long does installation take?",
+        answer: "Installing a surge protector at your main electrical panel takes approximately 1 to 2 hours with minimal power interruption."
+      },
+      {
+        question: "Does whole-home surge protection come with a warranty?",
+        answer: "Yes, our installed industrial surge protectors include multi-thousand-dollar manufacturer connected-equipment warranties."
+      }
+    ]
+  },
+  {
+    slug: "generator-installation",
+    title: "Generator, Inlet & Transfer Switch Installation",
+    tagline: "Keep your home powered during severe Florida storm outages with generator inlets and transfer switches.",
+    heroImage: "/images/generator-inlet.jpg",
+    badge: "Storm & Hurricane Prep",
+    category: "residential",
+    metaTitle: "Generator Inlet & Transfer Switch Installation Naples FL",
+    metaDescription: "Safe generator power inlet box & manual transfer switch installation in Naples FL. Power your home during storm outages safely.",
+    description: "30A/50A generator power inlets, panel interlock kits, manual transfer switches, and emergency storm backup.",
+    longDescription: "When hurricane season hits Southwest Florida, power outages can last for days or weeks. Naples Electrical installs safe, code-compliant emergency generator connections including heavy-duty 30A/50A exterior power inlet boxes, mechanical panel interlock kits, and manual transfer subpanels so you can safely power AC, refrigeration, lights, and water pumps.",
+    features: [
+      "30A & 50A exterior weatherproof generator power inlet box installations",
+      "Mechanical panel interlock kit installation for 100% safe operation",
+      "Manual transfer switch subpanel installations for essential circuits",
+      "Heavy-duty generator cord sets & twist-lock plug wiring",
+      "Whole-home surge protection integrated with generator feed",
+      "Collier County permit filing & utility backfeed safety compliance"
+    ],
+    benefits: [
+      { title: "Safe Backfeed Prevention", desc: "Interlock switches guarantee utility line backfeeding is physically impossible, protecting line workers." },
+      { title: "Essential Storm Backup", desc: "Run your refrigerator, portable AC units, lights, and fans during hurricane power loss." },
+      { title: "Turnkey Installation", desc: "Complete service including inlet box, panel interlock, heavy cord, and system testing." }
+    ],
+    faqs: [
+      {
+        question: "What is a generator interlock kit and why is it required?",
+        answer: "An interlock kit is a mechanical safety device that prevents the main breaker and generator breaker from being ON at the same time, preventing dangerous utility backfeeding."
+      },
+      {
+        question: "What size generator inlet do I need (30A vs 50A)?",
+        answer: "A 30A inlet supports generators up to 7,500W (ideal for refrigerators, lights, and small loads). A 50A inlet supports 10,000W+ generators capable of running central AC."
+      },
+      {
+        question: "Can I backfeed my generator through a standard wall outlet?",
+        answer: "NEVER backfeed a generator through a wall outlet using a double-male cord ('suicide cord'). It is illegal, causes electrical fires, and creates lethal voltages on power lines."
+      },
+      {
+        question: "Where is the generator power inlet box installed?",
+        answer: "We mount the weatherproof inlet box on the exterior wall near your main panel or where your generator will operate outdoors."
+      },
+      {
+        question: "Does generator inlet installation require a permit in Naples?",
+        answer: "Yes, Collier County requires an electrical permit for generator inlet and transfer switch installations. We manage the permitting process."
+      }
+    ]
+  },
+  {
+    slug: "pool-spa-wiring",
+    title: "Pool & Spa Wiring and Repairs",
+    tagline: "Safe electrical wiring, equipotential bonding, and automation hookups for pools, hot tubs, and spas.",
+    heroImage: "/images/pool-spa.jpg",
+    badge: "Wet Location Safety",
+    category: "residential",
+    metaTitle: "Pool & Spa Wiring & Repairs Naples FL | Hot Tubs & Pumps",
+    metaDescription: "NEC Article 680 compliant pool wiring, hot tub subpanels, pool heat pump lines, LED lighting, and bonding in Naples, FL.",
+    description: "Subpanel power feeds, pool heat pump wiring, variable speed pump hookups, spa disconnects, and ground bonding.",
+    longDescription: "Water and electricity require specialized expertise to prevent deadly shock hazards. Naples Electrical specializes in NEC Article 680 compliant pool and hot tub electrical installations. From 50A spa disconnects and pool heat pump power feeds to equipotential bonding grids, pool LED lighting, and smart pool automation controls, we ensure your pool area is 100% safe.",
+    features: [
+      "240V dedicated subpanel feeds for pools, hot tubs, & hydro spas",
+      "Equipotential bonding grid inspection & copper ground bonding",
+      "Pool heat pump, chiller, & variable-speed pump electrical feeds",
+      "Low-voltage LED pool & spa color-changing light transformer installations",
+      "GFCI emergency safety disconnect box installation near hot tubs",
+      "Automated pool controller (Hayward, Pentair, Jandy) electrical hookups"
+    ],
+    benefits: [
+      { title: "Stray Voltage Elimination", desc: "Equipotential bonding eliminates tingling and stray voltage risks in pool water." },
+      { title: "Strict Code Safety", desc: "Rigorous adherence to NEC Article 680 standards for wet location installations." },
+      { title: "Energy Efficient Pumps", desc: "Proper wiring for variable-speed pumps lowers monthly pool electricity bills." }
+    ],
+    faqs: [
+      {
+        question: "What electrical supply is required for a residential hot tub or spa?",
+        answer: "Most hot tubs require a dedicated 240V / 50A circuit with a GFCI disconnect switch located between 5ft and 50ft from the spa."
+      },
+      {
+        question: "What is equipotential bonding for a swimming pool?",
+        answer: "Equipotential bonding connects all metallic pool parts (pumps, ladders, handrails, rebar grid) with heavy copper wire to keep all components at equal electrical potential, preventing shocks."
+      },
+      {
+        question: "Can you wire pool heat pumps and water chillers?",
+        answer: "Yes, we run heavy 240V dedicated lines and disconnects for high-draw pool heaters, chillers, and salt chlorine generators."
+      },
+      {
+        question: "Why does my pool light breaker keep tripping?",
+        answer: "A tripping pool light GFCI breaker usually indicates moisture entering the underwater niche or a damaged cord seal. We inspect and replace faulty fixtures."
+      },
+      {
+        question: "Do you wire smart pool controllers like Pentair or Hayward?",
+        answer: "Yes, we wire smart pool automation panels allowing mobile control of pumps, lights, heaters, and water features."
+      }
+    ]
+  },
+  {
+    slug: "boat-dock-electrical",
+    title: "Boat Dock Electrical",
+    tagline: "Heavy-duty marine electrical systems, boat lift controls, underwater dock lighting, and shore power.",
+    heroImage: "/images/boat-dock.jpg",
+    badge: "Waterfront & Marine",
+    category: "residential",
+    metaTitle: "Boat Dock Electrical Naples FL | Boat Lift & Marine Power",
+    metaDescription: "Marine dock power subpanels, boat lift motor wiring, shore power pedestals, GFCI protection & dock lighting in Naples waterfront homes.",
+    description: "Shore power pedestals, boat lift motor controls, GFCI marina outlets, and sub-surface marine lighting.",
+    longDescription: "Living on Naples' canals, bays, and Gulf waterways requires specialized marine electrical engineering. Salt air corrosion and water immersion demand marine-grade materials and strict safety measures to prevent Electric Shock Drowning (ESD). Naples Electrical installs waterfront dock subpanels, boat lift motors, marine power pedestals, and underwater fish lighting.",
+    features: [
+      "Subpanel feeder runs from main home panel down to waterfront docks",
+      "Boat lift motor control switches & wireless remote control installation",
+      "Marine-grade shore power pedestals (30A / 50A / 100A)",
+      "Specialized marina GFCI / EPD (Equipment Protection Device) receptacles",
+      "Underwater LED dock fish lights & piling accent lighting",
+      "Stainless steel & heavy-wall PVC conduit runs built for salt spray environments"
+    ],
+    benefits: [
+      { title: "Shock Drowning Prevention", desc: "Calibrated ground fault equipment protection designed specifically for marine docks." },
+      { title: "Saltwater Corrosion Proofing", desc: "NEMA 4X enclosures and marine stainless hardware resist harsh Naples salt air." },
+      { title: "Smooth Vessel Operation", desc: "Dedicated high-torque motor wiring ensures reliable raising and lowering of boats." }
+    ],
+    faqs: [
+      {
+        question: "What is Electric Shock Drowning (ESD) and how do you prevent it?",
+        answer: "ESD occurs when stray electrical current leaks into marina water, paralyzing swimmers. We install ground fault protection (EPD/GFCI) and equipotential ground bonding on all dock wiring."
+      },
+      {
+        question: "What electrical service is needed for a boat lift?",
+        answer: "Single-motor or dual-motor boat lifts typically require a dedicated 120V (20A) or 240V (30A) circuit depending on motor horsepower and vessel weight."
+      },
+      {
+        question: "Can you install wireless remote controls for my boat lift?",
+        answer: "Yes, we install wireless boat lift controllers (GEM Remote, etc.) allowing key fob operation from your vessel."
+      },
+      {
+        question: "What shore power pedestals do you install for luxury yachts?",
+        answer: "We install custom Eaton/Eaton Marina pedestals featuring 30A, 50A 125/250V, or 100A shore power receptacles, LED lighting, and water hose spigots."
+      },
+      {
+        question: "How do you run electrical wiring across yards to waterfront docks?",
+        answer: "We trench underground conduit at required NEC depth from the home main panel to a weather-sealed dock subpanel."
       }
     ]
   },
@@ -433,7 +620,7 @@ export const SERVICES: ServiceData[] = [
     ],
     faqs: [
       {
-        question: "Do you work with General Contractors on commercial commercial build-outs?",
+        question: "Do you work with General Contractors on commercial build-outs?",
         answer: "Yes, we partner regularly with commercial GCs, architects, and business owners on retail, medical office, restaurant, and industrial projects throughout SWFL."
       },
       {
@@ -725,7 +912,7 @@ export const SERVICES: ServiceData[] = [
         answer: "Plans include scheduled thermal camera audits, mechanical torquing of bus bar bolts, panel cleaning/dust removal, voltage/current logging, and emergency lighting battery checks."
       },
       {
-        question: "Why do electrical connections loose torque over time?",
+        question: "Why do electrical connections lose torque over time?",
         answer: "Thermal expansion and contraction from Florida heat, along with vibration, causes wire connections to loosen over time, leading to high electrical resistance and potential fires."
       },
       {

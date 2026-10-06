@@ -44,7 +44,7 @@ export default function EvChargerProcess({ onOpenQuote }: EvChargerProcessProps)
   return (
     <section className="py-14 sm:py-20 lg:py-28 bg-slate-900 text-white relative overflow-hidden">
       {/* Background accents */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-slate-500/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-16 items-center">
@@ -68,7 +68,7 @@ export default function EvChargerProcess({ onOpenQuote }: EvChargerProcessProps)
             <div className="space-y-6 pt-2">
               {steps.map((step) => (
                 <div key={step.num} className="flex gap-5 group">
-                  <div className="w-10 h-10 rounded-full bg-blue-600 text-white font-extrabold text-base flex items-center justify-center shrink-0 shadow-lg shadow-blue-600/30 group-hover:bg-amber-400 group-hover:text-slate-950 transition-colors">
+                  <div className="w-10 h-10 rounded-full bg-slate-600 text-white font-extrabold text-base flex items-center justify-center shrink-0 shadow-lg shadow-slate-600/30 group-hover:bg-amber-400 group-hover:text-slate-950 transition-colors">
                     {step.num}
                   </div>
                   <div>

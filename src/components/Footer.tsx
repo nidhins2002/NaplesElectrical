@@ -29,13 +29,18 @@ interface FooterProps {
 
 export default function Footer({ onOpenQuote }: FooterProps) {
   const services = [
-    "Lighting Installation",
-    "Electrical Repairs",
-    "Panel Upgrades",
+    "Custom Lighting & Chandeliers",
+    "Troubleshooting & Fast Repairs",
+    "Panel Replacements & Upgrades",
     "Ceiling Fan Installation",
-    "EV Charger Installation",
-    "Whole Home Wiring",
-    "Emergency Electrical Service",
+    "EV Charger Installation (Level 2)",
+    "Outlet, Switch & GFCI Upgrades",
+    "Smart Home Infrastructure",
+    "Safety Inspections & 4 Point Repairs",
+    "Whole-Home Surge Protection",
+    "Generator & Transfer Switches",
+    "Pool & Spa Wiring and Repairs",
+    "Boat Dock Electrical",
   ];
 
   const serviceAreas = [
