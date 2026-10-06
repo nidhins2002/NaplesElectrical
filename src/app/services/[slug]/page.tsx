@@ -166,7 +166,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                 <div className="flex items-center justify-between text-xs">
                   <span className="flex items-center gap-1.5 text-amber-400 font-bold">
                     <ShieldCheck className="w-4 h-4 text-amber-400" />
-                    Licensed EC#13015315
+                    Licensed EC#13016758
                   </span>
                   <span className="text-slate-300 font-medium">Naples & SWFL</span>
                 </div>
