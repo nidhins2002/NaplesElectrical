@@ -5,7 +5,9 @@ import dynamic from "next/dynamic";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-const QuoteModal = dynamic(() => import("@/components/QuoteModal"), { ssr: false });
+const QuoteModal = dynamic(() => import("@/components/QuoteModal"), {
+  ssr: false,
+});
 
 interface ServicePageWrapperProps {
   children: React.ReactNode;

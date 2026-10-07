@@ -11,7 +11,10 @@ import Testimonials from "@/components/Testimonials";
 import CtaBanner from "@/components/CtaBanner";
 import Footer from "@/components/Footer";
 
-const QuoteModal = dynamic(() => import("@/components/QuoteModal"), { ssr: false });
+// Lazy-load QuoteModal code chunk until opened by user
+const QuoteModal = dynamic(() => import("@/components/QuoteModal"), {
+  ssr: false,
+});
 
 export default function HomePage() {
   const [quoteOpen, setQuoteOpen] = useState(false);
@@ -55,7 +58,7 @@ export default function HomePage() {
 
       <Footer onOpenQuote={openQuote} />
 
-      {/* Global Quote Modal */}
+      {/* Global Quote Modal - rendered conditionally */}
       {quoteOpen && (
         <QuoteModal
           isOpen={quoteOpen}
