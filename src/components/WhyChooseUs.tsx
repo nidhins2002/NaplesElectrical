@@ -160,9 +160,9 @@ export default function WhyChooseUs({ onOpenQuote }: WhyChooseUsProps) {
     },
     {
       icon: Users,
-      title: "Experienced Team",
-      desc: "Skilled electricians with years of local experience in Naples and Collier County.",
-      color: "text-slate-600 bg-slate-50 border-slate-100",
+      title: "100% Owner-Operated",
+      desc: "Direct master electrician oversight on every job — no subcontractors or inexperienced sales reps.",
+      color: "text-amber-600 bg-amber-50 border-amber-100",
       action: null,
     },
     {

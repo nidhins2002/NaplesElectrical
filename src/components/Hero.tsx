@@ -21,10 +21,11 @@ export default function Hero({ onOpenQuote }: HeroProps) {
           {/* Left Column: Text Content */}
           <div className="lg:col-span-7 space-y-5 sm:space-y-6 md:space-y-8">
 
-            {/* Tagline Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-400/10 border border-amber-400/20 text-amber-400 text-[11px] sm:text-xs font-extrabold tracking-widest uppercase">
-              <Zap className="w-3.5 h-3.5 text-amber-400 fill-amber-400 shrink-0" />
-              <span>LICENSED. RELIABLE. LOCAL.</span>
+            {/* Tagline Badge - Highlight Owner Operated */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-400/15 border border-amber-400/30 text-amber-400 text-[11px] sm:text-xs font-extrabold tracking-wider uppercase backdrop-blur-md shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+              <Users className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+              <span>100% OWNER-OPERATED &amp; LICENSED CONTRACTOR</span>
             </div>
 
             {/* Headline */}
@@ -106,15 +107,18 @@ export default function Hero({ onOpenQuote }: HeroProps) {
                 </div>
               </a>
 
-              <div className="flex items-center gap-2 sm:gap-3">
-                <div className="p-2 sm:p-2.5 rounded-xl bg-slate-800/80 text-amber-400 border border-slate-700/60 shrink-0">
-                  <Users className="w-4 h-4 sm:w-5 sm:h-5" />
+              <a
+                href="#why-us"
+                className="flex items-center gap-2 sm:gap-3 group cursor-pointer"
+              >
+                <div className="p-2 sm:p-2.5 rounded-xl bg-amber-400/15 text-amber-400 border border-amber-400/30 shrink-0 group-hover:bg-amber-400 group-hover:text-slate-950 transition-colors">
+                  <Users className="w-4 h-4 sm:w-5 sm:h-5 text-amber-400 group-hover:text-slate-950" />
                 </div>
                 <div>
-                  <div className="text-xs sm:text-sm font-extrabold text-white leading-tight">Naples, FL</div>
-                  <div className="text-[10px] sm:text-xs text-slate-400 font-medium">Owner-Operated</div>
+                  <div className="text-xs sm:text-sm font-extrabold text-white leading-tight group-hover:text-amber-400 transition-colors">Owner-Operated</div>
+                  <div className="text-[10px] sm:text-xs text-amber-400/90 font-semibold">Direct Service</div>
                 </div>
-              </div>
+              </a>
             </div>
 
           </div>

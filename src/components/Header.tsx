@@ -117,7 +117,7 @@ export default function Header({ onOpenQuote }: HeaderProps) {
               className="text-xs font-bold text-slate-700 hover:text-amber-600 flex items-center gap-1.5 px-3 py-2 rounded-full border border-slate-200 hover:border-amber-400 transition"
             >
               <Phone className="w-3.5 h-3.5 text-amber-600" />
-              Call (239) 484-1808
+              Call
             </a>
             <a
               href="sms:+12394841808"
