@@ -52,38 +52,38 @@ export default function ServicesSection({ onOpenQuote }: ServicesSectionProps) {
         </div>
 
         {/* Category Toggle Tabs */}
-        <div className="flex justify-center mb-10">
-          <div className="inline-flex flex-col xs:flex-row items-stretch xs:items-center bg-white border border-slate-200 rounded-2xl p-1.5 shadow-sm gap-1.5">
+        <div className="flex justify-center mb-8 sm:mb-10">
+          <div className="w-full max-w-md mx-auto flex flex-row items-center bg-white border border-slate-200 rounded-full p-1.5 shadow-sm gap-1">
             <button
               id="tab-residential"
               onClick={() => setActiveTab("residential")}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-200 ${
+              className={`flex-1 flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-2.5 rounded-full font-bold text-xs sm:text-sm transition-all duration-200 ${
                 activeTab === "residential"
-                  ? "bg-amber-400 text-slate-950 shadow-md"
-                  : "text-slate-500 hover:text-slate-800 hover:bg-slate-50"
+                  ? "bg-amber-400/10 text-amber-600 border border-amber-400/30 shadow-sm"
+                  : "text-slate-500 hover:text-slate-800 hover:bg-slate-50 border border-transparent"
               }`}
             >
-              <Home className="w-4 h-4" />
-              Residential Services
+              <Home className="w-4 h-4 shrink-0" />
+              <span className="truncate">Residential</span>
             </button>
             <button
               id="tab-commercial"
               onClick={() => setActiveTab("commercial")}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-200 ${
+              className={`flex-1 flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-2.5 rounded-full font-bold text-xs sm:text-sm transition-all duration-200 ${
                 activeTab === "commercial"
-                  ? "bg-[#333333] text-white shadow-md"
-                  : "text-slate-500 hover:text-slate-800 hover:bg-slate-50"
+                  ? "bg-amber-400/10 text-amber-600 border border-amber-400/30 shadow-sm"
+                  : "text-slate-500 hover:text-slate-800 hover:bg-slate-50 border border-transparent"
               }`}
             >
-              <Building2 className="w-4 h-4" />
-              Commercial Services
+              <Building2 className="w-4 h-4 shrink-0" />
+              <span className="truncate">Commercial</span>
             </button>
           </div>
         </div>
 
         {/* Category Intro Strip */}
-        <div className="mb-8 p-4 rounded-2xl border bg-amber-50 border-amber-200 flex items-center gap-4 transition-all duration-300">
-          <div className="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center shrink-0">
+        <div className="mb-8 p-4 rounded-2xl border bg-amber-400/10 border-amber-400/30 flex items-start sm:items-center gap-3 sm:gap-4 transition-all duration-300">
+          <div className="w-10 h-10 rounded-xl bg-amber-400/20 text-amber-600 border border-amber-400/30 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0">
             {activeTab === "residential" ? (
               <Home className="w-5 h-5" />
             ) : (
@@ -91,12 +91,12 @@ export default function ServicesSection({ onOpenQuote }: ServicesSectionProps) {
             )}
           </div>
           <div>
-            <p className="font-extrabold text-sm text-amber-900">
+            <p className="font-extrabold text-sm text-slate-900">
               {activeTab === "residential"
                 ? "Residential Electrical Services"
                 : "Commercial Electrical Services"}
             </p>
-            <p className="text-xs leading-relaxed mt-0.5 text-amber-800/70">
+            <p className="text-xs leading-relaxed mt-0.5 text-slate-600">
               {activeTab === "residential"
                 ? "Everything your home needs — from simple repairs to full panel upgrades. Licensed, insured, and owner-operated."
                 : "Professional electrical solutions for businesses of all sizes. Serving offices, retail, hospitality, and industrial clients in Naples, FL."}
@@ -178,15 +178,15 @@ export default function ServicesSection({ onOpenQuote }: ServicesSectionProps) {
         <div className="mt-12 text-center">
           <button
             onClick={() => onOpenQuote()}
-            className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#333333] hover:bg-[#444444] text-white font-bold text-sm rounded-full shadow-md hover:shadow-lg transition"
+            className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 bg-amber-400/10 hover:bg-amber-400/20 text-amber-600 font-bold text-xs sm:text-sm rounded-full border border-amber-400/30 transition shadow-sm"
           >
+            <Zap className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
             <span>
               {activeTab === "residential"
                 ? "Need Custom Residential Work?"
                 : "Need a Commercial Estimate?"}{" "}
               Contact Us Today
             </span>
-            <ArrowUpRight className="w-4 h-4 text-amber-400" />
           </button>
         </div>
 

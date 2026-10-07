@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { ShieldCheck, Users, Clock, Star, X, FileCheck2, FileText } from "lucide-react";
+import { ShieldCheck, Users, Clock, Star, X, FileCheck2, FileText, Zap } from "lucide-react";
 
 interface WhyChooseUsProps {
   onOpenQuote: () => void;
@@ -280,15 +280,16 @@ export default function WhyChooseUs({ onOpenQuote }: WhyChooseUsProps) {
               <div className="pt-4 flex flex-col sm:flex-row gap-3">
                 <button
                   onClick={onOpenQuote}
-                  className="w-full sm:w-auto px-8 py-4 bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-base rounded-full shadow-lg shadow-amber-400/20 hover:scale-[1.02] active:scale-[0.98] transition"
+                  className="w-full sm:w-auto px-6 py-3 bg-amber-400/10 hover:bg-amber-400/20 text-amber-600 font-bold text-xs sm:text-sm rounded-full border border-amber-400/30 transition shadow-sm flex items-center justify-center gap-1.5"
                 >
-                  Schedule Service Today
+                  <Zap className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
+                  <span>Schedule Service Today</span>
                 </button>
                 <button
                   onClick={() => setShowCredentials(true)}
-                  className="w-full sm:w-auto px-6 py-4 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-base rounded-full border border-slate-200 transition flex items-center justify-center gap-2"
+                  className="w-full sm:w-auto px-6 py-3 bg-white hover:bg-slate-50 text-slate-800 font-bold text-xs sm:text-sm rounded-full border border-slate-200 transition flex items-center justify-center gap-1.5 shadow-sm"
                 >
-                  <FileCheck2 className="w-5 h-5 text-amber-600" />
+                  <FileCheck2 className="w-4 h-4 text-amber-600" />
                   <span>Verify State License & Insurance</span>
                 </button>
               </div>

@@ -170,16 +170,16 @@ export default function Footer({ onOpenQuote }: FooterProps) {
 
             <button
               onClick={onOpenQuote}
-              className="w-full py-3.5 px-5 bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-sm rounded-xl flex items-center justify-center gap-2 transition shadow-lg shadow-amber-400/10"
+              className="w-full py-3 px-5 bg-amber-400/10 hover:bg-amber-400/20 text-amber-400 font-bold text-sm rounded-full border border-amber-400/30 transition shadow-sm flex items-center justify-center gap-1.5"
             >
-              Request a Free Quote
+              <span>Request a Free Quote</span>
               <ArrowRight className="w-4 h-4" />
             </button>
 
             <div className="flex gap-2.5">
               <a
                 href="tel:+12394841808"
-                className="flex-1 py-3.5 px-4 bg-[#444444] hover:bg-[#555555] text-white font-semibold text-sm rounded-xl flex items-center justify-center gap-2 transition border border-white/10"
+                className="flex-1 py-3 px-4 bg-white/5 hover:bg-white/10 text-white font-bold text-sm rounded-full border border-white/10 hover:border-white/20 transition flex items-center justify-center gap-1.5"
               >
                 <Phone className="w-4 h-4 text-amber-400" />
                 Call
@@ -187,7 +187,7 @@ export default function Footer({ onOpenQuote }: FooterProps) {
 
               <a
                 href="sms:+12394841808"
-                className="flex-1 py-3.5 px-4 bg-[#444444] hover:bg-[#555555] text-white font-semibold text-sm rounded-xl flex items-center justify-center gap-2 transition border border-white/10"
+                className="flex-1 py-3 px-4 bg-white/5 hover:bg-white/10 text-white font-bold text-sm rounded-full border border-white/10 hover:border-white/20 transition flex items-center justify-center gap-1.5"
               >
                 <MessageSquare className="w-4 h-4 text-amber-400" />
                 Text Us

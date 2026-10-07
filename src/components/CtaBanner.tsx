@@ -41,29 +41,29 @@ export default function CtaBanner({ onOpenQuote }: CtaBannerProps) {
                 Contact us today to schedule a consultation or get a free estimate. We serve all of Naples, FL and surrounding areas including Marco Island and Collier County.
               </p>
 
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-4">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-4">
                 <a
                   href="tel:+12394841808"
-                  className="inline-flex items-center justify-center gap-3 px-6 sm:px-7 py-4 bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-base rounded-full shadow-xl shadow-amber-500/25 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-amber-400/10 hover:bg-amber-400/20 text-amber-400 font-bold text-sm rounded-full border border-amber-400/30 transition-all duration-200"
                 >
-                  <Phone className="w-5 h-5 fill-slate-950" />
+                  <Phone className="w-4 h-4 text-amber-400" />
                   <span>Call (239) 484-1808</span>
                 </a>
 
                 <a
                   href="sms:+12394841808"
-                  className="inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-4 bg-[#444444] hover:bg-[#555555] text-white font-bold text-base rounded-full border border-white/10 hover:border-amber-400 transition-all duration-200"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 text-white font-bold text-sm rounded-full border border-white/10 hover:border-white/20 transition-all duration-200"
                 >
-                  <MessageSquare className="w-5 h-5 text-amber-400" />
+                  <MessageSquare className="w-4 h-4 text-amber-400" />
                   <span>Text Us</span>
                 </a>
 
                 <button
                   onClick={onOpenQuote}
-                  className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-semibold text-base rounded-full border border-white/20 hover:border-white/40 transition-all duration-200"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-amber-400/10 hover:bg-amber-400/20 text-amber-400 font-bold text-sm rounded-full border border-amber-400/30 transition-all duration-200"
                 >
+                  <Zap className="w-4 h-4 text-amber-400 fill-amber-400" />
                   <span>Request Quote</span>
-                  <ArrowRight className="w-5 h-5" />
                 </button>
               </div>
             </div>

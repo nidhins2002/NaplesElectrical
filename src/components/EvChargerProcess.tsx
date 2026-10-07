@@ -103,10 +103,10 @@ export default function EvChargerProcess({ onOpenQuote }: EvChargerProcessProps)
             <div>
               <button
                 onClick={() => onOpenQuote("EV Charger Installation")}
-                className="w-full sm:w-auto px-8 py-4 bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-base rounded-full shadow-lg shadow-amber-400/20 flex items-center justify-center gap-2 transition"
+                className="w-full sm:w-auto px-6 py-3 bg-amber-400/10 hover:bg-amber-400/20 text-amber-400 font-bold text-sm sm:text-base rounded-full border border-amber-400/30 transition shadow-sm flex items-center justify-center gap-1.5"
               >
                 <span>Book EV Charger Installation</span>
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-4 h-4" />
               </button>
             </div>
 

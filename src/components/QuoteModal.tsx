@@ -96,7 +96,7 @@ export default function QuoteModal({
               </div>
               <button
                 onClick={resetAndClose}
-                className="w-full py-3.5 bg-slate-900 text-white font-semibold rounded-xl hover:bg-slate-800 transition"
+                className="w-full py-3 bg-amber-400/10 hover:bg-amber-400/20 text-amber-600 font-bold text-sm rounded-full border border-amber-400/30 transition shadow-sm"
               >
                 Done
               </button>
@@ -139,10 +139,10 @@ export default function QuoteModal({
                           key={type}
                           type="button"
                           onClick={() => setPropertyType(type)}
-                          className={`py-3 px-4 rounded-xl font-semibold border text-sm transition flex items-center justify-center gap-2 ${
+                          className={`py-3 px-4 rounded-full font-bold border text-sm transition flex items-center justify-center gap-2 ${
                             propertyType === type
-                              ? "bg-slate-900 text-white border-slate-900 shadow-md"
-                              : "bg-slate-50 text-slate-700 border-slate-200 hover:border-slate-300"
+                              ? "bg-amber-400/10 text-amber-600 border-amber-400/30 shadow-sm"
+                              : "bg-slate-50 text-slate-600 border-slate-200 hover:border-slate-300 font-medium"
                           }`}
                         >
                           {type}
@@ -185,9 +185,10 @@ export default function QuoteModal({
                   <button
                     type="button"
                     onClick={() => setStep(2)}
-                    className="w-full mt-4 py-4 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold rounded-xl shadow-lg shadow-amber-500/20 flex items-center justify-center gap-2 transition"
+                    className="w-full mt-4 py-3 bg-amber-400/10 hover:bg-amber-400/20 text-amber-600 font-bold text-sm sm:text-base rounded-full border border-amber-400/30 transition shadow-sm flex items-center justify-center gap-1.5"
                   >
-                    Next: Contact Details <ArrowRight className="w-5 h-5" />
+                    <span>Next: Contact Details</span>
+                    <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
               ) : (
@@ -274,15 +275,16 @@ export default function QuoteModal({
                     <button
                       type="button"
                       onClick={() => setStep(1)}
-                      className="py-3.5 px-5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl transition text-sm"
+                      className="py-3 px-5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-full border border-slate-300 transition text-sm"
                     >
                       Back
                     </button>
                     <button
                       type="submit"
-                      className="flex-1 py-3.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold rounded-xl shadow-lg shadow-amber-500/20 flex items-center justify-center gap-2 transition"
+                      className="flex-1 py-3 bg-amber-400/10 hover:bg-amber-400/20 text-amber-600 font-bold text-sm rounded-full border border-amber-400/30 transition shadow-sm flex items-center justify-center gap-1.5"
                     >
-                      Submit Free Quote Request <ArrowRight className="w-5 h-5" />
+                      <span>Submit Free Quote Request</span>
+                      <ArrowRight className="w-4 h-4" />
                     </button>
                   </div>
                 </div>

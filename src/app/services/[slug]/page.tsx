@@ -135,27 +135,27 @@ export default async function ServiceDetailPage({ params }: Props) {
               </p>
 
               {/* Quick Action CTAs */}
-              <div className="pt-2 flex flex-col sm:flex-row gap-4">
+              <div className="pt-2 flex flex-col sm:flex-row gap-3">
                 <Link
                   href="/#contact"
-                  className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl font-extrabold text-slate-950 bg-amber-400 hover:bg-amber-500 shadow-md transition-all duration-200 transform hover:-translate-y-0.5"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-amber-400/10 hover:bg-amber-400/20 text-amber-600 font-bold text-xs sm:text-sm rounded-full border border-amber-400/30 transition shadow-sm gap-1.5"
                 >
-                  Request Free Quote
-                  <ArrowUpRight className="w-4 h-4 ml-2" />
+                  <span>Request Free Quote</span>
+                  <ArrowUpRight className="w-4 h-4" />
                 </Link>
                 <a
                   href="tel:+12394841808"
-                  className="inline-flex items-center justify-center px-5 py-3.5 rounded-xl font-bold text-slate-900 bg-slate-100 hover:bg-slate-200 border border-slate-300 transition-all duration-200"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs sm:text-sm rounded-full border border-slate-300 transition gap-1.5"
                 >
-                  <Phone className="w-4 h-4 mr-2 text-amber-600" />
-                  Call (239) 484-1808
+                  <Phone className="w-4 h-4 text-amber-600" />
+                  <span>Call (239) 484-1808</span>
                 </a>
                 <a
                   href="sms:+12394841808"
-                  className="inline-flex items-center justify-center px-5 py-3.5 rounded-xl font-bold text-slate-900 bg-slate-100 hover:bg-slate-200 border border-slate-300 transition-all duration-200"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs sm:text-sm rounded-full border border-slate-300 transition gap-1.5"
                 >
-                  <MessageSquare className="w-4 h-4 mr-2 text-amber-600" />
-                  Text Us
+                  <MessageSquare className="w-4 h-4 text-amber-600" />
+                  <span>Text Us</span>
                 </a>
               </div>
             </div>
@@ -283,27 +283,27 @@ export default async function ServiceDetailPage({ params }: Props) {
               <p className="text-slate-300 text-base sm:text-lg leading-relaxed">
                 Get upfront pricing, fast scheduling, and guaranteed code-compliant electrical work across Naples, Marco Island, and Bonita Springs.
               </p>
-              <div className="pt-2 flex flex-col sm:flex-row justify-center gap-4">
+              <div className="pt-2 flex flex-col sm:flex-row justify-center gap-3">
                 <Link
                   href="/#contact"
-                  className="inline-flex items-center justify-center px-8 py-4 rounded-xl font-extrabold text-slate-950 bg-amber-400 hover:bg-amber-300 shadow-lg shadow-amber-500/20 transition-all duration-200"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-amber-400/10 hover:bg-amber-400/20 text-amber-400 font-bold text-xs sm:text-sm rounded-full border border-amber-400/30 transition shadow-sm gap-1.5"
                 >
-                  Request Free Quote
-                  <ArrowUpRight className="w-4 h-4 ml-2" />
+                  <span>Request Free Quote</span>
+                  <ArrowUpRight className="w-4 h-4" />
                 </Link>
                 <a
                   href="tel:+12394841808"
-                  className="inline-flex items-center justify-center px-7 py-4 rounded-xl font-bold text-white bg-[#444444] hover:bg-[#555555] border border-white/10 transition-all duration-200"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-white/5 hover:bg-white/10 text-white font-bold text-xs sm:text-sm rounded-full border border-white/10 hover:border-white/20 transition gap-1.5"
                 >
-                  <Phone className="w-4 h-4 mr-2 text-amber-400" />
-                  Call (239) 484-1808
+                  <Phone className="w-4 h-4 text-amber-400" />
+                  <span>Call (239) 484-1808</span>
                 </a>
                 <a
                   href="sms:+12394841808"
-                  className="inline-flex items-center justify-center px-7 py-4 rounded-xl font-bold text-white bg-[#444444] hover:bg-[#555555] border border-white/10 transition-all duration-200"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-white/5 hover:bg-white/10 text-white font-bold text-xs sm:text-sm rounded-full border border-white/10 hover:border-white/20 transition gap-1.5"
                 >
-                  <MessageSquare className="w-4 h-4 mr-2 text-amber-400" />
-                  Text Us
+                  <MessageSquare className="w-4 h-4 text-amber-400" />
+                  <span>Text Us</span>
                 </a>
               </div>
               <p className="text-xs text-slate-400 pt-2">
