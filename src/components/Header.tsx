@@ -108,7 +108,7 @@ export default function Header({ onOpenQuote }: HeaderProps) {
               href="tel:+12394841808"
               className="text-xs font-bold text-slate-700 hover:text-amber-600 flex items-center gap-1.5"
             >
-              <Phone className="w-3.5 h-3.5 text-amber-500" />
+              <Phone className="w-3.5 h-3.5 text-amber-600" />
               (239) 484-1808
             </a>
             <button
@@ -169,7 +169,7 @@ export default function Header({ onOpenQuote }: HeaderProps) {
                   setMobileMenuOpen(false);
                   onOpenQuote();
                 }}
-                className="w-full py-3 bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-center rounded-xl shadow-md flex items-center justify-center gap-2"
+                className="w-full py-3 bg-amber-500  text-slate-950 font-bold text-center rounded-xl shadow-md flex items-center justify-center gap-2"
               >
                 <span>Get a Free Quote</span>
                 <ArrowRight className="w-4 h-4" />

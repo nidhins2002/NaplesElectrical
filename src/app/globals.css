@@ -2,12 +2,25 @@
 
 @theme {
   --breakpoint-xs: 475px;
+
+  /* Harmonious #ff6f00 Palette scale (bright light tints & vibrant primary) */
+  --color-amber-50: #fff9f2;
+  --color-amber-100: #fff0db;
+  --color-amber-200: #ffe0b3;
+  --color-amber-300: #ffc280;
+  --color-amber-400: #ff6f00;   /* Primary Brand Accent #ff6f00 */
+  --color-amber-500: #e66400;   /* Primary Hover State */
+  --color-amber-600: #d95d00;   /* High-Contrast Text on Light Backgrounds */
+  --color-amber-700: #b34d00;
+  --color-amber-800: #8c3c00;
+  --color-amber-900: #592700;   /* Deep Text for Badges */
+  --color-amber-950: #331600;
 }
 
 @layer base {
   :root {
-    --brand-yellow: #f59e0b;
-    --brand-yellow-hover: #d97706;
+    --brand-yellow: #ff6f00;
+    --brand-yellow-hover: #e66400;
     --brand-navy: #0b1329;
     --brand-navy-light: #152243;
   }
@@ -43,7 +56,7 @@
   border-radius: 5px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #f59e0b;
+  background: #ff6f00;
 }
 
 .font-brand {
