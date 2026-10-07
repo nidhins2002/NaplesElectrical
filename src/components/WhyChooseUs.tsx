@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { ShieldCheck, Users, Clock, Star, X, FileCheck2, FileText, Zap } from "lucide-react";
+import { ShieldCheck, Users, Clock, Star, X, FileCheck2, FileText, Zap, Phone, MessageSquare } from "lucide-react";
 
 interface WhyChooseUsProps {
   onOpenQuote: () => void;
@@ -43,22 +43,20 @@ function CredentialsModal({ onClose }: { onClose: () => void }) {
         <div className="flex gap-2 px-6 pt-4 shrink-0">
           <button
             onClick={() => setActiveTab("license")}
-            className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold transition-all ${
-              activeTab === "license"
-                ? "bg-slate-600 text-white shadow-lg shadow-slate-600/30"
-                : "bg-slate-100 text-slate-600 hover:bg-slate-200"
-            }`}
+            className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold transition-all ${activeTab === "license"
+              ? "bg-slate-600 text-white shadow-lg shadow-slate-600/30"
+              : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+              }`}
           >
             <FileCheck2 className="w-4 h-4" />
             State License
           </button>
           <button
             onClick={() => setActiveTab("insurance")}
-            className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold transition-all ${
-              activeTab === "insurance"
-                ? "bg-emerald-600 text-white shadow-lg shadow-emerald-600/25"
-                : "bg-slate-100 text-slate-600 hover:bg-slate-200"
-            }`}
+            className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold transition-all ${activeTab === "insurance"
+              ? "bg-emerald-600 text-white shadow-lg shadow-emerald-600/25"
+              : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+              }`}
           >
             <FileText className="w-4 h-4" />
             Insurance Certificate
@@ -202,7 +200,7 @@ export default function WhyChooseUs({ onOpenQuote }: WhyChooseUsProps) {
                     height={500}
                     className="w-full h-[280px] sm:h-[380px] md:h-[480px] object-cover"
                   />
-                  
+
                   {/* Floating Badge overlay */}
                   <div className="absolute top-6 right-6 bg-white/95 backdrop-blur-md px-5 py-3.5 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3">
                     <div className="flex -space-x-1">
@@ -248,11 +246,10 @@ export default function WhyChooseUs({ onOpenQuote }: WhyChooseUsProps) {
                     <div
                       key={pt.title}
                       onClick={pt.action ?? undefined}
-                      className={`p-4 rounded-2xl bg-slate-50 border border-slate-150 transition-all duration-200 flex items-start gap-4 ${
-                        isClickable
-                          ? "cursor-pointer hover:bg-slate-50 hover:border-slate-200 hover:shadow-md group"
-                          : "hover:bg-white hover:shadow-md"
-                      }`}
+                      className={`p-4 rounded-2xl bg-slate-50 border border-slate-150 transition-all duration-200 flex items-start gap-4 ${isClickable
+                        ? "cursor-pointer hover:bg-slate-50 hover:border-slate-200 hover:shadow-md group"
+                        : "hover:bg-white hover:shadow-md"
+                        }`}
                     >
                       <div className={`p-3 rounded-xl border shrink-0 ${pt.color}`}>
                         <Icon className="w-5 h-5" />
@@ -277,7 +274,7 @@ export default function WhyChooseUs({ onOpenQuote }: WhyChooseUsProps) {
                 })}
               </div>
 
-              <div className="pt-4 flex flex-col sm:flex-row gap-3">
+              <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-10">
                 <button
                   onClick={onOpenQuote}
                   className="w-full sm:w-auto px-6 py-3 bg-amber-400/10 hover:bg-amber-400/20 text-amber-600 font-bold text-xs sm:text-sm rounded-full border border-amber-400/30 transition shadow-sm flex items-center justify-center gap-1.5"
@@ -285,13 +282,22 @@ export default function WhyChooseUs({ onOpenQuote }: WhyChooseUsProps) {
                   <Zap className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
                   <span>Schedule Service Today</span>
                 </button>
-                <button
-                  onClick={() => setShowCredentials(true)}
-                  className="w-full sm:w-auto px-6 py-3 bg-white hover:bg-slate-50 text-slate-800 font-bold text-xs sm:text-sm rounded-full border border-slate-200 transition flex items-center justify-center gap-1.5 shadow-sm"
-                >
-                  <FileCheck2 className="w-4 h-4 text-amber-600" />
-                  <span>Verify State License & Insurance</span>
-                </button>
+                <div className="flex gap-2.5 w-full sm:w-auto">
+                  <a
+                    href="tel:+12394841808"
+                    className="flex-1 sm:flex-initial px-5 py-3 bg-white hover:bg-slate-50 text-slate-800 font-bold text-xs sm:text-sm rounded-full border border-slate-200 transition shadow-sm flex items-center justify-center gap-1.5"
+                  >
+                    <Phone className="w-4 h-4 text-amber-600" />
+                    <span>Call</span>
+                  </a>
+                  <a
+                    href="sms:+12394841808"
+                    className="flex-1 sm:flex-initial px-5 py-3 bg-white hover:bg-slate-50 text-slate-800 font-bold text-xs sm:text-sm rounded-full border border-slate-200 transition shadow-sm flex items-center justify-center gap-1.5"
+                  >
+                    <MessageSquare className="w-4 h-4 text-amber-600" />
+                    <span>Text Us</span>
+                  </a>
+                </div>
               </div>
 
             </div>
