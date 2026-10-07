@@ -2,7 +2,7 @@
 
 import React from "react";
 import NextImage from "next/image";
-import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
+import { Phone, MessageSquare, Mail, MapPin, ArrowRight } from "lucide-react";
 
 // Inline social SVG icons (lucide-react doesn't export social icons)
 const FacebookIcon = () => (
@@ -53,7 +53,7 @@ export default function Footer({ onOpenQuote }: FooterProps) {
   ];
 
   return (
-    <footer id="contact" className="bg-slate-950 text-slate-300 border-t border-slate-800">
+    <footer id="contact" className="bg-[#333333] text-slate-300 border-t border-white/10">
       {/* Main Footer Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
@@ -87,7 +87,7 @@ export default function Footer({ onOpenQuote }: FooterProps) {
                 href="tel:+12394841808"
                 className="flex items-center gap-3 text-sm font-semibold text-white hover:text-amber-400 transition"
               >
-                <div className="p-2 rounded-lg bg-slate-800 border border-slate-700 shrink-0">
+                <div className="p-2 rounded-lg bg-[#444444] border border-white/10 shrink-0">
                   <Phone className="w-4 h-4 text-amber-400" />
                 </div>
                 (239) 484-1808
@@ -97,14 +97,14 @@ export default function Footer({ onOpenQuote }: FooterProps) {
                 href="mailto:info@napleselectrical.com"
                 className="flex items-center gap-3 text-sm font-semibold text-slate-300 hover:text-amber-400 transition"
               >
-                <div className="p-2 rounded-lg bg-slate-800 border border-slate-700 shrink-0">
+                <div className="p-2 rounded-lg bg-[#444444] border border-white/10 shrink-0">
                   <Mail className="w-4 h-4 text-amber-400" />
                 </div>
                 info@napleselectrical.com
               </a>
 
               <div className="flex items-start gap-3 text-sm text-slate-400">
-                <div className="p-2 rounded-lg bg-slate-800 border border-slate-700 shrink-0 mt-0.5">
+                <div className="p-2 rounded-lg bg-[#444444] border border-white/10 shrink-0 mt-0.5">
                   <MapPin className="w-4 h-4 text-amber-400" />
                 </div>
                 <span>Naples, FL 34102<br />Collier County, Florida</span>
@@ -117,7 +117,7 @@ export default function Footer({ onOpenQuote }: FooterProps) {
                 <a
                   key={i}
                   href="#"
-                  className="p-2.5 rounded-xl bg-slate-800 hover:bg-amber-400 border border-slate-700 hover:border-amber-400 text-slate-400 hover:text-slate-950 transition-all"
+                  className="p-2.5 rounded-xl bg-[#444444] hover:bg-amber-400 border border-white/10 hover:border-amber-400 text-slate-400 hover:text-slate-950 transition-all"
                 >
                   <Icon />
                 </a>
@@ -173,17 +173,27 @@ export default function Footer({ onOpenQuote }: FooterProps) {
               <ArrowRight className="w-4 h-4" />
             </button>
 
-            <a
-              href="tel:+12394841808"
-              className="w-full py-3.5 px-5 bg-slate-800 hover:bg-slate-700 text-white font-semibold text-sm rounded-xl flex items-center justify-center gap-2 transition border border-slate-700"
-            >
-              <Phone className="w-4 h-4 text-amber-400" />
-              Call (239) 484-1808
-            </a>
+            <div className="flex gap-2.5">
+              <a
+                href="tel:+12394841808"
+                className="flex-1 py-3.5 px-4 bg-[#444444] hover:bg-[#555555] text-white font-semibold text-sm rounded-xl flex items-center justify-center gap-2 transition border border-white/10"
+              >
+                <Phone className="w-4 h-4 text-amber-400" />
+                Call
+              </a>
+
+              <a
+                href="sms:+12394841808"
+                className="flex-1 py-3.5 px-4 bg-[#444444] hover:bg-[#555555] text-white font-semibold text-sm rounded-xl flex items-center justify-center gap-2 transition border border-white/10"
+              >
+                <MessageSquare className="w-4 h-4 text-amber-400" />
+                Text Us
+              </a>
+            </div>
 
             {/* License Badge */}
-            <div className="bg-slate-900 border border-slate-800 rounded-xl p-4">
-              <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">State Licensed</div>
+            <div className="bg-[#282828] border border-white/10 rounded-xl p-4">
+              <div className="text-xs text-slate-400 font-semibold uppercase tracking-wider mb-1">State Licensed</div>
               <div className="text-sm font-bold text-white">#EC13016758</div>
               <div className="text-xs text-slate-400 mt-1">Licensed Electrical Contractor<br />State of Florida</div>
             </div>
@@ -193,7 +203,7 @@ export default function Footer({ onOpenQuote }: FooterProps) {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-slate-800 py-5 px-4 sm:px-6 lg:px-8">
+      <div className="border-t border-white/10 py-5 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-slate-500">
           <p>
             © {new Date().getFullYear()} Naples Electrical. All rights reserved. Serving Naples, FL and surrounding areas.

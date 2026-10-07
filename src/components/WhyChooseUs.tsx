@@ -215,7 +215,7 @@ export default function WhyChooseUs({ onOpenQuote }: WhyChooseUsProps) {
                 </div>
 
                 {/* Floating Stat Card */}
-                <div className="absolute -bottom-5 left-2 sm:-bottom-6 sm:left-6 bg-slate-900 text-white p-4 sm:p-6 rounded-2xl shadow-xl max-w-[200px] sm:max-w-xs border border-slate-800">
+                <div className="absolute -bottom-5 left-2 sm:-bottom-6 sm:left-6 bg-[#333333] text-white p-4 sm:p-6 rounded-2xl shadow-xl max-w-[200px] sm:max-w-xs border border-white/10">
                   <div className="text-2xl sm:text-3xl font-black text-amber-400">15+ Years</div>
                   <div className="text-xs text-slate-300 font-medium mt-1">
                     Trusted Electrical Experience in Naples, Florida
@@ -343,8 +343,8 @@ export default function WhyChooseUs({ onOpenQuote }: WhyChooseUsProps) {
                       sizes="(max-width: 768px) 100vw, 50vw"
                       className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-slate-900/30 group-hover:bg-slate-900/10 transition-colors flex items-center justify-center">
-                      <span className="px-4 py-2 bg-slate-900/90 text-white font-bold text-xs rounded-full backdrop-blur-md shadow-lg flex items-center gap-1.5 group-hover:scale-105 transition">
+                    <div className="absolute inset-0 bg-[#333333]/30 group-hover:bg-[#333333]/10 transition-colors flex items-center justify-center">
+                      <span className="px-4 py-2 bg-[#333333]/90 text-white font-bold text-xs rounded-full backdrop-blur-md shadow-lg flex items-center gap-1.5 group-hover:scale-105 transition">
                         <FileText className="w-3.5 h-3.5 text-amber-400" /> Click to Expand License
                       </span>
                     </div>
@@ -387,8 +387,8 @@ export default function WhyChooseUs({ onOpenQuote }: WhyChooseUsProps) {
                       sizes="(max-width: 768px) 100vw, 50vw"
                       className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-slate-900/30 group-hover:bg-slate-900/10 transition-colors flex items-center justify-center">
-                      <span className="px-4 py-2 bg-slate-900/90 text-white font-bold text-xs rounded-full backdrop-blur-md shadow-lg flex items-center gap-1.5 group-hover:scale-105 transition">
+                    <div className="absolute inset-0 bg-[#333333]/30 group-hover:bg-[#333333]/10 transition-colors flex items-center justify-center">
+                      <span className="px-4 py-2 bg-[#333333]/90 text-white font-bold text-xs rounded-full backdrop-blur-md shadow-lg flex items-center gap-1.5 group-hover:scale-105 transition">
                         <FileText className="w-3.5 h-3.5 text-emerald-400" /> Click to Expand Certificate
                       </span>
                     </div>

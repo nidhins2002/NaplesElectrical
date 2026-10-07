@@ -4,7 +4,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getServiceBySlug, getAllSlugs } from "@/lib/services";
 import ServicePageWrapper from "@/components/ServicePageWrapper";
-import { Check, Phone, ArrowUpRight, ShieldCheck, Zap, HelpCircle } from "lucide-react";
+import { Check, Phone, MessageSquare, ArrowUpRight, ShieldCheck, Zap, HelpCircle } from "lucide-react";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -145,10 +145,17 @@ export default async function ServiceDetailPage({ params }: Props) {
                 </Link>
                 <a
                   href="tel:+12394841808"
-                  className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl font-bold text-slate-900 bg-slate-100 hover:bg-slate-200 border border-slate-300 transition-all duration-200"
+                  className="inline-flex items-center justify-center px-5 py-3.5 rounded-xl font-bold text-slate-900 bg-slate-100 hover:bg-slate-200 border border-slate-300 transition-all duration-200"
                 >
                   <Phone className="w-4 h-4 mr-2 text-amber-600" />
                   Call (239) 484-1808
+                </a>
+                <a
+                  href="sms:+12394841808"
+                  className="inline-flex items-center justify-center px-5 py-3.5 rounded-xl font-bold text-slate-900 bg-slate-100 hover:bg-slate-200 border border-slate-300 transition-all duration-200"
+                >
+                  <MessageSquare className="w-4 h-4 mr-2 text-amber-600" />
+                  Text Us
                 </a>
               </div>
             </div>
@@ -161,8 +168,8 @@ export default async function ServiceDetailPage({ params }: Props) {
                 priority
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
-              <div className="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-slate-900/90 border border-slate-800 text-white backdrop-blur-md">
+              <div className="absolute inset-0 bg-gradient-to-t from-[#333333]/70 via-transparent to-transparent"></div>
+              <div className="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-[#333333]/90 border border-white/10 text-white backdrop-blur-md">
                 <div className="flex items-center justify-between text-xs">
                   <span className="flex items-center gap-1.5 text-amber-400 font-bold">
                     <ShieldCheck className="w-4 h-4 text-amber-400" />
@@ -268,7 +275,7 @@ export default async function ServiceDetailPage({ params }: Props) {
           </section>
 
           {/* Bottom Call to Action */}
-          <section className="relative overflow-hidden rounded-3xl bg-slate-900 text-white p-8 sm:p-12 text-center shadow-xl">
+          <section className="relative overflow-hidden rounded-3xl bg-[#333333] text-white p-8 sm:p-12 text-center shadow-xl">
             <div className="relative z-10 max-w-3xl mx-auto space-y-6">
               <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
                 Ready to Schedule {service.title}?
@@ -286,10 +293,17 @@ export default async function ServiceDetailPage({ params }: Props) {
                 </Link>
                 <a
                   href="tel:+12394841808"
-                  className="inline-flex items-center justify-center px-8 py-4 rounded-xl font-bold text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 transition-all duration-200"
+                  className="inline-flex items-center justify-center px-7 py-4 rounded-xl font-bold text-white bg-[#444444] hover:bg-[#555555] border border-white/10 transition-all duration-200"
                 >
                   <Phone className="w-4 h-4 mr-2 text-amber-400" />
                   Call (239) 484-1808
+                </a>
+                <a
+                  href="sms:+12394841808"
+                  className="inline-flex items-center justify-center px-7 py-4 rounded-xl font-bold text-white bg-[#444444] hover:bg-[#555555] border border-white/10 transition-all duration-200"
+                >
+                  <MessageSquare className="w-4 h-4 mr-2 text-amber-400" />
+                  Text Us
                 </a>
               </div>
               <p className="text-xs text-slate-400 pt-2">

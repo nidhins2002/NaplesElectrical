@@ -114,7 +114,7 @@ export default function EvChargerProcess({ onOpenQuote }: EvChargerProcessProps)
 
           {/* Right Column: EV Charger Image */}
           <div className="lg:col-span-5">
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-800 bg-slate-950">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-white/10 bg-[#333333]">
               <Image
                 src="/images/ev-charger.jpg"
                 alt="EV Charger Installation Naples FL"
@@ -122,8 +122,8 @@ export default function EvChargerProcess({ onOpenQuote }: EvChargerProcessProps)
                 height={550}
                 className="w-full h-[280px] sm:h-[380px] lg:h-[550px] object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80" />
-              <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-slate-900/90 backdrop-blur-md border border-slate-700">
+              <div className="absolute inset-0 bg-gradient-to-t from-[#333333] via-transparent to-transparent opacity-80" />
+              <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-[#333333]/90 backdrop-blur-md border border-white/10">
                 <div className="flex items-center gap-3">
                   <CheckCircle2 className="w-6 h-6 text-amber-400 shrink-0" />
                   <div className="text-xs sm:text-sm text-slate-200 font-medium">

@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { Phone, ArrowRight, MapPin, Zap } from "lucide-react";
+import { Phone, MessageSquare, ArrowRight, MapPin, Zap } from "lucide-react";
 
 interface CtaBannerProps {
   onOpenQuote: () => void;
@@ -21,7 +21,7 @@ export default function CtaBanner({ onOpenQuote }: CtaBannerProps) {
               fill
               className="object-cover object-center"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-slate-950/96 via-slate-950/80 to-slate-950/40" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#333333]/96 via-[#333333]/85 to-[#333333]/40" />
           </div>
 
           {/* Content */}
@@ -44,17 +44,25 @@ export default function CtaBanner({ onOpenQuote }: CtaBannerProps) {
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-4">
                 <a
                   href="tel:+12394841808"
-                  className="inline-flex items-center justify-center gap-3 px-7 sm:px-8 py-4 bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-base rounded-full shadow-xl shadow-amber-500/25 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+                  className="inline-flex items-center justify-center gap-3 px-6 sm:px-7 py-4 bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-base rounded-full shadow-xl shadow-amber-500/25 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
                 >
                   <Phone className="w-5 h-5 fill-slate-950" />
                   <span>Call (239) 484-1808</span>
                 </a>
 
+                <a
+                  href="sms:+12394841808"
+                  className="inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-4 bg-[#444444] hover:bg-[#555555] text-white font-bold text-base rounded-full border border-white/10 hover:border-amber-400 transition-all duration-200"
+                >
+                  <MessageSquare className="w-5 h-5 text-amber-400" />
+                  <span>Text Us</span>
+                </a>
+
                 <button
                   onClick={onOpenQuote}
-                  className="inline-flex items-center justify-center gap-2 px-7 sm:px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-semibold text-base rounded-full border border-white/20 hover:border-white/40 transition-all duration-200"
+                  className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-semibold text-base rounded-full border border-white/20 hover:border-white/40 transition-all duration-200"
                 >
-                  <span>Request a Quote</span>
+                  <span>Request Quote</span>
                   <ArrowRight className="w-5 h-5" />
                 </button>
               </div>

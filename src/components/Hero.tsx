@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { ArrowRight, ShieldCheck, Users, Award, Zap, Phone, CheckCircle } from "lucide-react";
+import { ArrowRight, ShieldCheck, Users, Award, Zap, Phone, MessageSquare, CheckCircle } from "lucide-react";
 
 interface HeroProps {
   onOpenQuote: (service?: string) => void;
@@ -10,7 +10,7 @@ interface HeroProps {
 
 export default function Hero({ onOpenQuote }: HeroProps) {
   return (
-    <section className="relative bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white overflow-hidden py-10 sm:py-14 md:py-20 lg:py-24">
+    <section className="relative bg-gradient-to-b from-[#333333] via-[#222222] to-[#333333] text-white overflow-hidden py-10 sm:py-14 md:py-20 lg:py-24">
       {/* Background glow effects */}
       <div className="absolute top-1/4 left-1/4 w-64 sm:w-96 h-64 sm:h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 right-10 w-64 sm:w-96 h-64 sm:h-96 bg-slate-600/30 rounded-full blur-3xl pointer-events-none" />
@@ -129,12 +129,20 @@ export default function Hero({ onOpenQuote }: HeroProps) {
                       <div className="text-[10px] sm:text-xs text-slate-300 truncate">Fast Same-Day Service Available</div>
                     </div>
                   </div>
-                  <a
-                    href="tel:+12394841808"
-                    className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-amber-400 text-slate-950 font-bold text-xs rounded-lg hover:bg-amber-300 transition shrink-0"
-                  >
-                    <Phone className="w-3.5 h-3.5" /> Call Now
-                  </a>
+                  <div className="hidden sm:flex items-center gap-1.5 shrink-0">
+                    <a
+                      href="tel:+12394841808"
+                      className="flex items-center gap-1.5 px-3 py-1.5 bg-amber-400 text-slate-950 font-bold text-xs rounded-lg hover:bg-amber-300 transition"
+                    >
+                      <Phone className="w-3.5 h-3.5" /> Call
+                    </a>
+                    <a
+                      href="sms:+12394841808"
+                      className="flex items-center gap-1.5 px-3 py-1.5 bg-[#444444] text-white font-bold text-xs rounded-lg hover:bg-[#555555] border border-white/10 transition"
+                    >
+                      <MessageSquare className="w-3.5 h-3.5 text-amber-400" /> Text
+                    </a>
+                  </div>
                 </div>
               </div>
 

@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Phone, ArrowRight, Menu, X, Shield } from "lucide-react";
+import { Phone, MessageSquare, ArrowRight, Menu, X, Shield } from "lucide-react";
 
 interface HeaderProps {
   onOpenQuote: (service?: string) => void;
@@ -32,7 +32,7 @@ export default function Header({ onOpenQuote }: HeaderProps) {
   return (
     <>
       {/* Top Banner Notice */}
-      <div className="bg-slate-900 text-slate-300 text-xs py-3 px-4 border-b border-slate-800 hidden md:block">
+      <div className="bg-[#333333] text-slate-300 text-xs py-3 px-4 border-b border-white/10 hidden md:block">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-6">
             <span className="flex items-center gap-1.5 text-amber-400 font-semibold">
@@ -46,7 +46,15 @@ export default function Header({ onOpenQuote }: HeaderProps) {
               href="tel:+12394841808"
               className="font-bold text-amber-400 hover:text-amber-300 transition"
             >
-              Direct Line: (239) 484-1808
+              Call: (239) 484-1808
+            </a>
+            <span className="text-slate-500">•</span>
+            <a
+              href="sms:+12394841808"
+              className="font-bold text-amber-400 hover:text-amber-300 transition flex items-center gap-1"
+            >
+              <MessageSquare className="w-3 h-3 text-amber-400" />
+              Text Us
             </a>
           </div>
         </div>
@@ -103,13 +111,21 @@ export default function Header({ onOpenQuote }: HeaderProps) {
           </nav>
 
           {/* Action Buttons */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-3">
             <a
               href="tel:+12394841808"
-              className="text-xs font-bold text-slate-700 hover:text-amber-600 flex items-center gap-1.5"
+              className="text-xs font-bold text-slate-700 hover:text-amber-600 flex items-center gap-1.5 px-3 py-2 rounded-full border border-slate-200 hover:border-amber-400 transition"
             >
               <Phone className="w-3.5 h-3.5 text-amber-600" />
-              (239) 484-1808
+              Call (239) 484-1808
+            </a>
+            <a
+              href="sms:+12394841808"
+              className="text-xs font-bold text-slate-700 hover:text-amber-600 flex items-center gap-1.5 px-3 py-2 rounded-full border border-slate-200 hover:border-amber-400 bg-slate-50 transition"
+              title="Send Text/SMS Message"
+            >
+              <MessageSquare className="w-3.5 h-3.5 text-amber-600" />
+              Text Us
             </a>
             <button
               onClick={() => onOpenQuote()}
@@ -121,13 +137,20 @@ export default function Header({ onOpenQuote }: HeaderProps) {
           </div>
 
           {/* Mobile Action Controls */}
-          <div className="flex md:hidden items-center gap-2">
+          <div className="flex md:hidden items-center gap-1.5">
             <a
               href="tel:+12394841808"
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-amber-500 text-slate-950 font-bold text-xs rounded-full shadow-sm"
+              className="inline-flex items-center gap-1 px-3 py-1.5 bg-amber-500 text-slate-950 font-bold text-xs rounded-full shadow-sm"
             >
               <Phone className="w-3.5 h-3.5 fill-slate-950" />
               <span>Call</span>
+            </a>
+            <a
+              href="sms:+12394841808"
+              className="inline-flex items-center gap-1 px-3 py-1.5 bg-[#333333] text-white font-bold text-xs rounded-full shadow-sm border border-white/10"
+            >
+              <MessageSquare className="w-3.5 h-3.5 text-amber-400" />
+              <span>Text</span>
             </a>
 
             <button

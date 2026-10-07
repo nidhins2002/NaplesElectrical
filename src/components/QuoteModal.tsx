@@ -41,13 +41,13 @@ export default function QuoteModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-fadeIn">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#333333]/80 backdrop-blur-md animate-fadeIn">
       <div className="relative w-full max-w-xl bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-100">
         {/* Header bar */}
-        <div className="bg-slate-900 text-white p-6 relative">
+        <div className="bg-[#333333] text-white p-6 relative">
           <button
             onClick={resetAndClose}
-            className="absolute top-5 right-5 text-slate-400 hover:text-white p-2 rounded-full hover:bg-slate-800 transition"
+            className="absolute top-5 right-5 text-slate-400 hover:text-white p-2 rounded-full hover:bg-[#444444] transition"
           >
             <X className="w-5 h-5" />
           </button>

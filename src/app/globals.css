@@ -21,8 +21,8 @@
   :root {
     --brand-yellow: #ff6f00;
     --brand-yellow-hover: #e66400;
-    --brand-navy: #0b1329;
-    --brand-navy-light: #152243;
+    --brand-navy: #333333;
+    --brand-navy-light: #444444;
   }
 }
 
@@ -49,10 +49,10 @@
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #0f172a;
+  background: #222222;
 }
 ::-webkit-scrollbar-thumb {
-  background: #334155;
+  background: #444444;
   border-radius: 5px;
 }
 ::-webkit-scrollbar-thumb:hover {
