@@ -1,9 +1,11 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
+import dynamic from "next/dynamic";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import QuoteModal from "@/components/QuoteModal";
+
+const QuoteModal = dynamic(() => import("@/components/QuoteModal"), { ssr: false });
 
 interface ServicePageWrapperProps {
   children: React.ReactNode;
@@ -22,25 +24,27 @@ export default function ServicePageWrapper({
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   }, []);
 
-  const openQuote = (service?: string) => {
+  const openQuote = useCallback((service?: string) => {
     setSelectedService(service || serviceTitle);
     setQuoteOpen(true);
-  };
+  }, [serviceTitle]);
 
-  const closeQuote = () => {
+  const closeQuote = useCallback(() => {
     setQuoteOpen(false);
-  };
+  }, []);
 
   return (
     <>
       <Header onOpenQuote={openQuote} />
       {children}
-      <Footer onOpenQuote={() => openQuote()} />
-      <QuoteModal
-        isOpen={quoteOpen}
-        onClose={closeQuote}
-        defaultService={selectedService || serviceTitle}
-      />
+      <Footer onOpenQuote={openQuote} />
+      {quoteOpen && (
+        <QuoteModal
+          isOpen={quoteOpen}
+          onClose={closeQuote}
+          defaultService={selectedService || serviceTitle}
+        />
+      )}
     </>
   );
 }

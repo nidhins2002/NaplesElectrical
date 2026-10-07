@@ -169,27 +169,40 @@ async function fetchLiveReviews(): Promise<Review[]> {
   return reviews;
 }
 
+const CACHE_HEADERS = {
+  "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=43200",
+};
+
 export async function GET() {
   // Serve from cache if fresh
   if (cache && Date.now() - cache.fetchedAt < CACHE_TTL_MS) {
-    return NextResponse.json({ reviews: cache.data, source: "cache" });
+    return NextResponse.json(
+      { reviews: cache.data, source: "cache" },
+      { headers: CACHE_HEADERS }
+    );
   }
 
   try {
     const live = await fetchLiveReviews();
     const reviews = live.length >= 3 ? live : FALLBACK_REVIEWS;
     cache = { data: reviews, fetchedAt: Date.now() };
-    return NextResponse.json({
-      reviews,
-      source: live.length >= 3 ? "live" : "fallback",
-      total: reviews.length,
-    });
+    return NextResponse.json(
+      {
+        reviews,
+        source: live.length >= 3 ? "live" : "fallback",
+        total: reviews.length,
+      },
+      { headers: CACHE_HEADERS }
+    );
   } catch {
     if (!cache) cache = { data: FALLBACK_REVIEWS, fetchedAt: Date.now() };
-    return NextResponse.json({
-      reviews: cache.data,
-      source: "fallback",
-      total: cache.data.length,
-    });
+    return NextResponse.json(
+      {
+        reviews: cache.data,
+        source: "fallback",
+        total: cache.data.length,
+      },
+      { headers: CACHE_HEADERS }
+    );
   }
 }
