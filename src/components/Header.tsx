@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Phone, MessageSquare, ArrowRight, Menu, X, Shield } from "lucide-react";
+import { Phone, MessageSquare, ArrowRight, Menu, X, Shield, Zap } from "lucide-react";
 
 interface HeaderProps {
   onOpenQuote: (service?: string) => void;
@@ -129,10 +129,10 @@ export default function Header({ onOpenQuote }: HeaderProps) {
             </a>
             <button
               onClick={() => onOpenQuote()}
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-sm rounded-full shadow-md shadow-amber-400/20 hover:shadow-lg hover:shadow-amber-400/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+              className="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-400/10 hover:bg-amber-400/20 text-amber-600 font-bold text-xs rounded-full border border-amber-400/30 transition shadow-sm"
             >
+              <Zap className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
               <span>Get Free Quote</span>
-              <ArrowRight className="w-4 h-4" />
             </button>
           </div>
 
@@ -177,10 +177,10 @@ export default function Header({ onOpenQuote }: HeaderProps) {
                   setMobileMenuOpen(false);
                   onOpenQuote();
                 }}
-                className="w-full py-3 bg-amber-500  text-slate-950 font-bold text-center rounded-xl shadow-md flex items-center justify-center gap-2"
+                className="w-full py-3 bg-amber-400/10 hover:bg-amber-400/20 text-amber-600 font-bold text-sm text-center rounded-full border border-amber-400/30 flex items-center justify-center gap-2 transition"
               >
-                <span>Get a Free Quote</span>
-                <ArrowRight className="w-4 h-4" />
+                <Zap className="w-4 h-4 text-amber-500 fill-amber-500" />
+                <span>Get Free Quote</span>
               </button>
             </div>
           </div>

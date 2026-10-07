@@ -80,7 +80,7 @@ export default function Hero({ onOpenQuote }: HeroProps) {
             </div>
 
             {/* Trust Badges Bar */}
-            <div className="pt-6 sm:pt-8 border-t border-slate-800/80 grid grid-cols-3 gap-3 sm:gap-6 max-w-2xl">
+            <div className="pt-6 sm:pt-8 border-t border-slate-800/80 grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-6 max-w-2xl">
               <a
                 href="#why-us"
                 className="flex items-center gap-2 sm:gap-3 group cursor-pointer"
@@ -109,7 +109,7 @@ export default function Hero({ onOpenQuote }: HeroProps) {
 
               <a
                 href="#why-us"
-                className="flex items-center gap-2 sm:gap-3 group cursor-pointer"
+                className="hidden sm:flex items-center gap-2 sm:gap-3 group cursor-pointer"
               >
                 <div className="p-2 sm:p-2.5 rounded-xl bg-amber-400/15 text-amber-400 border border-amber-400/30 shrink-0 group-hover:bg-amber-400 group-hover:text-slate-950 transition-colors">
                   <Users className="w-4 h-4 sm:w-5 sm:h-5 text-amber-400 group-hover:text-slate-950" />
