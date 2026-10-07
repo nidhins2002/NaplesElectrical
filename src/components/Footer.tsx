@@ -48,8 +48,10 @@ export default function Footer({ onOpenQuote }: FooterProps) {
     "Marco Island, FL",
     "Bonita Springs, FL",
     "Estero, FL",
-    "Golden Gate, FL",
+    "Ave Maria, FL",
+    "Fort Myers, FL",
     "Collier County, FL",
+    "Lee County, FL",
   ];
 
   return (
@@ -60,20 +62,21 @@ export default function Footer({ onOpenQuote }: FooterProps) {
 
           {/* Brand Column */}
           <div className="lg:col-span-1 space-y-5">
-            {/* Logo */}
-            <div className="flex items-center gap-2">
-              <div className="relative w-[44px] h-[44px] shrink-0">
+            {/* Logo (Increased Size for Clear Visibility) */}
+            <div className="flex items-center gap-3">
+              <div className="relative w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] shrink-0">
                 <NextImage
                   src="/Logo.png"
                   alt="Naples Electrical Logo"
-                  width={44}
-                  height={44}
-                  className="object-contain"
+                  width={100}
+                  height={100}
+                  className="object-contain w-full h-full"
+                  priority
                 />
               </div>
-              <div>
-                <div className="font-brand text-xl font-black text-white tracking-tight leading-none">NAPLES</div>
-                <div className="font-brand text-[10px] font-extrabold tracking-[0.28em] text-slate-400 uppercase mt-0.5">ELECTRICAL</div>
+              <div className="flex flex-col">
+                <span className="font-brand text-2xl sm:text-3xl font-black text-amber-500 tracking-tight leading-none">NAPLES</span>
+                <span className="font-brand text-[10px] sm:text-xs font-extrabold tracking-[0.25em] text-amber-400 uppercase mt-1">ELECTRICAL</span>
               </div>
             </div>
 

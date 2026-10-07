@@ -38,7 +38,7 @@ export default function Header({ onOpenQuote }: HeaderProps) {
             <span className="flex items-center gap-1.5 text-amber-400 font-semibold">
               <Shield className="w-3.5 h-3.5" /> Licensed, Bonded & Insured (#EC13016758)
             </span>
-            <span>Serving Naples, Marco Island & Collier County</span>
+            <span>Serving Naples, Marco Island, Fort Myers, Collier & Lee County</span>
           </div>
           <div className="flex items-center gap-4">
             <span>24/7 Emergency Service Available</span>
@@ -137,22 +137,7 @@ export default function Header({ onOpenQuote }: HeaderProps) {
           </div>
 
           {/* Mobile Action Controls */}
-          <div className="flex md:hidden items-center gap-1.5">
-            <a
-              href="tel:+12394841808"
-              className="inline-flex items-center gap-1 px-3 py-1.5 bg-amber-500 text-slate-950 font-bold text-xs rounded-full shadow-sm"
-            >
-              <Phone className="w-3.5 h-3.5 fill-slate-950" />
-              <span>Call</span>
-            </a>
-            <a
-              href="sms:+12394841808"
-              className="inline-flex items-center gap-1 px-3 py-1.5 bg-[#333333] text-white font-bold text-xs rounded-full shadow-sm border border-white/10"
-            >
-              <MessageSquare className="w-3.5 h-3.5 text-amber-400" />
-              <span>Text</span>
-            </a>
-
+          <div className="flex md:hidden items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 text-slate-700 hover:text-slate-950 focus:outline-none"

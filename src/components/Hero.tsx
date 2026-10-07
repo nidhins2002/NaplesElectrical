@@ -40,22 +40,41 @@ export default function Hero({ onOpenQuote }: HeroProps) {
               Safe, reliable and high-quality electrical services for homes and businesses. From small repairs to complete installations, Naples Electrical is here to keep your property powered and safe.
             </p>
 
-            {/* CTAs */}
-            <div className="flex flex-col xs:flex-row flex-wrap items-stretch xs:items-center gap-3 pt-1">
+            {/* Primary CTAs (Side by side on the same line, matching theme) */}
+            <div className="flex flex-row items-center gap-2.5 sm:gap-3 pt-1">
               <button
                 onClick={() => onOpenQuote()}
-                className="px-6 sm:px-8 py-3.5 sm:py-4 bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-sm sm:text-base rounded-full shadow-lg shadow-amber-400/25 hover:shadow-amber-400/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-3"
+                className="flex-1 sm:flex-initial px-4 sm:px-6 py-2.5 sm:py-3 bg-amber-400/10 hover:bg-amber-400/20 text-amber-400 font-bold text-xs sm:text-sm rounded-full border border-amber-400/30 transition flex items-center justify-center gap-1.5 sm:gap-2"
               >
-                <span>Get a Free Quote</span>
-                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                <Zap className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400 fill-amber-400" />
+                <span>Get Free Quote</span>
               </button>
 
               <a
                 href="#services"
-                className="px-6 sm:px-8 py-3.5 sm:py-4 bg-slate-900/80 hover:bg-slate-800 text-white font-semibold text-sm sm:text-base rounded-full border border-slate-700 hover:border-slate-500 transition-all duration-200 flex items-center justify-center gap-2"
+                className="flex-1 sm:flex-initial px-4 sm:px-6 py-2.5 sm:py-3 bg-white/5 hover:bg-white/10 text-white font-bold text-xs sm:text-sm rounded-full border border-white/10 hover:border-white/20 transition flex items-center justify-center gap-1.5 sm:gap-2"
               >
+                <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-300" />
                 <span>Our Services</span>
-                <ArrowRight className="w-4 h-4 text-slate-400" />
+              </a>
+            </div>
+
+            {/* Quick Contact Buttons (Call & Text side by side on the same line, matching theme) */}
+            <div className="flex flex-row items-center gap-2.5 sm:gap-3 pt-1">
+              <a
+                href="tel:+12394841808"
+                className="flex-1 sm:flex-initial px-4 sm:px-6 py-2.5 sm:py-3 bg-amber-400/10 hover:bg-amber-400/20 text-amber-400 font-bold text-xs sm:text-sm rounded-full border border-amber-400/30 transition flex items-center justify-center gap-1.5 sm:gap-2"
+              >
+                <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400" />
+                <span>Call</span>
+              </a>
+
+              <a
+                href="sms:+12394841808"
+                className="flex-1 sm:flex-initial px-4 sm:px-6 py-2.5 sm:py-3 bg-white/5 hover:bg-white/10 text-white font-bold text-xs sm:text-sm rounded-full border border-white/10 hover:border-white/20 transition flex items-center justify-center gap-1.5 sm:gap-2"
+              >
+                <MessageSquare className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400" />
+                <span>Text</span>
               </a>
             </div>
 
