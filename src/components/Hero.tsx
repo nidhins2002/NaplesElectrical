@@ -137,7 +137,7 @@ export default function Hero({ onOpenQuote }: HeroProps) {
                   alt="Professional Electrician in Naples FL"
                   width={700}
                   height={500}
-                  className="w-full h-[260px] xs:h-[300px] sm:h-[380px] md:h-[420px] lg:h-[460px] object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-[260px] xs:h-[300px] sm:h-[380px] md:h-[420px] lg:h-[460px] object-cover object-top group-hover:scale-105 transition-transform duration-700"
                   priority
                 />
 
