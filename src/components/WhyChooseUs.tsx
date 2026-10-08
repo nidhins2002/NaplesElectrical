@@ -202,21 +202,21 @@ export default function WhyChooseUs({ onOpenQuote }: WhyChooseUsProps) {
                   />
 
                   {/* Floating Badge overlay */}
-                  <div className="absolute top-6 right-6 bg-white/95 backdrop-blur-md px-5 py-3.5 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3">
-                    <div className="flex -space-x-1">
+                  <div className="absolute top-3 right-3 sm:top-6 sm:right-6 bg-white/95 backdrop-blur-md px-3 sm:px-5 py-2 sm:py-3.5 rounded-xl sm:rounded-2xl shadow-lg border border-slate-100 flex items-center gap-1.5 sm:gap-3">
+                    <div className="flex -space-x-0.5 sm:-space-x-1">
                       {[1, 2, 3, 4, 5].map((i) => (
-                        <Star key={i} className="w-4 h-4 text-amber-400 fill-amber-400" />
+                        <Star key={i} className="w-3 h-3 sm:w-4 sm:h-4 text-amber-400 fill-amber-400" />
                       ))}
                     </div>
-                    <span className="text-xs font-bold text-slate-900">5-Star Rated Service</span>
+                    <span className="text-[10px] sm:text-xs font-extrabold text-slate-900 whitespace-nowrap">5-Star Rated</span>
                   </div>
                 </div>
 
                 {/* Floating Stat Card */}
-                <div className="absolute -bottom-5 left-2 sm:-bottom-6 sm:left-6 bg-[#333333] text-white p-4 sm:p-6 rounded-2xl shadow-xl max-w-[200px] sm:max-w-xs border border-white/10">
-                  <div className="text-2xl sm:text-3xl font-black text-amber-400">15+ Years</div>
-                  <div className="text-xs text-slate-300 font-medium mt-1">
-                    Trusted Electrical Experience in Naples, Florida
+                <div className="absolute -bottom-4 left-3 sm:-bottom-6 sm:left-6 bg-slate-900/95 backdrop-blur-md text-white p-2.5 sm:p-5 rounded-xl sm:rounded-2xl shadow-xl max-w-[140px] xs:max-w-[170px] sm:max-w-xs border border-slate-700/80">
+                  <div className="text-lg sm:text-3xl font-black text-amber-400">15+ Years</div>
+                  <div className="text-[10px] sm:text-xs text-slate-300 font-medium mt-0.5 leading-tight">
+                    Trusted Electrical Experience in Naples
                   </div>
                 </div>
 
