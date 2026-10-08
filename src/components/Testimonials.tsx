@@ -1,23 +1,23 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 
 export default function Testimonials() {
-  useEffect(() => {
-    // Remove old trustindex script if present
-    const oldScript = document.getElementById("trustindex-loader-script");
-    if (oldScript) {
-      oldScript.remove();
-    }
+  const containerRef = useRef<HTMLDivElement>(null);
 
-    // Inject new Trustindex loader script dynamically
-    const scriptId = "trustindex-loader-script";
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    // Clear any previous elements in the container
+    containerRef.current.innerHTML = "";
+
+    // Append script directly into this container so Trustindex renders inside the section
     const script = document.createElement("script");
-    script.id = scriptId;
     script.src = "https://cdn.trustindex.io/loader.js?4db23c179290959012162a97e7c";
     script.defer = true;
     script.async = true;
-    document.body.appendChild(script);
+
+    containerRef.current.appendChild(script);
   }, []);
 
   return (
@@ -38,8 +38,7 @@ export default function Testimonials() {
 
         {/* Trustindex Live Widget Container */}
         <div className="min-h-[280px] w-full flex justify-center">
-          {/* @ts-ignore - Trustindex widget container tag */}
-          <div src="https://cdn.trustindex.io/loader.js?4db23c179290959012162a97e7c" className="w-full"></div>
+          <div ref={containerRef} className="w-full text-center" />
         </div>
       </div>
     </section>
