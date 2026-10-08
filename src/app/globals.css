@@ -60,5 +60,5 @@
 }
 
 .font-brand {
-  font-family: var(--font-outfit), var(--font-jakarta), system-ui, sans-serif;
+  font-family: "Amsi Pro", "AmsiPro", "Amsi Pro Ultra", "Amsi Pro Bold", var(--font-outfit), var(--font-jakarta), system-ui, sans-serif;
 }
