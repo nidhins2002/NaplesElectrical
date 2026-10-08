@@ -128,7 +128,7 @@ export default function Hero({ onOpenQuote }: HeroProps) {
             <div className="relative mx-auto max-w-sm sm:max-w-md lg:max-w-none">
 
               {/* Outer Glow / Frame */}
-              <div className="absolute -inset-2 bg-gradient-to-r from-amber-400/30 to-slate-700 rounded-3xl blur-lg opacity-30" />
+              <div className="absolute -inset-2 bg-gradient-to-r from-amber-400/30 to-slate-700 rounded-3xl blur-lg opacity-30 pointer-events-none" />
 
               {/* Image Container */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-700/80 bg-slate-900 group">
@@ -137,12 +137,12 @@ export default function Hero({ onOpenQuote }: HeroProps) {
                   alt="Professional Electrician in Naples FL"
                   width={700}
                   height={500}
-                  className="w-full h-[260px] xs:h-[300px] sm:h-[380px] md:h-[420px] lg:h-[460px] object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-auto max-h-[500px] object-contain group-hover:scale-105 transition-transform duration-700"
                   priority
                 />
 
-                {/* Overlay Badge */}
-                <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4 bg-slate-950/85 backdrop-blur-md p-3 sm:p-4 rounded-xl border border-slate-800 flex items-center justify-between gap-2">
+                {/* Overlay Badge ON the image */}
+                <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4 bg-slate-950/85 backdrop-blur-md p-3 sm:p-3.5 rounded-xl border border-slate-800 flex items-center justify-between gap-2 shadow-lg">
                   <div className="flex items-center gap-2 sm:gap-3 min-w-0">
                     <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-amber-400 text-slate-950 font-bold flex items-center justify-center shrink-0 shadow-sm">
                       <CheckCircle className="w-4 h-4 sm:w-6 sm:h-6" />
