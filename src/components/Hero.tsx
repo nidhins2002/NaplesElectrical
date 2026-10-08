@@ -131,13 +131,13 @@ export default function Hero({ onOpenQuote }: HeroProps) {
               <div className="absolute -inset-2 bg-gradient-to-r from-amber-400/30 to-slate-700 rounded-3xl blur-lg opacity-30 pointer-events-none" />
 
               {/* Image Container */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-700/80 bg-slate-900 group">
+              <div className="relative w-fit mx-auto rounded-2xl overflow-hidden shadow-2xl border border-slate-700/80 bg-slate-900 group">
                 <Image
                   src="/images/hero-electrician.jpg"
                   alt="Professional Electrician in Naples FL"
                   width={700}
                   height={500}
-                  className="w-full h-auto max-h-[500px] object-contain group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-auto max-h-[500px] block group-hover:scale-105 transition-transform duration-700"
                   priority
                 />
 
