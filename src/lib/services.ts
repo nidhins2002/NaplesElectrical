@@ -407,7 +407,7 @@ export const SERVICES: ServiceData[] = [
     slug: "surge-protection",
     title: "Whole‑Home Surge Protection",
     tagline: "Protect your delicate home appliances and luxury electronics against Southwest Florida lightning strikes.",
-    heroImage: "/images/panel-upgrades.jpg",
+    heroImage: "/images/surge-protection.jpg",
     badge: "Lightning Capital Defense",
     category: "residential",
     metaTitle: "Whole‑Home Surge Protection Naples FL | Main Panel Surge Protectors",

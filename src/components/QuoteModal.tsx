@@ -139,11 +139,10 @@ export default function QuoteModal({
                           key={type}
                           type="button"
                           onClick={() => setPropertyType(type)}
-                          className={`py-3 px-4 rounded-full font-bold border text-sm transition flex items-center justify-center gap-2 ${
-                            propertyType === type
+                          className={`py-3 px-4 rounded-full font-bold border text-sm transition flex items-center justify-center gap-2 ${propertyType === type
                               ? "bg-amber-400/10 text-amber-600 border-amber-400/30 shadow-sm"
                               : "bg-slate-50 text-slate-600 border-slate-200 hover:border-slate-300 font-medium"
-                          }`}
+                            }`}
                         >
                           {type}
                         </button>
@@ -163,11 +162,10 @@ export default function QuoteModal({
                       ].map((time) => (
                         <label
                           key={time}
-                          className={`flex items-center gap-3 p-3 rounded-xl border text-sm font-medium cursor-pointer transition ${
-                            urgency === time
+                          className={`flex items-center gap-3 p-3 rounded-xl border text-sm font-medium cursor-pointer transition ${urgency === time
                               ? "bg-amber-50/80 border-amber-400 text-slate-900"
                               : "bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100/70"
-                          }`}
+                            }`}
                         >
                           <input
                             type="radio"
@@ -243,7 +241,7 @@ export default function QuoteModal({
 
                   <div>
                     <label className="block text-xs font-semibold text-slate-700 mb-1">
-                      Naples Area / Address
+                      Address
                     </label>
                     <input
                       type="text"
