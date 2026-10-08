@@ -194,11 +194,11 @@ export default function WhyChooseUs({ onOpenQuote }: WhyChooseUsProps) {
                 {/* Main Image */}
                 <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200">
                   <Image
-                    src="/images/hero-electrician.jpg"
-                    alt="Quality Electrical Work Naples FL"
+                    src="/images/why-choose-us-van.jpg"
+                    alt="Naples Electrical Service Van and Owner"
                     width={600}
                     height={500}
-                    className="w-full h-[280px] sm:h-[380px] md:h-[480px] object-cover"
+                    className="w-full h-[280px] sm:h-[380px] md:h-[480px] object-cover object-center"
                   />
 
                   {/* Floating Badge overlay */}
