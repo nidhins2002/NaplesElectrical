@@ -275,12 +275,12 @@ export default async function ServiceDetailPage({ params }: Props) {
           </section>
 
           {/* Bottom Call to Action */}
-          <section className="relative overflow-hidden rounded-3xl bg-[#333333] text-white p-8 sm:p-12 text-center shadow-xl">
+          <section className="relative overflow-hidden rounded-3xl bg-slate-900 text-white p-8 sm:p-12 text-center shadow-2xl border border-slate-800">
             <div className="relative z-10 max-w-3xl mx-auto space-y-6">
               <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
                 Ready to Schedule {service.title}?
               </h2>
-              <p className="text-slate-300 text-base sm:text-lg leading-relaxed">
+              <p className="text-slate-300 text-base sm:text-lg leading-relaxed font-normal">
                 Get upfront pricing, fast scheduling, and guaranteed code-compliant electrical work across Naples, Marco Island, and Bonita Springs.
               </p>
               <div className="pt-2 flex flex-col sm:flex-row justify-center gap-3">
@@ -293,14 +293,14 @@ export default async function ServiceDetailPage({ params }: Props) {
                 </Link>
                 <a
                   href="tel:+12394841808"
-                  className="inline-flex items-center justify-center px-6 py-3 bg-white/5 hover:bg-white/10 text-white font-bold text-xs sm:text-sm rounded-full border border-white/10 hover:border-white/20 transition gap-1.5"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-white/10 hover:bg-white/15 text-white font-bold text-xs sm:text-sm rounded-full border border-white/20 transition gap-1.5"
                 >
                   <Phone className="w-4 h-4 text-amber-400" />
                   <span>Call (239) 484-1808</span>
                 </a>
                 <a
                   href="sms:+12394841808"
-                  className="inline-flex items-center justify-center px-6 py-3 bg-white/5 hover:bg-white/10 text-white font-bold text-xs sm:text-sm rounded-full border border-white/10 hover:border-white/20 transition gap-1.5"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-white/10 hover:bg-white/15 text-white font-bold text-xs sm:text-sm rounded-full border border-white/20 transition gap-1.5"
                 >
                   <MessageSquare className="w-4 h-4 text-amber-400" />
                   <span>Text Us</span>

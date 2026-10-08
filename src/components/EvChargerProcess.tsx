@@ -42,9 +42,9 @@ export default function EvChargerProcess({ onOpenQuote }: EvChargerProcessProps)
   ];
 
   return (
-    <section className="py-14 sm:py-20 lg:py-28 bg-slate-900 text-white relative overflow-hidden">
+    <section className="py-14 sm:py-20 lg:py-28 bg-slate-900 text-white relative overflow-hidden border-y border-slate-800">
       {/* Background accents */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-slate-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-amber-400/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-16 items-center">
@@ -68,7 +68,7 @@ export default function EvChargerProcess({ onOpenQuote }: EvChargerProcessProps)
             <div className="space-y-6 pt-2">
               {steps.map((step) => (
                 <div key={step.num} className="flex gap-5 group">
-                  <div className="w-10 h-10 rounded-full bg-slate-600 text-white font-extrabold text-base flex items-center justify-center shrink-0 shadow-lg shadow-slate-600/30 group-hover:bg-amber-400 group-hover:text-slate-950 transition-colors">
+                  <div className="w-10 h-10 rounded-full bg-slate-800 border border-slate-700 text-white font-extrabold text-base flex items-center justify-center shrink-0 shadow-sm group-hover:bg-amber-400 group-hover:text-slate-950 transition-colors">
                     {step.num}
                   </div>
                   <div>
@@ -114,7 +114,7 @@ export default function EvChargerProcess({ onOpenQuote }: EvChargerProcessProps)
 
           {/* Right Column: EV Charger Image */}
           <div className="lg:col-span-5">
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-white/10 bg-[#333333]">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-800 bg-slate-900">
               <Image
                 src="/images/ev-charger.jpg"
                 alt="EV Charger Installation Naples FL"
@@ -122,8 +122,8 @@ export default function EvChargerProcess({ onOpenQuote }: EvChargerProcessProps)
                 height={550}
                 className="w-full h-[280px] sm:h-[380px] lg:h-[550px] object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#333333] via-transparent to-transparent opacity-80" />
-              <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-[#333333]/90 backdrop-blur-md border border-white/10">
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80" />
+              <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-slate-950/85 backdrop-blur-md border border-slate-800">
                 <div className="flex items-center gap-3">
                   <CheckCircle2 className="w-6 h-6 text-amber-400 shrink-0" />
                   <div className="text-xs sm:text-sm text-slate-200 font-medium">

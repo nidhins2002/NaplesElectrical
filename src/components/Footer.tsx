@@ -55,14 +55,14 @@ export default function Footer({ onOpenQuote }: FooterProps) {
   ];
 
   return (
-    <footer id="contact" className="bg-[#333333] text-slate-300 border-t border-white/10">
+    <footer id="contact" className="bg-slate-900 text-slate-300 border-t border-slate-800">
       {/* Main Footer Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
 
           {/* Brand Column */}
           <div className="lg:col-span-1 space-y-5">
-            {/* Logo (Increased Size for Clear Visibility) */}
+            {/* Logo */}
             <div className="flex items-center gap-3">
               <div className="relative w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] shrink-0">
                 <NextImage
@@ -90,7 +90,7 @@ export default function Footer({ onOpenQuote }: FooterProps) {
                 href="tel:+12394841808"
                 className="flex items-center gap-3 text-sm font-semibold text-white hover:text-amber-400 transition"
               >
-                <div className="p-2 rounded-lg bg-[#444444] border border-white/10 shrink-0">
+                <div className="p-2 rounded-lg bg-slate-800 border border-slate-700 shrink-0">
                   <Phone className="w-4 h-4 text-amber-400" />
                 </div>
                 (239) 484-1808
@@ -100,14 +100,14 @@ export default function Footer({ onOpenQuote }: FooterProps) {
                 href="mailto:info@napleselectrical.com"
                 className="flex items-center gap-3 text-sm font-semibold text-slate-300 hover:text-amber-400 transition"
               >
-                <div className="p-2 rounded-lg bg-[#444444] border border-white/10 shrink-0">
+                <div className="p-2 rounded-lg bg-slate-800 border border-slate-700 shrink-0">
                   <Mail className="w-4 h-4 text-amber-400" />
                 </div>
                 info@napleselectrical.com
               </a>
 
               <div className="flex items-start gap-3 text-sm text-slate-400">
-                <div className="p-2 rounded-lg bg-[#444444] border border-white/10 shrink-0 mt-0.5">
+                <div className="p-2 rounded-lg bg-slate-800 border border-slate-700 shrink-0 mt-0.5">
                   <MapPin className="w-4 h-4 text-amber-400" />
                 </div>
                 <span>Naples, FL 34102<br />Collier County, Florida</span>
@@ -120,7 +120,7 @@ export default function Footer({ onOpenQuote }: FooterProps) {
                 <a
                   key={i}
                   href="#"
-                  className="p-2.5 rounded-xl bg-[#444444] hover:bg-amber-400 border border-white/10 hover:border-amber-400 text-slate-400 hover:text-slate-950 transition-all"
+                  className="p-2.5 rounded-xl bg-slate-800 hover:bg-amber-400 border border-slate-700 hover:border-amber-400 text-slate-400 hover:text-slate-950 transition-all"
                 >
                   <Icon />
                 </a>
@@ -136,7 +136,7 @@ export default function Footer({ onOpenQuote }: FooterProps) {
                 <li key={s}>
                   <button
                     onClick={onOpenQuote}
-                    className="text-sm text-slate-400 hover:text-amber-400 transition flex items-center gap-2 group"
+                    className="text-sm text-slate-400 hover:text-amber-400 transition flex items-center gap-2 group text-left"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-slate-600 group-hover:bg-amber-400 transition" />
                     {s}
@@ -179,7 +179,7 @@ export default function Footer({ onOpenQuote }: FooterProps) {
             <div className="flex gap-2.5">
               <a
                 href="tel:+12394841808"
-                className="flex-1 py-3 px-4 bg-white/5 hover:bg-white/10 text-white font-bold text-sm rounded-full border border-white/10 hover:border-white/20 transition flex items-center justify-center gap-1.5"
+                className="flex-1 py-3 px-4 bg-white/10 hover:bg-white/15 text-white font-bold text-sm rounded-full border border-white/20 transition flex items-center justify-center gap-1.5"
               >
                 <Phone className="w-4 h-4 text-amber-400" />
                 Call
@@ -187,7 +187,7 @@ export default function Footer({ onOpenQuote }: FooterProps) {
 
               <a
                 href="sms:+12394841808"
-                className="flex-1 py-3 px-4 bg-white/5 hover:bg-white/10 text-white font-bold text-sm rounded-full border border-white/10 hover:border-white/20 transition flex items-center justify-center gap-1.5"
+                className="flex-1 py-3 px-4 bg-white/10 hover:bg-white/15 text-white font-bold text-sm rounded-full border border-white/20 transition flex items-center justify-center gap-1.5"
               >
                 <MessageSquare className="w-4 h-4 text-amber-400" />
                 Text Us
@@ -195,7 +195,7 @@ export default function Footer({ onOpenQuote }: FooterProps) {
             </div>
 
             {/* License Badge */}
-            <div className="bg-[#282828] border border-white/10 rounded-xl p-4">
+            <div className="bg-slate-800/80 border border-slate-700 rounded-xl p-4">
               <div className="text-xs text-slate-400 font-semibold uppercase tracking-wider mb-1">State Licensed</div>
               <div className="text-sm font-bold text-white">#EC13016758</div>
               <div className="text-xs text-slate-400 mt-1">Licensed Electrical Contractor<br />State of Florida</div>
@@ -206,7 +206,7 @@ export default function Footer({ onOpenQuote }: FooterProps) {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-white/10 py-5 px-4 sm:px-6 lg:px-8">
+      <div className="border-t border-slate-800 py-5 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-slate-500">
           <p>
             © {new Date().getFullYear()} Naples Electrical. All rights reserved. Serving Naples, FL and surrounding areas.

@@ -32,23 +32,23 @@ export default function Header({ onOpenQuote }: HeaderProps) {
   return (
     <>
       {/* Top Banner Notice */}
-      <div className="bg-[#333333] text-slate-300 text-xs py-3 px-4 border-b border-white/10 hidden md:block">
+      <div className="bg-slate-900 text-slate-300 text-xs py-2.5 px-4 border-b border-slate-800 hidden md:block">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-6">
-            <span className="flex items-center gap-1.5 text-amber-400 font-semibold">
-              <Shield className="w-3.5 h-3.5" /> Licensed, Bonded & Insured (#EC13016758)
+            <span className="flex items-center gap-1.5 text-amber-400 font-bold">
+              <Shield className="w-3.5 h-3.5 text-amber-400" /> Licensed, Bonded & Insured (#EC13016758)
             </span>
             <span>Serving Naples, Marco Island, Fort Myers, Collier & Lee County</span>
           </div>
           <div className="flex items-center gap-4">
-            <span>24/7 Emergency Service Available</span>
+            <span className="font-medium text-slate-300">24/7 Emergency Service Available</span>
             <a
               href="tel:+12394841808"
               className="font-bold text-amber-400 hover:text-amber-300 transition"
             >
               Call: (239) 484-1808
             </a>
-            <span className="text-slate-500">•</span>
+            <span className="text-slate-600">•</span>
             <a
               href="sms:+12394841808"
               className="font-bold text-amber-400 hover:text-amber-300 transition flex items-center gap-1"
