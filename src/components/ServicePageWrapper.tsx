@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, createContext, useContext } from "react";
 import dynamic from "next/dynamic";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -8,6 +8,39 @@ import Footer from "@/components/Footer";
 const QuoteModal = dynamic(() => import("@/components/QuoteModal"), {
   ssr: false,
 });
+
+interface ServiceQuoteContextType {
+  openQuote: (service?: string) => void;
+}
+
+export const ServiceQuoteContext = createContext<ServiceQuoteContextType>({
+  openQuote: () => {},
+});
+
+export function useServiceQuote() {
+  return useContext(ServiceQuoteContext);
+}
+
+export function ServiceQuoteButton({
+  serviceTitle,
+  className,
+  children,
+}: {
+  serviceTitle?: string;
+  className?: string;
+  children: React.ReactNode;
+}) {
+  const { openQuote } = useServiceQuote();
+  return (
+    <button
+      type="button"
+      onClick={() => openQuote(serviceTitle)}
+      className={className}
+    >
+      {children}
+    </button>
+  );
+}
 
 interface ServicePageWrapperProps {
   children: React.ReactNode;
@@ -36,7 +69,7 @@ export default function ServicePageWrapper({
   }, []);
 
   return (
-    <>
+    <ServiceQuoteContext.Provider value={{ openQuote }}>
       <Header onOpenQuote={openQuote} />
       {children}
       <Footer onOpenQuote={openQuote} />
@@ -47,6 +80,6 @@ export default function ServicePageWrapper({
           defaultService={selectedService || serviceTitle}
         />
       )}
-    </>
+    </ServiceQuoteContext.Provider>
   );
 }

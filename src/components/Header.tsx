@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Phone, MessageSquare, ArrowRight, Menu, X, Shield, Zap } from "lucide-react";
+import { Phone, MessageSquare, Menu, X, Shield, Zap } from "lucide-react";
 
 interface HeaderProps {
   onOpenQuote: (service?: string) => void;
@@ -81,7 +81,7 @@ export default function Header({ onOpenQuote }: HeaderProps) {
               />
             </div>
             <div className="flex flex-col">
-              <span className="font-brand text-xl sm:text-3xl md:text-4xl font-black tracking-tight text-amber-600 leading-none">
+              <span className="font-brand text-xl sm:text-3xl md:text-4xl font-black tracking-tight text-amber-500 leading-none">
                 NAPLES
               </span>
               <span className="font-brand text-[9px] sm:text-xs md:text-sm font-extrabold tracking-[0.15em] sm:tracking-[0.28em] text-amber-500 uppercase leading-tight mt-0.5 sm:mt-1">

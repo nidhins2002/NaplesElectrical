@@ -233,7 +233,7 @@ export default function WhyChooseUs({ onOpenQuote }: WhyChooseUsProps) {
                   Quality Electrical Work You Can Trust
                 </h2>
                 <p className="text-slate-600 text-base sm:text-lg leading-relaxed pt-1">
-                  We're committed to providing safe, reliable and professional electrical services for homeowners and businesses in Naples, FL.
+                  We&apos;re committed to providing safe, reliable and professional electrical services for homeowners and businesses in Naples, FL.
                 </p>
               </div>
 
@@ -404,7 +404,7 @@ export default function WhyChooseUs({ onOpenQuote }: WhyChooseUsProps) {
 
                 <div className="flex items-center justify-between text-xs text-slate-500 pt-2 border-t border-slate-200/60">
                   <span>Provider: Berkshire Hathaway / biBERK</span>
-                  <span className="font-bold text-slate-800">Liability & Worker's Comp</span>
+                  <span className="font-bold text-slate-800">Liability &amp; Worker&apos;s Comp</span>
                 </div>
               </div>
             </div>

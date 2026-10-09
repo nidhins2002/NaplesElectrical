@@ -64,14 +64,13 @@ export default function Footer({ onOpenQuote }: FooterProps) {
           <div className="lg:col-span-1 space-y-5">
             {/* Logo */}
             <div className="flex items-center gap-3">
-              <div className="relative w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] shrink-0">
+              <div className="relative w-[52px] h-[52px] sm:w-[60px] sm:h-[60px] shrink-0">
                 <NextImage
-                  src="/Logo.png"
+                  src="/images/footer-logo.png"
                   alt="Naples Electrical Logo"
-                  width={100}
-                  height={100}
+                  width={60}
+                  height={60}
                   className="object-contain w-full h-full"
-                  priority
                 />
               </div>
               <div className="flex flex-col">
