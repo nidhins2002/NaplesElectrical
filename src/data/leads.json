@@ -1,5 +1,18 @@
 [
   {
+    "id": "lead_1791635120202_gxk9r",
+    "timestamp": "2026-10-10T12:25:20.016Z",
+    "service": "Safety Inspections and 4 Point Repairs",
+    "propertyType": "Residential",
+    "urgency": "Emergency (Need help today)",
+    "name": "Nidhin S",
+    "phone": "666666666",
+    "email": "nidhins2020@gmail.com",
+    "address": "Cheruvaranam",
+    "details": "",
+    "status": "new"
+  },
+  {
     "id": "lead_1791624666772_afo6d",
     "timestamp": "2026-10-10T09:31:06.771Z",
     "service": "Troubleshooting & Fast Repairs",
