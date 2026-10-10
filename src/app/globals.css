@@ -59,6 +59,47 @@
   background: #ff6f00;
 }
 
+@font-face {
+  font-family: "Amsi Pro";
+  src: url("/fonts/amsi-pro/AmsiPro-Ultra.otf") format("opentype"),
+       url("/fonts/amsi-pro/AmsiPro-Ultra.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Amsi Pro";
+  src: url("/fonts/amsi-pro/AmsiPro-Black.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Amsi Pro";
+  src: url("/fonts/amsi-pro/AmsiPro-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Amsi Pro";
+  src: url("/fonts/amsi-pro/AmsiPro-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Amsi Pro";
+  src: url("/fonts/amsi-pro/AmsiPro-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 .font-brand {
-  font-family: "Amsi Pro", "AmsiPro", "Amsi Pro Ultra", "Amsi Pro Bold", var(--font-outfit), var(--font-jakarta), system-ui, sans-serif;
+  font-family: var(--font-brand), "Amsi Pro", "AmsiPro", var(--font-outfit), var(--font-jakarta), system-ui, sans-serif;
 }

@@ -75,8 +75,8 @@ export default function Footer({ onOpenQuote }: FooterProps) {
                 />
               </div>
               <div className="flex flex-col">
-                <span className="font-brand text-2xl sm:text-3xl font-black text-amber-500 tracking-tight leading-none">NAPLES</span>
-                <span className="font-brand text-[10px] sm:text-xs font-extrabold tracking-[0.25em] text-amber-400 uppercase mt-1">ELECTRICAL</span>
+                <span className="font-brand text-2xl sm:text-3xl font-bold text-amber-500 tracking-tight leading-none">NAPLES</span>
+                <span className="font-brand text-[10px] sm:text-xs font-semibold tracking-[0.25em] text-amber-400 uppercase mt-1">ELECTRICAL</span>
               </div>
             </div>
 

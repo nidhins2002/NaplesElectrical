@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Outfit } from "next/font/google";
+import localFont from "next/font/local";
 import { siteConfig } from "@/lib/siteConfig";
 import "./globals.css";
 
@@ -15,6 +16,38 @@ const outfit = Outfit({
   variable: "--font-outfit",
   display: "swap",
   weight: ["700", "800", "900"],
+});
+
+const amsiPro = localFont({
+  src: [
+    {
+      path: "../../public/fonts/amsi-pro/AmsiPro-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/amsi-pro/AmsiPro-SemiBold.ttf",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/amsi-pro/AmsiPro-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/amsi-pro/AmsiPro-Black.ttf",
+      weight: "800",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/amsi-pro/AmsiPro-Ultra.otf",
+      weight: "900",
+      style: "normal",
+    },
+  ],
+  variable: "--font-brand",
+  display: "swap",
 });
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://naples-electrical.vercel.app";
@@ -154,7 +187,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${jakarta.variable} ${outfit.variable} scroll-smooth`}>
+    <html lang="en" className={`${jakarta.variable} ${outfit.variable} ${amsiPro.variable} scroll-smooth`}>
       <body className="font-sans antialiased bg-slate-50 text-slate-900 selection:bg-amber-400 selection:text-slate-900">
         {/* JSON-LD Structured Data */}
         <script
