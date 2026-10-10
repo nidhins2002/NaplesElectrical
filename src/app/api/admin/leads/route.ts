@@ -8,7 +8,7 @@ export async function GET() {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const leads = getLeads();
+  const leads = await getLeads();
   return NextResponse.json({ leads });
 }
 
@@ -24,7 +24,7 @@ export async function PATCH(req: Request) {
       return NextResponse.json({ error: "Invalid status or id" }, { status: 400 });
     }
 
-    const success = updateLeadStatus(id, status);
+    const success = await updateLeadStatus(id, status);
     return NextResponse.json({ success });
   } catch (err) {
     console.error("Error updating lead status:", err);
@@ -45,7 +45,7 @@ export async function DELETE(req: Request) {
       return NextResponse.json({ error: "Missing id parameter" }, { status: 400 });
     }
 
-    const success = deleteLead(id);
+    const success = await deleteLead(id);
     return NextResponse.json({ success });
   } catch (err) {
     console.error("Error deleting lead:", err);

@@ -43,8 +43,8 @@ export async function POST(req: Request) {
       details: (details ? String(details).trim() : "").slice(0, 1000),
     };
 
-    // Save lead to local storage
-    const saved = saveLead(lead);
+    // Save lead to persistent storage / GitHub
+    const saved = await saveLead(lead);
 
     // Log the lead clearly for server inspection
     console.log("⚡ [NEW ESTIMATE LEAD RECEIVED]:", JSON.stringify(saved, null, 2));
