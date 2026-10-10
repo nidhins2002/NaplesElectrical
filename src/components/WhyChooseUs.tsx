@@ -9,8 +9,14 @@ interface WhyChooseUsProps {
   onOpenQuote: () => void;
 }
 
-function CredentialsModal({ onClose }: { onClose: () => void }) {
-  const [activeTab, setActiveTab] = useState<"license" | "insurance">("license");
+function CredentialsModal({
+  initialTab = "license",
+  onClose,
+}: {
+  initialTab?: "license" | "insurance";
+  onClose: () => void;
+}) {
+  const [activeTab, setActiveTab] = useState<"license" | "insurance">(initialTab);
 
   return (
     <div
@@ -147,7 +153,7 @@ function CredentialsModal({ onClose }: { onClose: () => void }) {
 }
 
 export default function WhyChooseUs({ onOpenQuote }: WhyChooseUsProps) {
-  const [showCredentials, setShowCredentials] = useState(false);
+  const [credentialsTab, setCredentialsTab] = useState<"license" | "insurance" | null>(null);
 
   const points = [
     {
@@ -155,7 +161,7 @@ export default function WhyChooseUs({ onOpenQuote }: WhyChooseUsProps) {
       title: "Licensed & Insured",
       desc: `State-certified electrical contractor — License #${siteConfig.licenseNumber}, fully insured with $2M general liability coverage.`,
       color: "text-slate-600 bg-slate-50 border-slate-100",
-      action: () => setShowCredentials(true),
+      action: () => setCredentialsTab("license"),
     },
     {
       icon: Users,
@@ -182,7 +188,12 @@ export default function WhyChooseUs({ onOpenQuote }: WhyChooseUsProps) {
 
   return (
     <>
-      {showCredentials && <CredentialsModal onClose={() => setShowCredentials(false)} />}
+      {credentialsTab && (
+        <CredentialsModal
+          initialTab={credentialsTab}
+          onClose={() => setCredentialsTab(null)}
+        />
+      )}
 
       <section id="why-us" className="py-14 sm:py-20 lg:py-28 bg-white border-y border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -323,7 +334,7 @@ export default function WhyChooseUs({ onOpenQuote }: WhyChooseUsProps) {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
               {/* Card 1: State License */}
               <div
-                onClick={() => setShowCredentials(true)}
+                onClick={() => setCredentialsTab("license")}
                 className="group cursor-pointer bg-slate-50 hover:bg-white rounded-3xl p-6 border border-slate-200 hover:border-amber-400 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
@@ -367,7 +378,7 @@ export default function WhyChooseUs({ onOpenQuote }: WhyChooseUsProps) {
 
               {/* Card 2: Insurance Certificate */}
               <div
-                onClick={() => setShowCredentials(true)}
+                onClick={() => setCredentialsTab("insurance")}
                 className="group cursor-pointer bg-slate-50 hover:bg-white rounded-3xl p-6 border border-slate-200 hover:border-emerald-400 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
