@@ -30,16 +30,16 @@ export default function CtaBanner({ onOpenQuote }: CtaBannerProps) {
             <div className="max-w-2xl space-y-4 sm:space-y-5">
               <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-amber-400/10 border border-amber-400/20 text-amber-400 font-extrabold text-xs tracking-widest uppercase rounded-full">
                 <MapPin className="w-3.5 h-3.5 text-amber-400" />
-                NAPLES, FL &amp; SURROUNDING AREAS
+                {siteConfig.ctaBadge || "NAPLES, FL & SURROUNDING AREAS"}
               </div>
 
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
-                Need an Electrician in Naples, FL?{" "}
-                <span className="text-amber-400">Get a Free Estimate Today.</span>
+                {siteConfig.ctaTitle || "Need an Electrician in Naples, FL?"}{" "}
+                <span className="text-amber-400">{siteConfig.ctaTitleHighlight || "Get a Free Estimate Today."}</span>
               </h2>
 
               <p className="text-slate-300 text-base sm:text-lg leading-relaxed font-normal">
-                Contact us today to schedule a consultation or get a free estimate. We serve all of Naples, FL and surrounding areas including Marco Island and Collier County.
+                {siteConfig.ctaSubtitle || "Contact us today to schedule a consultation or get a free estimate. We serve all of Naples, FL and surrounding areas including Marco Island and Collier County."}
               </p>
 
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-3">

@@ -26,6 +26,10 @@ import {
   Key,
   Upload,
   ImageIcon,
+  Layout,
+  Award,
+  Sparkles,
+  Star,
 } from "lucide-react";
 import { ServiceData } from "@/lib/services";
 
@@ -40,6 +44,50 @@ interface SiteConfig {
   address: string;
   serviceAreasText: string;
   emergencyText: string;
+
+  // Hero Section
+  heroBadge?: string;
+  heroTitle?: string;
+  heroTitleHighlight?: string;
+  heroSubtitle?: string;
+  heroGuaranteeTitle?: string;
+  heroGuaranteeSubtitle?: string;
+
+  // Why Choose Us Section
+  whyBadge?: string;
+  whyTitle?: string;
+  whySubtitle?: string;
+  whyYearsExperience?: string;
+  whyExperienceLabel?: string;
+  whyPoint1Title?: string;
+  whyPoint1Desc?: string;
+  whyPoint2Title?: string;
+  whyPoint2Desc?: string;
+  whyPoint3Title?: string;
+  whyPoint3Desc?: string;
+  whyPoint4Title?: string;
+  whyPoint4Desc?: string;
+
+  // Value Pillars Bar
+  value1Title?: string;
+  value1Desc?: string;
+  value2Title?: string;
+  value2Desc?: string;
+  value3Title?: string;
+  value3Desc?: string;
+  value4Title?: string;
+  value4Desc?: string;
+
+  // Call to Action Banner
+  ctaBadge?: string;
+  ctaTitle?: string;
+  ctaTitleHighlight?: string;
+  ctaSubtitle?: string;
+
+  // Reviews / Testimonials Section
+  reviewsBadge?: string;
+  reviewsTitle?: string;
+  reviewsSubtitle?: string;
 }
 
 export default function AdminPage() {
@@ -48,8 +96,8 @@ export default function AdminPage() {
   const [loginError, setLoginError] = useState("");
   const [isLoggingIn, setIsLoggingIn] = useState(false);
 
-  // Active tab: 'services' | 'config'
-  const [activeTab, setActiveTab] = useState<"services" | "config">("services");
+  // Active tab: 'services' | 'homepage' | 'config'
+  const [activeTab, setActiveTab] = useState<"services" | "homepage" | "config">("services");
 
   // Data states
   const [services, setServices] = useState<ServiceData[]>([]);
@@ -429,7 +477,8 @@ export default function AdminPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex gap-6 border-t border-slate-800/60 overflow-x-auto">
           {[
             { id: "services", label: "Services Manager", icon: Briefcase, count: services.length },
-            { id: "config", label: "Company Settings", icon: Settings },
+            { id: "homepage", label: "Homepage & Section Content", icon: Layout },
+            { id: "config", label: "Company & Contact Info", icon: Settings },
           ].map((tab) => {
             const Icon = tab.icon;
             const active = activeTab === tab.id;
@@ -694,7 +743,598 @@ export default function AdminPage() {
               </div>
             )}
 
-            {/* ─── TAB 2: COMPANY SETTINGS ─── */}
+            {/* ─── TAB 2: HOMEPAGE & SECTION CONTENT ─── */}
+            {activeTab === "homepage" && config && (
+              <form onSubmit={handleSaveConfig} className="space-y-8 max-w-5xl">
+                {/* Header Card & Save Button */}
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-slate-900 border border-slate-800 rounded-2xl p-6">
+                  <div>
+                    <h2 className="text-xl font-black text-white flex items-center gap-2.5">
+                      <Layout className="w-5 h-5 text-amber-400" />
+                      <span>Homepage &amp; Section Content</span>
+                    </h2>
+                    <p className="text-xs text-slate-400 mt-1">
+                      Customize headlines, badges, subtitles, and feature highlights across your homepage sections.
+                    </p>
+                  </div>
+                  <button
+                    type="submit"
+                    disabled={isSavingConfig}
+                    className="px-6 py-3 bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs sm:text-sm rounded-xl transition flex items-center gap-2 shadow-lg shadow-amber-400/10 disabled:opacity-50 shrink-0"
+                  >
+                    {isSavingConfig ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        <span>Saving Changes...</span>
+                      </>
+                    ) : (
+                      <span>Save Homepage Content</span>
+                    )}
+                  </button>
+                </div>
+
+                {configSaveSuccess && (
+                  <div className="p-4 bg-emerald-500/15 border border-emerald-500/30 rounded-2xl text-emerald-300 text-xs flex items-center gap-3">
+                    <CheckCircle2 className="w-5 h-5 shrink-0 text-emerald-400" />
+                    <div>
+                      <div className="font-extrabold text-sm">Changes Saved Successfully!</div>
+                      <div className="text-emerald-400/90 mt-0.5">{configSaveMsg || "All homepage content has been updated."}</div>
+                    </div>
+                  </div>
+                )}
+
+                {configSaveError && (
+                  <div className="p-4 bg-red-500/15 border border-red-500/30 rounded-2xl text-red-300 text-xs flex items-center gap-3">
+                    <AlertTriangle className="w-5 h-5 shrink-0 text-red-400" />
+                    <div>
+                      <div className="font-extrabold text-sm">Failed to Save</div>
+                      <div className="text-red-400/90 mt-0.5">{configSaveError}</div>
+                    </div>
+                  </div>
+                )}
+
+                {/* 1. HERO SECTION */}
+                <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-6">
+                  <div className="border-b border-slate-800 pb-4">
+                    <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-amber-400/10 text-amber-400 text-xs font-bold uppercase tracking-wider">
+                      <Zap className="w-3.5 h-3.5" />
+                      Hero Section
+                    </div>
+                    <h3 className="text-base font-extrabold text-white mt-2">Hero Header &amp; Taglines</h3>
+                    <p className="text-xs text-slate-400 mt-0.5">
+                      The top prominent section visitors see when first landing on the website.
+                    </p>
+                  </div>
+
+                  <div className="space-y-4">
+                    <div>
+                      <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                        Top Tagline Badge
+                      </label>
+                      <input
+                        type="text"
+                        value={config.heroBadge || ""}
+                        onChange={(e) => setConfig({ ...config, heroBadge: e.target.value })}
+                        placeholder="e.g. 100% OWNER-OPERATED & LICENSED CONTRACTOR"
+                        className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                          Main Headline (Prefix)
+                        </label>
+                        <input
+                          type="text"
+                          value={config.heroTitle || ""}
+                          onChange={(e) => setConfig({ ...config, heroTitle: e.target.value })}
+                          placeholder="e.g. Professional Electrical Services in"
+                          className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                          Highlighted Text (Amber Gradient)
+                        </label>
+                        <input
+                          type="text"
+                          value={config.heroTitleHighlight || ""}
+                          onChange={(e) => setConfig({ ...config, heroTitleHighlight: e.target.value })}
+                          placeholder="e.g. Naples, FL"
+                          className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                        Hero Subtitle / Description
+                      </label>
+                      <textarea
+                        rows={3}
+                        value={config.heroSubtitle || ""}
+                        onChange={(e) => setConfig({ ...config, heroSubtitle: e.target.value })}
+                        placeholder="Safe, reliable and high-quality electrical services for homes and businesses..."
+                        className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                      <div>
+                        <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                          Image Overlay Badge Title
+                        </label>
+                        <input
+                          type="text"
+                          value={config.heroGuaranteeTitle || ""}
+                          onChange={(e) => setConfig({ ...config, heroGuaranteeTitle: e.target.value })}
+                          placeholder="e.g. 100% Satisfaction Guarantee"
+                          className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                          Image Overlay Badge Subtitle
+                        </label>
+                        <input
+                          type="text"
+                          value={config.heroGuaranteeSubtitle || ""}
+                          onChange={(e) => setConfig({ ...config, heroGuaranteeSubtitle: e.target.value })}
+                          placeholder="e.g. Fast Same-Day Service Available"
+                          className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 2. WHY CHOOSE US SECTION */}
+                <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-6">
+                  <div className="border-b border-slate-800 pb-4">
+                    <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-amber-400/10 text-amber-400 text-xs font-bold uppercase tracking-wider">
+                      <Award className="w-3.5 h-3.5" />
+                      Why Choose Us Section
+                    </div>
+                    <h3 className="text-base font-extrabold text-white mt-2">Why Choose Us &amp; Highlights</h3>
+                    <p className="text-xs text-slate-400 mt-0.5">
+                      The credentials, owner-operator values, and trust points.
+                    </p>
+                  </div>
+
+                  <div className="space-y-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                      <div>
+                        <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                          Section Badge Tag
+                        </label>
+                        <input
+                          type="text"
+                          value={config.whyBadge || ""}
+                          onChange={(e) => setConfig({ ...config, whyBadge: e.target.value })}
+                          placeholder="e.g. WHY CHOOSE US"
+                          className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+                        />
+                      </div>
+                      <div className="sm:col-span-2">
+                        <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                          Main Title
+                        </label>
+                        <input
+                          type="text"
+                          value={config.whyTitle || ""}
+                          onChange={(e) => setConfig({ ...config, whyTitle: e.target.value })}
+                          placeholder="e.g. Quality Electrical Work You Can Trust"
+                          className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                        Section Subtitle
+                      </label>
+                      <textarea
+                        rows={2}
+                        value={config.whySubtitle || ""}
+                        onChange={(e) => setConfig({ ...config, whySubtitle: e.target.value })}
+                        placeholder="We're committed to providing safe, reliable and professional electrical services..."
+                        className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                          Experience Stat (e.g. 15+ Years)
+                        </label>
+                        <input
+                          type="text"
+                          value={config.whyYearsExperience || ""}
+                          onChange={(e) => setConfig({ ...config, whyYearsExperience: e.target.value })}
+                          placeholder="e.g. 15+ Years"
+                          className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                          Experience Stat Label
+                        </label>
+                        <input
+                          type="text"
+                          value={config.whyExperienceLabel || ""}
+                          onChange={(e) => setConfig({ ...config, whyExperienceLabel: e.target.value })}
+                          placeholder="e.g. Trusted Electrical Experience in Naples"
+                          className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+                        />
+                      </div>
+                    </div>
+
+                    {/* 4 Feature Points */}
+                    <div className="pt-2 border-t border-slate-800 space-y-4">
+                      <div className="text-xs font-extrabold text-amber-400 uppercase tracking-wider">
+                        Feature Bullet Points
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        {/* Point 1 */}
+                        <div className="p-3.5 bg-slate-950 rounded-xl border border-slate-800 space-y-2">
+                          <label className="block text-[11px] font-bold text-slate-400 uppercase">
+                            Point 1: Title
+                          </label>
+                          <input
+                            type="text"
+                            value={config.whyPoint1Title || ""}
+                            onChange={(e) => setConfig({ ...config, whyPoint1Title: e.target.value })}
+                            placeholder="Licensed & Insured"
+                            className="w-full px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-white text-xs focus:ring-2 focus:ring-amber-400"
+                          />
+                          <label className="block text-[11px] font-bold text-slate-400 uppercase pt-1">
+                            Point 1: Description
+                          </label>
+                          <textarea
+                            rows={2}
+                            value={config.whyPoint1Desc || ""}
+                            onChange={(e) => setConfig({ ...config, whyPoint1Desc: e.target.value })}
+                            placeholder="State-certified electrical contractor, fully insured..."
+                            className="w-full px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-white text-xs focus:ring-2 focus:ring-amber-400"
+                          />
+                        </div>
+
+                        {/* Point 2 */}
+                        <div className="p-3.5 bg-slate-950 rounded-xl border border-slate-800 space-y-2">
+                          <label className="block text-[11px] font-bold text-slate-400 uppercase">
+                            Point 2: Title
+                          </label>
+                          <input
+                            type="text"
+                            value={config.whyPoint2Title || ""}
+                            onChange={(e) => setConfig({ ...config, whyPoint2Title: e.target.value })}
+                            placeholder="100% Owner-Operated"
+                            className="w-full px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-white text-xs focus:ring-2 focus:ring-amber-400"
+                          />
+                          <label className="block text-[11px] font-bold text-slate-400 uppercase pt-1">
+                            Point 2: Description
+                          </label>
+                          <textarea
+                            rows={2}
+                            value={config.whyPoint2Desc || ""}
+                            onChange={(e) => setConfig({ ...config, whyPoint2Desc: e.target.value })}
+                            placeholder="Direct master electrician oversight on every job..."
+                            className="w-full px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-white text-xs focus:ring-2 focus:ring-amber-400"
+                          />
+                        </div>
+
+                        {/* Point 3 */}
+                        <div className="p-3.5 bg-slate-950 rounded-xl border border-slate-800 space-y-2">
+                          <label className="block text-[11px] font-bold text-slate-400 uppercase">
+                            Point 3: Title
+                          </label>
+                          <input
+                            type="text"
+                            value={config.whyPoint3Title || ""}
+                            onChange={(e) => setConfig({ ...config, whyPoint3Title: e.target.value })}
+                            placeholder="Reliable & On Time"
+                            className="w-full px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-white text-xs focus:ring-2 focus:ring-amber-400"
+                          />
+                          <label className="block text-[11px] font-bold text-slate-400 uppercase pt-1">
+                            Point 3: Description
+                          </label>
+                          <textarea
+                            rows={2}
+                            value={config.whyPoint3Desc || ""}
+                            onChange={(e) => setConfig({ ...config, whyPoint3Desc: e.target.value })}
+                            placeholder="We respect your busy schedule and show up right when we say..."
+                            className="w-full px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-white text-xs focus:ring-2 focus:ring-amber-400"
+                          />
+                        </div>
+
+                        {/* Point 4 */}
+                        <div className="p-3.5 bg-slate-950 rounded-xl border border-slate-800 space-y-2">
+                          <label className="block text-[11px] font-bold text-slate-400 uppercase">
+                            Point 4: Title
+                          </label>
+                          <input
+                            type="text"
+                            value={config.whyPoint4Title || ""}
+                            onChange={(e) => setConfig({ ...config, whyPoint4Title: e.target.value })}
+                            placeholder="Customer Focused"
+                            className="w-full px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-white text-xs focus:ring-2 focus:ring-amber-400"
+                          />
+                          <label className="block text-[11px] font-bold text-slate-400 uppercase pt-1">
+                            Point 4: Description
+                          </label>
+                          <textarea
+                            rows={2}
+                            value={config.whyPoint4Desc || ""}
+                            onChange={(e) => setConfig({ ...config, whyPoint4Desc: e.target.value })}
+                            placeholder="Quality work and excellent service on every job..."
+                            className="w-full px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-white text-xs focus:ring-2 focus:ring-amber-400"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 3. VALUE PILLARS BAR */}
+                <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-6">
+                  <div className="border-b border-slate-800 pb-4">
+                    <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-amber-400/10 text-amber-400 text-xs font-bold uppercase tracking-wider">
+                      <Briefcase className="w-3.5 h-3.5" />
+                      Value Pillars Bar
+                    </div>
+                    <h3 className="text-base font-extrabold text-white mt-2">Value Pillars (Below Hero)</h3>
+                    <p className="text-xs text-slate-400 mt-0.5">
+                      The 4 quick service category cards displayed right under the hero section.
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {/* Pillar 1 */}
+                    <div className="p-3.5 bg-slate-950 rounded-xl border border-slate-800 space-y-2">
+                      <label className="block text-[11px] font-bold text-slate-400 uppercase">
+                        Pillar 1 Title
+                      </label>
+                      <input
+                        type="text"
+                        value={config.value1Title || ""}
+                        onChange={(e) => setConfig({ ...config, value1Title: e.target.value })}
+                        placeholder="Residential Services"
+                        className="w-full px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-white text-xs focus:ring-2 focus:ring-amber-400"
+                      />
+                      <label className="block text-[11px] font-bold text-slate-400 uppercase pt-1">
+                        Pillar 1 Subtitle
+                      </label>
+                      <input
+                        type="text"
+                        value={config.value1Desc || ""}
+                        onChange={(e) => setConfig({ ...config, value1Desc: e.target.value })}
+                        placeholder="Safe and reliable electrical solutions for your home"
+                        className="w-full px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-white text-xs focus:ring-2 focus:ring-amber-400"
+                      />
+                    </div>
+
+                    {/* Pillar 2 */}
+                    <div className="p-3.5 bg-slate-950 rounded-xl border border-slate-800 space-y-2">
+                      <label className="block text-[11px] font-bold text-slate-400 uppercase">
+                        Pillar 2 Title
+                      </label>
+                      <input
+                        type="text"
+                        value={config.value2Title || ""}
+                        onChange={(e) => setConfig({ ...config, value2Title: e.target.value })}
+                        placeholder="Commercial Services"
+                        className="w-full px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-white text-xs focus:ring-2 focus:ring-amber-400"
+                      />
+                      <label className="block text-[11px] font-bold text-slate-400 uppercase pt-1">
+                        Pillar 2 Subtitle
+                      </label>
+                      <input
+                        type="text"
+                        value={config.value2Desc || ""}
+                        onChange={(e) => setConfig({ ...config, value2Desc: e.target.value })}
+                        placeholder="Powering local businesses in Naples"
+                        className="w-full px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-white text-xs focus:ring-2 focus:ring-amber-400"
+                      />
+                    </div>
+
+                    {/* Pillar 3 */}
+                    <div className="p-3.5 bg-slate-950 rounded-xl border border-slate-800 space-y-2">
+                      <label className="block text-[11px] font-bold text-slate-400 uppercase">
+                        Pillar 3 Title
+                      </label>
+                      <input
+                        type="text"
+                        value={config.value3Title || ""}
+                        onChange={(e) => setConfig({ ...config, value3Title: e.target.value })}
+                        placeholder="Repairs & Installations"
+                        className="w-full px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-white text-xs focus:ring-2 focus:ring-amber-400"
+                      />
+                      <label className="block text-[11px] font-bold text-slate-400 uppercase pt-1">
+                        Pillar 3 Subtitle
+                      </label>
+                      <input
+                        type="text"
+                        value={config.value3Desc || ""}
+                        onChange={(e) => setConfig({ ...config, value3Desc: e.target.value })}
+                        placeholder="From small fixes to large projects"
+                        className="w-full px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-white text-xs focus:ring-2 focus:ring-amber-400"
+                      />
+                    </div>
+
+                    {/* Pillar 4 */}
+                    <div className="p-3.5 bg-slate-950 rounded-xl border border-slate-800 space-y-2">
+                      <label className="block text-[11px] font-bold text-slate-400 uppercase">
+                        Pillar 4 Title
+                      </label>
+                      <input
+                        type="text"
+                        value={config.value4Title || ""}
+                        onChange={(e) => setConfig({ ...config, value4Title: e.target.value })}
+                        placeholder="Safety & Compliance"
+                        className="w-full px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-white text-xs focus:ring-2 focus:ring-amber-400"
+                      />
+                      <label className="block text-[11px] font-bold text-slate-400 uppercase pt-1">
+                        Pillar 4 Subtitle
+                      </label>
+                      <input
+                        type="text"
+                        value={config.value4Desc || ""}
+                        onChange={(e) => setConfig({ ...config, value4Desc: e.target.value })}
+                        placeholder="Work that meets all codes and safety standards"
+                        className="w-full px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-white text-xs focus:ring-2 focus:ring-amber-400"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* 4. CALL TO ACTION BANNER (BOTTOM) */}
+                <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-6">
+                  <div className="border-b border-slate-800 pb-4">
+                    <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-amber-400/10 text-amber-400 text-xs font-bold uppercase tracking-wider">
+                      <Sparkles className="w-3.5 h-3.5" />
+                      Bottom CTA Banner
+                    </div>
+                    <h3 className="text-base font-extrabold text-white mt-2">Call to Action Banner</h3>
+                    <p className="text-xs text-slate-400 mt-0.5">
+                      The full-width estimate invitation banner located above the footer.
+                    </p>
+                  </div>
+
+                  <div className="space-y-4">
+                    <div>
+                      <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                        Badge Location Tag
+                      </label>
+                      <input
+                        type="text"
+                        value={config.ctaBadge || ""}
+                        onChange={(e) => setConfig({ ...config, ctaBadge: e.target.value })}
+                        placeholder="e.g. NAPLES, FL & SURROUNDING AREAS"
+                        className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                          Main Heading (Prefix)
+                        </label>
+                        <input
+                          type="text"
+                          value={config.ctaTitle || ""}
+                          onChange={(e) => setConfig({ ...config, ctaTitle: e.target.value })}
+                          placeholder="e.g. Need an Electrician in Naples, FL?"
+                          className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                          Highlighted Heading (Accent)
+                        </label>
+                        <input
+                          type="text"
+                          value={config.ctaTitleHighlight || ""}
+                          onChange={(e) => setConfig({ ...config, ctaTitleHighlight: e.target.value })}
+                          placeholder="e.g. Get a Free Estimate Today."
+                          className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                        Subtitle Paragraph
+                      </label>
+                      <textarea
+                        rows={2}
+                        value={config.ctaSubtitle || ""}
+                        onChange={(e) => setConfig({ ...config, ctaSubtitle: e.target.value })}
+                        placeholder="Contact us today to schedule a consultation or get a free estimate..."
+                        className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* 5. CUSTOMER REVIEWS HEADER */}
+                <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-6">
+                  <div className="border-b border-slate-800 pb-4">
+                    <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-amber-400/10 text-amber-400 text-xs font-bold uppercase tracking-wider">
+                      <Star className="w-3.5 h-3.5" />
+                      Reviews &amp; Testimonials
+                    </div>
+                    <h3 className="text-base font-extrabold text-white mt-2">Customer Reviews Header</h3>
+                    <p className="text-xs text-slate-400 mt-0.5">
+                      Header text above the live verified Google reviews section.
+                    </p>
+                  </div>
+
+                  <div className="space-y-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                          Badge Tag
+                        </label>
+                        <input
+                          type="text"
+                          value={config.reviewsBadge || ""}
+                          onChange={(e) => setConfig({ ...config, reviewsBadge: e.target.value })}
+                          placeholder="e.g. Verified Google Reviews"
+                          className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                          Section Title
+                        </label>
+                        <input
+                          type="text"
+                          value={config.reviewsTitle || ""}
+                          onChange={(e) => setConfig({ ...config, reviewsTitle: e.target.value })}
+                          placeholder="e.g. What Our Customers Say"
+                          className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                        Subtitle Description
+                      </label>
+                      <input
+                        type="text"
+                        value={config.reviewsSubtitle || ""}
+                        onChange={(e) => setConfig({ ...config, reviewsSubtitle: e.target.value })}
+                        placeholder="Real 5-star feedback from homeowners & commercial clients across Naples, FL."
+                        className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bottom Save Button */}
+                <div className="pt-2">
+                  <button
+                    type="submit"
+                    disabled={isSavingConfig}
+                    className="px-8 py-3.5 bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-sm rounded-xl transition flex items-center gap-2 shadow-lg shadow-amber-400/10 disabled:opacity-50"
+                  >
+                    {isSavingConfig ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        <span>Saving Changes to GitHub...</span>
+                      </>
+                    ) : (
+                      <span>Save All Homepage Content</span>
+                    )}
+                  </button>
+                </div>
+              </form>
+            )}
+
+            {/* ─── TAB 3: COMPANY SETTINGS ─── */}
             {activeTab === "config" && config && (
               <form onSubmit={handleSaveConfig} className="space-y-6 max-w-4xl">
                 <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-6">

@@ -26,20 +26,20 @@ export default function Hero({ onOpenQuote }: HeroProps) {
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-400/15 border border-amber-400/30 text-amber-400 text-[11px] sm:text-xs font-extrabold tracking-wider uppercase backdrop-blur-md shadow-sm">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
               <Users className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-              <span>100% OWNER-OPERATED &amp; LICENSED CONTRACTOR</span>
+              <span>{siteConfig.heroBadge || "100% OWNER-OPERATED & LICENSED CONTRACTOR"}</span>
             </div>
 
             {/* Headline */}
             <h1 className="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15]">
-              Professional Electrical Services in{" "}
+              {siteConfig.heroTitle || "Professional Electrical Services in"}{" "}
               <span className="text-amber-400 bg-gradient-to-r from-amber-400 to-amber-300 bg-clip-text text-transparent">
-                Naples, FL
+                {siteConfig.heroTitleHighlight || "Naples, FL"}
               </span>
             </h1>
 
             {/* Subtitle */}
             <p className="text-slate-300 text-sm sm:text-base lg:text-xl font-normal leading-relaxed max-w-2xl">
-              Safe, reliable and high-quality electrical services for homes and businesses. From small repairs to complete installations, Naples Electrical is here to keep your property powered and safe.
+              {siteConfig.heroSubtitle || "Safe, reliable and high-quality electrical services for homes and businesses. From small repairs to complete installations, Naples Electrical is here to keep your property powered and safe."}
             </p>
 
             {/* Primary CTAs */}
@@ -149,8 +149,12 @@ export default function Hero({ onOpenQuote }: HeroProps) {
                       <CheckCircle className="w-4 h-4 sm:w-6 sm:h-6" />
                     </div>
                     <div className="min-w-0">
-                      <div className="text-xs sm:text-sm font-extrabold text-white truncate">100% Satisfaction Guarantee</div>
-                      <div className="text-[10px] sm:text-xs text-slate-300 truncate">Fast Same-Day Service Available</div>
+                      <div className="text-xs sm:text-sm font-extrabold text-white truncate">
+                        {siteConfig.heroGuaranteeTitle || "100% Satisfaction Guarantee"}
+                      </div>
+                      <div className="text-[10px] sm:text-xs text-slate-300 truncate">
+                        {siteConfig.heroGuaranteeSubtitle || "Fast Same-Day Service Available"}
+                      </div>
                     </div>
                   </div>
                   <div className="hidden sm:flex items-center gap-1.5 shrink-0">

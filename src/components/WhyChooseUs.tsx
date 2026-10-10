@@ -158,29 +158,29 @@ export default function WhyChooseUs({ onOpenQuote }: WhyChooseUsProps) {
   const points = [
     {
       icon: ShieldCheck,
-      title: "Licensed & Insured",
-      desc: `State-certified electrical contractor — License #${siteConfig.licenseNumber}, fully insured with $2M general liability coverage.`,
+      title: siteConfig.whyPoint1Title || "Licensed & Insured",
+      desc: siteConfig.whyPoint1Desc || `State-certified electrical contractor — License #${siteConfig.licenseNumber}, fully insured with $2M general liability coverage.`,
       color: "text-slate-600 bg-slate-50 border-slate-100",
       action: () => setCredentialsTab("license"),
     },
     {
       icon: Users,
-      title: "100% Owner-Operated",
-      desc: "Direct master electrician oversight on every job — no subcontractors or inexperienced sales reps.",
+      title: siteConfig.whyPoint2Title || "100% Owner-Operated",
+      desc: siteConfig.whyPoint2Desc || "Direct master electrician oversight on every job — no subcontractors or inexperienced sales reps.",
       color: "text-amber-600 bg-amber-50 border-amber-100",
       action: null,
     },
     {
       icon: Clock,
-      title: "Reliable & On Time",
-      desc: "We respect your busy schedule and show up right when we say we will, guaranteed.",
+      title: siteConfig.whyPoint3Title || "Reliable & On Time",
+      desc: siteConfig.whyPoint3Desc || "We respect your busy schedule and show up right when we say we will, guaranteed.",
       color: "text-amber-600 bg-amber-50 border-amber-100",
       action: null,
     },
     {
       icon: Star,
-      title: "Customer Focused",
-      desc: "Quality work and excellent service on every job, backed by 5-star customer reviews.",
+      title: siteConfig.whyPoint4Title || "Customer Focused",
+      desc: siteConfig.whyPoint4Desc || "Quality work and excellent service on every job, backed by 5-star customer reviews.",
       color: "text-emerald-600 bg-emerald-50 border-emerald-100",
       action: null,
     },
@@ -226,9 +226,9 @@ export default function WhyChooseUs({ onOpenQuote }: WhyChooseUsProps) {
 
                 {/* Floating Stat Card */}
                 <div className="absolute -bottom-4 left-3 sm:-bottom-6 sm:left-6 bg-slate-900/95 backdrop-blur-md text-white p-2.5 sm:p-5 rounded-xl sm:rounded-2xl shadow-xl max-w-[140px] xs:max-w-[170px] sm:max-w-xs border border-slate-700/80">
-                  <div className="text-lg sm:text-3xl font-black text-amber-400">15+ Years</div>
+                  <div className="text-lg sm:text-3xl font-black text-amber-400">{siteConfig.whyYearsExperience || "15+ Years"}</div>
                   <div className="text-[10px] sm:text-xs text-slate-300 font-medium mt-0.5 leading-tight">
-                    Trusted Electrical Experience in Naples
+                    {siteConfig.whyExperienceLabel || "Trusted Electrical Experience in Naples"}
                   </div>
                 </div>
 
@@ -239,13 +239,13 @@ export default function WhyChooseUs({ onOpenQuote }: WhyChooseUsProps) {
             <div className="lg:col-span-6 space-y-5 sm:space-y-6 mt-6 sm:mt-8 lg:mt-0">
               <div className="space-y-3">
                 <span className="inline-block px-3 py-1 bg-slate-50 text-slate-700 font-extrabold text-xs tracking-wider uppercase rounded-full border border-slate-100">
-                  WHY CHOOSE US
+                  {siteConfig.whyBadge || "WHY CHOOSE US"}
                 </span>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight">
-                  Quality Electrical Work You Can Trust
+                  {siteConfig.whyTitle || "Quality Electrical Work You Can Trust"}
                 </h2>
                 <p className="text-slate-600 text-base sm:text-lg leading-relaxed pt-1">
-                  We&apos;re committed to providing safe, reliable and professional electrical services for homeowners and businesses in Naples, FL.
+                  {siteConfig.whySubtitle || "We're committed to providing safe, reliable and professional electrical services for homeowners and businesses in Naples, FL."}
                 </p>
               </div>
 

@@ -2,28 +2,29 @@
 
 import React from "react";
 import { Home, Building2, Wrench, Zap } from "lucide-react";
+import { siteConfig } from "@/lib/siteConfig";
 
 export default function ValueBar() {
   const features = [
     {
       icon: Home,
-      title: "Residential Services",
-      desc: "Safe and reliable electrical solutions for your home",
+      title: siteConfig.value1Title || "Residential Services",
+      desc: siteConfig.value1Desc || "Safe and reliable electrical solutions for your home",
     },
     {
       icon: Building2,
-      title: "Commercial Services",
-      desc: "Powering local businesses in Naples",
+      title: siteConfig.value2Title || "Commercial Services",
+      desc: siteConfig.value2Desc || "Powering local businesses in Naples",
     },
     {
       icon: Wrench,
-      title: "Repairs & Installations",
-      desc: "From small fixes to large projects",
+      title: siteConfig.value3Title || "Repairs & Installations",
+      desc: siteConfig.value3Desc || "From small fixes to large projects",
     },
     {
       icon: Zap,
-      title: "Safety & Compliance",
-      desc: "Work that meets all codes and safety standards",
+      title: siteConfig.value4Title || "Safety & Compliance",
+      desc: siteConfig.value4Desc || "Work that meets all codes and safety standards",
     },
   ];
 
@@ -35,7 +36,7 @@ export default function ValueBar() {
             const Icon = item.icon;
             return (
               <div
-                key={item.title}
+                key={index}
                 className={`flex items-start gap-4 ${
                   index !== 0 ? "pt-6 md:pt-0 md:pl-6 lg:pl-8" : ""
                 } group hover:transform hover:-translate-y-1 transition-all duration-200`}

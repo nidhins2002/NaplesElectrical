@@ -8,5 +8,44 @@
   "hoursSaturday": "8:00 AM - 2:00 PM",
   "address": "Naples, FL 34102",
   "serviceAreasText": "Serving Naples, Marco Island, Fort Myers, Collier & Lee County, FL",
-  "emergencyText": "24/7 Emergency Service Available"
+  "emergencyText": "24/7 Emergency Service Available",
+
+  "heroBadge": "100% OWNER-OPERATED & LICENSED CONTRACTOR",
+  "heroTitle": "Professional Electrical Services in",
+  "heroTitleHighlight": "Naples, FL",
+  "heroSubtitle": "Safe, reliable and high-quality electrical services for homes and businesses. From small repairs to complete installations, Naples Electrical is here to keep your property powered and safe.",
+  "heroGuaranteeTitle": "100% Satisfaction Guarantee",
+  "heroGuaranteeSubtitle": "Fast Same-Day Service Available",
+
+  "whyBadge": "WHY CHOOSE US",
+  "whyTitle": "Quality Electrical Work You Can Trust",
+  "whySubtitle": "We're committed to providing safe, reliable and professional electrical services for homeowners and businesses in Naples, FL.",
+  "whyYearsExperience": "15+ Years",
+  "whyExperienceLabel": "Trusted Electrical Experience in Naples",
+  "whyPoint1Title": "Licensed & Insured",
+  "whyPoint1Desc": "State-certified electrical contractor, fully insured with $2M general liability coverage.",
+  "whyPoint2Title": "100% Owner-Operated",
+  "whyPoint2Desc": "Direct master electrician oversight on every job — no subcontractors or inexperienced sales reps.",
+  "whyPoint3Title": "Reliable & On Time",
+  "whyPoint3Desc": "We respect your busy schedule and show up right when we say we will, guaranteed.",
+  "whyPoint4Title": "Customer Focused",
+  "whyPoint4Desc": "Quality work and excellent service on every job, backed by 5-star customer reviews.",
+
+  "value1Title": "Residential Services",
+  "value1Desc": "Safe and reliable electrical solutions for your home",
+  "value2Title": "Commercial Services",
+  "value2Desc": "Powering local businesses in Naples",
+  "value3Title": "Repairs & Installations",
+  "value3Desc": "From small fixes to large projects",
+  "value4Title": "Safety & Compliance",
+  "value4Desc": "Work that meets all codes and safety standards",
+
+  "ctaBadge": "NAPLES, FL & SURROUNDING AREAS",
+  "ctaTitle": "Need an Electrician in Naples, FL?",
+  "ctaTitleHighlight": "Get a Free Estimate Today.",
+  "ctaSubtitle": "Contact us today to schedule a consultation or get a free estimate. We serve all of Naples, FL and surrounding areas including Marco Island and Collier County.",
+
+  "reviewsBadge": "Verified Google Reviews",
+  "reviewsTitle": "What Our Customers Say",
+  "reviewsSubtitle": "Real 5-star feedback from homeowners & commercial clients across Naples, FL."
 }
