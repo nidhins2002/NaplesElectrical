@@ -26,6 +26,8 @@ import {
   ChevronUp,
   RefreshCw,
   Key,
+  Upload,
+  ImageIcon,
 } from "lucide-react";
 import { ServiceData } from "@/lib/services";
 import { Lead } from "@/lib/leads";
@@ -68,6 +70,9 @@ export default function AdminPage() {
   const [serviceSaveSuccess, setServiceSaveSuccess] = useState(false);
   const [serviceSaveMsg, setServiceSaveMsg] = useState("");
   const [serviceSaveError, setServiceSaveError] = useState("");
+  const [isUploadingImage, setIsUploadingImage] = useState(false);
+  const [imageUploadError, setImageUploadError] = useState("");
+  const [imageUploadSuccess, setImageUploadSuccess] = useState("");
 
   // Site Config Saving
   const [isSavingConfig, setIsSavingConfig] = useState(false);
@@ -190,6 +195,50 @@ export default function AdminPage() {
   };
 
 
+
+  // Image Upload Handler
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file || !editingService) return;
+
+    if (file.size > 5 * 1024 * 1024) {
+      setImageUploadError("File is too large. Maximum size is 5MB.");
+      return;
+    }
+
+    setIsUploadingImage(true);
+    setImageUploadError("");
+    setImageUploadSuccess("");
+
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("slug", editingService.slug);
+
+      const res = await fetch("/api/admin/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to upload image");
+      }
+
+      setEditingService({
+        ...editingService,
+        heroImage: data.url,
+      });
+      setImageUploadSuccess("New image uploaded to Git! Click Save Service below to publish.");
+      fetchGitStatus();
+    } catch (err: unknown) {
+      setImageUploadError(err instanceof Error ? err.message : "Upload failed");
+      console.error(err);
+    } finally {
+      setIsUploadingImage(false);
+      e.target.value = "";
+    }
+  };
 
   // Save Service
   const handleSaveService = async (e: React.FormEvent) => {
@@ -1009,6 +1058,87 @@ export default function AdminPage() {
                     className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
                   />
                 </div>
+              </div>
+
+              {/* Hero Image Field & Live Uploader */}
+              <div className="p-4 bg-slate-950 border border-slate-800 rounded-2xl space-y-3">
+                <div className="flex items-center justify-between">
+                  <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider">
+                    Service Hero Image
+                  </label>
+                  <span className="text-[10px] text-slate-500 font-semibold">
+                    Max 5MB (JPG, PNG, WebP)
+                  </span>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+                  {/* Current Image Preview */}
+                  <div className="relative w-full sm:w-36 h-24 rounded-xl overflow-hidden border border-slate-700 bg-slate-900 shrink-0">
+                    {editingService.heroImage ? (
+                      <Image
+                        src={editingService.heroImage}
+                        alt={editingService.title}
+                        fill
+                        className="object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-slate-600">
+                        <ImageIcon className="w-6 h-6" />
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Upload Controls */}
+                  <div className="flex-1 w-full space-y-2">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <label className="cursor-pointer px-4 py-2 bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs rounded-xl transition flex items-center gap-1.5 shadow-md shadow-amber-400/10">
+                        {isUploadingImage ? (
+                          <>
+                            <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                            <span>Uploading to Git...</span>
+                          </>
+                        ) : (
+                          <>
+                            <Upload className="w-3.5 h-3.5" />
+                            <span>Upload New Photo</span>
+                          </>
+                        )}
+                        <input
+                          type="file"
+                          accept="image/jpeg,image/png,image/webp"
+                          disabled={isUploadingImage}
+                          onChange={handleImageUpload}
+                          className="hidden"
+                        />
+                      </label>
+                      <span className="text-xs text-slate-500">or edit path below:</span>
+                    </div>
+
+                    <input
+                      type="text"
+                      value={editingService.heroImage}
+                      onChange={(e) =>
+                        setEditingService({ ...editingService, heroImage: e.target.value })
+                      }
+                      placeholder="/images/example.jpg"
+                      className="w-full px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-xs text-white focus:outline-none focus:ring-1 focus:ring-amber-400 font-mono"
+                    />
+                  </div>
+                </div>
+
+                {imageUploadSuccess && (
+                  <div className="p-2.5 bg-emerald-500/15 border border-emerald-500/30 rounded-xl text-emerald-300 text-xs flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <span>{imageUploadSuccess}</span>
+                  </div>
+                )}
+
+                {imageUploadError && (
+                  <div className="p-2.5 bg-red-500/15 border border-red-500/30 rounded-xl text-red-300 text-xs flex items-center gap-2">
+                    <AlertTriangle className="w-3.5 h-3.5 text-red-400 shrink-0" />
+                    <span>{imageUploadError}</span>
+                  </div>
+                )}
               </div>
 
               <div>

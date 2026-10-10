@@ -7,7 +7,7 @@ const execAsync = promisify(exec);
 
 interface GithubCommitOptions {
   filePath: string;
-  content: string;
+  content: string | Buffer;
   commitMessage: string;
 }
 
@@ -159,7 +159,10 @@ export async function commitFileToGithub({
     }
 
     // 2. Put file to GitHub
-    const base64Content = Buffer.from(content).toString("base64");
+    const base64Content =
+      typeof content === "string"
+        ? Buffer.from(content).toString("base64")
+        : content.toString("base64");
     const putRes = await fetch(
       `https://api.github.com/repos/${repo}/contents/${filePath}`,
       {
