@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Outfit } from "next/font/google";
+import { siteConfig } from "@/lib/siteConfig";
 import "./globals.css";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -92,8 +93,8 @@ const jsonLd = {
   image: `${SITE_URL}/images/hero-electrician.jpg`,
   logo: `${SITE_URL}/Logo.png`,
   url: SITE_URL,
-  telephone: "+1-239-484-1808",
-  email: "info@napleselectrical.com",
+  telephone: siteConfig.phoneRaw,
+  email: siteConfig.email,
   description:
     "Naples Electrical is a licensed, bonded and insured electrical contractor serving Naples, Marco Island, and Collier County, FL. We provide residential and commercial electrical services including panel upgrades, EV charger installation, lighting, and emergency repairs.",
   address: {

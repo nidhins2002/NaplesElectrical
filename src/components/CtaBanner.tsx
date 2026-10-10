@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { Phone, MessageSquare, MapPin, Zap } from "lucide-react";
+import { siteConfig } from "@/lib/siteConfig";
 
 interface CtaBannerProps {
   onOpenQuote: () => void;
@@ -43,15 +44,15 @@ export default function CtaBanner({ onOpenQuote }: CtaBannerProps) {
 
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-3">
                 <a
-                  href="tel:+12394841808"
+                  href={`tel:${siteConfig.phoneRaw}`}
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-amber-400/10 hover:bg-amber-400/20 text-amber-400 font-bold text-sm rounded-full border border-amber-400/30 transition-all duration-200 shadow-sm"
                 >
                   <Phone className="w-4 h-4 text-amber-400" />
-                  <span>Call (239) 484-1808</span>
+                  <span>Call {siteConfig.phone}</span>
                 </a>
 
                 <a
-                  href="sms:+12394841808"
+                  href={`sms:${siteConfig.phoneRaw}`}
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/15 text-white font-bold text-sm rounded-full border border-white/20 transition-all duration-200"
                 >
                   <MessageSquare className="w-4 h-4 text-amber-400" />

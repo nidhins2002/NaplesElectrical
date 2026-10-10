@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { ArrowRight, ShieldCheck, Users, Award, Zap, Phone, MessageSquare, CheckCircle } from "lucide-react";
+import { siteConfig } from "@/lib/siteConfig";
 
 interface HeroProps {
   onOpenQuote: (service?: string) => void;
@@ -63,7 +64,7 @@ export default function Hero({ onOpenQuote }: HeroProps) {
             {/* Quick Contact Buttons */}
             <div className="flex flex-row items-center gap-2.5 sm:gap-3 pt-1">
               <a
-                href="tel:+12394841808"
+                href={`tel:${siteConfig.phoneRaw}`}
                 className="flex-1 sm:flex-initial px-4 sm:px-6 py-2.5 sm:py-3 bg-amber-400/10 hover:bg-amber-400/20 text-amber-400 font-bold text-xs sm:text-sm rounded-full border border-amber-400/30 transition flex items-center justify-center gap-1.5 sm:gap-2 shadow-sm"
               >
                 <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400" />
@@ -71,7 +72,7 @@ export default function Hero({ onOpenQuote }: HeroProps) {
               </a>
 
               <a
-                href="sms:+12394841808"
+                href={`sms:${siteConfig.phoneRaw}`}
                 className="flex-1 sm:flex-initial px-4 sm:px-6 py-2.5 sm:py-3 bg-white/10 hover:bg-white/15 text-white font-bold text-xs sm:text-sm rounded-full border border-white/20 transition flex items-center justify-center gap-1.5 sm:gap-2"
               >
                 <MessageSquare className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400" />
@@ -89,7 +90,7 @@ export default function Hero({ onOpenQuote }: HeroProps) {
                   <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
                 <div>
-                  <div className="text-xs sm:text-sm font-extrabold text-white leading-tight group-hover:text-amber-400 transition-colors">EC13016758</div>
+                  <div className="text-xs sm:text-sm font-extrabold text-white leading-tight group-hover:text-amber-400 transition-colors">{siteConfig.licenseNumber}</div>
                   <div className="text-[10px] sm:text-xs text-amber-400/90 font-medium">State Licensed</div>
                 </div>
               </a>
@@ -154,13 +155,13 @@ export default function Hero({ onOpenQuote }: HeroProps) {
                   </div>
                   <div className="hidden sm:flex items-center gap-1.5 shrink-0">
                     <a
-                      href="tel:+12394841808"
+                      href={`tel:${siteConfig.phoneRaw}`}
                       className="flex items-center gap-1.5 px-3 py-1.5 bg-amber-400/10 hover:bg-amber-400/20 text-amber-400 font-bold text-xs rounded-full border border-amber-400/30 transition shadow-sm"
                     >
                       <Phone className="w-3.5 h-3.5 text-amber-400" /> Call
                     </a>
                     <a
-                      href="sms:+12394841808"
+                      href={`sms:${siteConfig.phoneRaw}`}
                       className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 hover:bg-white/15 text-white font-bold text-xs rounded-full border border-white/20 transition"
                     >
                       <MessageSquare className="w-3.5 h-3.5 text-amber-400" /> Text

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { saveLead } from "@/lib/leads";
 
 export async function POST(req: Request) {
   try {
@@ -42,8 +43,11 @@ export async function POST(req: Request) {
       details: (details ? String(details).trim() : "").slice(0, 1000),
     };
 
+    // Save lead to local storage
+    const saved = saveLead(lead);
+
     // Log the lead clearly for server inspection
-    console.log("⚡ [NEW ESTIMATE LEAD RECEIVED]:", JSON.stringify(lead, null, 2));
+    console.log("⚡ [NEW ESTIMATE LEAD RECEIVED]:", JSON.stringify(saved, null, 2));
 
     // Optional webhook notification if configured (e.g., Slack, Discord, Zapier, Make)
     const webhookUrl = process.env.NOTIFICATION_WEBHOOK_URL;

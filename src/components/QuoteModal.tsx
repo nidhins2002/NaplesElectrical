@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { X, CheckCircle2, Phone, ShieldCheck, Zap, ArrowRight, Clock, Loader2, AlertCircle } from "lucide-react";
+import { siteConfig } from "@/lib/siteConfig";
 
 interface QuoteModalProps {
   isOpen: boolean;
@@ -184,8 +185,8 @@ export default function QuoteModal({
                 </div>
                 <p className="text-xs text-amber-800">
                   Call our direct Naples hotline:{" "}
-                  <a href="tel:+12394841808" className="font-bold underline text-amber-900">
-                    (239) 484-1808
+                  <a href={`tel:${siteConfig.phoneRaw}`} className="font-bold underline text-amber-900">
+                    {siteConfig.phone}
                   </a>
                 </p>
               </div>
@@ -412,7 +413,7 @@ export default function QuoteModal({
           {/* Footer note */}
           <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
             <span className="flex items-center gap-1.5">
-              <ShieldCheck className="w-4 h-4 text-emerald-600" /> State Licensed EC13016758
+              <ShieldCheck className="w-4 h-4 text-emerald-600" /> State Licensed {siteConfig.licenseNumber}
             </span>
             <span className="flex items-center gap-1.5">
               <Clock className="w-4 h-4 text-amber-500" /> Fast Response Guaranteed

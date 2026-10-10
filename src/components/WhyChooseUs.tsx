@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { ShieldCheck, Users, Clock, Star, X, FileCheck2, FileText, Zap, Phone, MessageSquare } from "lucide-react";
+import { siteConfig } from "@/lib/siteConfig";
 
 interface WhyChooseUsProps {
   onOpenQuote: () => void;
@@ -70,7 +71,7 @@ function CredentialsModal({ onClose }: { onClose: () => void }) {
               <div className="bg-slate-50 border border-slate-100 rounded-2xl p-4 flex flex-wrap gap-4">
                 <div>
                   <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider">License Number</div>
-                  <div className="text-lg font-black text-slate-800 mt-0.5">EC13016758</div>
+                  <div className="text-lg font-black text-slate-800 mt-0.5">{siteConfig.licenseNumber}</div>
                 </div>
                 <div>
                   <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Issued To</div>
@@ -152,7 +153,7 @@ export default function WhyChooseUs({ onOpenQuote }: WhyChooseUsProps) {
     {
       icon: ShieldCheck,
       title: "Licensed & Insured",
-      desc: "State-certified electrical contractor — License #EC13016758, fully insured with $2M general liability coverage.",
+      desc: `State-certified electrical contractor — License #${siteConfig.licenseNumber}, fully insured with $2M general liability coverage.`,
       color: "text-slate-600 bg-slate-50 border-slate-100",
       action: () => setShowCredentials(true),
     },
@@ -284,14 +285,14 @@ export default function WhyChooseUs({ onOpenQuote }: WhyChooseUsProps) {
                 </button>
                 <div className="flex gap-2.5 w-full sm:w-auto">
                   <a
-                    href="tel:+12394841808"
+                    href={`tel:${siteConfig.phoneRaw}`}
                     className="flex-1 sm:flex-initial px-5 py-3 bg-white hover:bg-slate-50 text-slate-800 font-bold text-xs sm:text-sm rounded-full border border-slate-200 transition shadow-sm flex items-center justify-center gap-1.5"
                   >
                     <Phone className="w-4 h-4 text-amber-600" />
                     <span>Call</span>
                   </a>
                   <a
-                    href="sms:+12394841808"
+                    href={`sms:${siteConfig.phoneRaw}`}
                     className="flex-1 sm:flex-initial px-5 py-3 bg-white hover:bg-slate-50 text-slate-800 font-bold text-xs sm:text-sm rounded-full border border-slate-200 transition shadow-sm flex items-center justify-center gap-1.5"
                   >
                     <MessageSquare className="w-4 h-4 text-amber-600" />
@@ -333,7 +334,7 @@ export default function WhyChooseUs({ onOpenQuote }: WhyChooseUsProps) {
                       </div>
                       <div>
                         <h4 className="font-extrabold text-slate-900 text-lg leading-tight">State Electrical License</h4>
-                        <p className="text-xs font-bold text-amber-600">DBPR License #EC13016758</p>
+                        <p className="text-xs font-bold text-amber-600">DBPR License #{siteConfig.licenseNumber}</p>
                       </div>
                     </div>
                     <span className="px-3 py-1 bg-emerald-100 text-emerald-900 font-extrabold text-xs rounded-full">

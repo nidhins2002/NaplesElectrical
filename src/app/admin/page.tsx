@@ -1,0 +1,1026 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import {
+  Zap,
+  Lock,
+  LogOut,
+  ExternalLink,
+  Settings,
+  Briefcase,
+  Mail,
+  Phone,
+  Search,
+  Plus,
+  Trash2,
+  CheckCircle2,
+  AlertCircle,
+  Loader2,
+  X,
+  Edit3,
+} from "lucide-react";
+import { ServiceData } from "@/lib/services";
+import { Lead } from "@/lib/leads";
+
+interface SiteConfig {
+  phone: string;
+  phoneRaw: string;
+  email: string;
+  licenseNumber: string;
+  licenseAuthority: string;
+  hoursWeekdays: string;
+  hoursSaturday: string;
+  address: string;
+  serviceAreasText: string;
+  emergencyText: string;
+}
+
+export default function AdminPage() {
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  const [password, setPassword] = useState("");
+  const [loginError, setLoginError] = useState("");
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
+
+  // Active tab: 'services' | 'config' | 'leads'
+  const [activeTab, setActiveTab] = useState<"services" | "config" | "leads">("services");
+
+  // Data states
+  const [services, setServices] = useState<ServiceData[]>([]);
+  const [config, setConfig] = useState<SiteConfig | null>(null);
+  const [leads, setLeads] = useState<Lead[]>([]);
+  const [loadingData, setLoadingData] = useState(false);
+
+  // Search & Filter
+  const [serviceSearch, setServiceSearch] = useState("");
+  const [categoryFilter, setCategoryFilter] = useState<"all" | "residential" | "commercial">("all");
+
+  // Service Edit Modal
+  const [editingService, setEditingService] = useState<ServiceData | null>(null);
+  const [isSavingService, setIsSavingService] = useState(false);
+  const [serviceSaveSuccess, setServiceSaveSuccess] = useState(false);
+  const [serviceSaveMsg, setServiceSaveMsg] = useState("");
+
+  // Site Config Saving
+  const [isSavingConfig, setIsSavingConfig] = useState(false);
+  const [configSaveSuccess, setConfigSaveSuccess] = useState(false);
+  const [configSaveMsg, setConfigSaveMsg] = useState("");
+
+  const fetchAllData = React.useCallback(async () => {
+    setLoadingData(true);
+    try {
+      const [servicesRes, configRes, leadsRes] = await Promise.all([
+        fetch("/api/admin/services"),
+        fetch("/api/admin/site-config"),
+        fetch("/api/admin/leads"),
+      ]);
+
+      if (servicesRes.ok) {
+        const sData = await servicesRes.json();
+        setServices(sData.services || []);
+      }
+      if (configRes.ok) {
+        const cData = await configRes.json();
+        setConfig(cData.config || null);
+      }
+      if (leadsRes.ok) {
+        const lData = await leadsRes.json();
+        setLeads(lData.leads || []);
+      }
+    } catch (err) {
+      console.error("Failed to fetch admin data:", err);
+    } finally {
+      setLoadingData(false);
+    }
+  }, []);
+
+  // 1. Check auth status on mount
+  useEffect(() => {
+    let isMounted = true;
+    async function initAuth() {
+      try {
+        const res = await fetch("/api/admin/auth");
+        const data = await res.json();
+        if (!isMounted) return;
+        setIsAuthenticated(data.authenticated);
+        if (data.authenticated) {
+          fetchAllData();
+        }
+      } catch {
+        if (isMounted) setIsAuthenticated(false);
+      }
+    }
+    initAuth();
+    return () => {
+      isMounted = false;
+    };
+  }, [fetchAllData]);
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoggingIn(true);
+    setLoginError("");
+
+    try {
+      const res = await fetch("/api/admin/auth", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || "Login failed");
+      }
+
+      setIsAuthenticated(true);
+      fetchAllData();
+    } catch (err: unknown) {
+      setLoginError(err instanceof Error ? err.message : "Incorrect password");
+    } finally {
+      setIsLoggingIn(false);
+    }
+  };
+
+  const handleLogout = async () => {
+    await fetch("/api/admin/auth", { method: "DELETE" });
+    setIsAuthenticated(false);
+    setPassword("");
+  };
+
+
+
+  // Save Service
+  const handleSaveService = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!editingService) return;
+
+    setIsSavingService(true);
+    setServiceSaveSuccess(false);
+    setServiceSaveMsg("");
+
+    try {
+      const res = await fetch("/api/admin/services", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(editingService),
+      });
+
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Failed to save service");
+
+      setServices((prev) =>
+        prev.map((s) => (s.slug === editingService.slug ? editingService : s))
+      );
+      setServiceSaveSuccess(true);
+      setServiceSaveMsg(data.gitSync?.message || "Service saved successfully!");
+      setTimeout(() => {
+        setServiceSaveSuccess(false);
+        setEditingService(null);
+      }, 2000);
+    } catch (err: unknown) {
+      alert(err instanceof Error ? err.message : "Error saving service");
+      console.error(err);
+    } finally {
+      setIsSavingService(false);
+    }
+  };
+
+  // Save Config
+  const handleSaveConfig = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!config) return;
+
+    setIsSavingConfig(true);
+    setConfigSaveSuccess(false);
+    setConfigSaveMsg("");
+
+    try {
+      const res = await fetch("/api/admin/site-config", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(config),
+      });
+
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Failed to save configuration");
+
+      setConfigSaveSuccess(true);
+      setConfigSaveMsg(data.gitSync?.message || "Company settings saved successfully!");
+      setTimeout(() => setConfigSaveSuccess(false), 5000);
+    } catch (err: unknown) {
+      alert(err instanceof Error ? err.message : "Error saving configuration");
+      console.error(err);
+    } finally {
+      setIsSavingConfig(false);
+    }
+  };
+
+  // Update Lead Status
+  const handleUpdateLeadStatus = async (id: string, status: "new" | "contacted" | "completed") => {
+    try {
+      const res = await fetch("/api/admin/leads", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id, status }),
+      });
+      if (res.ok) {
+        setLeads((prev) =>
+          prev.map((l) => (l.id === id ? { ...l, status } : l))
+        );
+      }
+    } catch (err) {
+      console.error("Failed to update lead status:", err);
+    }
+  };
+
+  // Delete Lead
+  const handleDeleteLead = async (id: string) => {
+    if (!confirm("Are you sure you want to delete this lead inquiry?")) return;
+
+    try {
+      const res = await fetch(`/api/admin/leads?id=${id}`, { method: "DELETE" });
+      if (res.ok) {
+        setLeads((prev) => prev.filter((l) => l.id !== id));
+      }
+    } catch (err) {
+      console.error("Failed to delete lead:", err);
+    }
+  };
+
+  // Loading view
+  if (isAuthenticated === null) {
+    return (
+      <div className="min-h-screen bg-slate-900 flex items-center justify-center text-white">
+        <Loader2 className="w-8 h-8 animate-spin text-amber-400" />
+      </div>
+    );
+  }
+
+  // ─── LOGIN SCREEN ─────────────────────────────────────────────────────────────
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-slate-950 flex items-center justify-center p-4">
+        <div className="w-full max-w-md bg-slate-900 border border-slate-800 rounded-3xl p-8 shadow-2xl">
+          <div className="text-center space-y-3 mb-8">
+            <div className="w-16 h-16 bg-amber-400/10 border border-amber-400/20 text-amber-400 rounded-2xl flex items-center justify-center mx-auto shadow-inner">
+              <Lock className="w-8 h-8" />
+            </div>
+            <h1 className="text-2xl font-black text-white tracking-tight">Admin Portal</h1>
+            <p className="text-slate-400 text-xs sm:text-sm">
+              Enter your master password to manage Naples Electrical services, settings, and leads.
+            </p>
+          </div>
+
+          <form onSubmit={handleLogin} className="space-y-4">
+            {loginError && (
+              <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-xl text-red-400 text-xs flex items-center gap-2">
+                <AlertCircle className="w-4 h-4 shrink-0" />
+                <span>{loginError}</span>
+              </div>
+            )}
+
+            <div>
+              <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
+                Master Password
+              </label>
+              <input
+                type="password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter password..."
+                className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-400 text-sm"
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={isLoggingIn}
+              className="w-full py-3.5 bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-sm rounded-xl transition shadow-lg shadow-amber-400/10 flex items-center justify-center gap-2 disabled:opacity-50"
+            >
+              {isLoggingIn ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  <span>Logging In...</span>
+                </>
+              ) : (
+                <span>Access Admin Dashboard</span>
+              )}
+            </button>
+          </form>
+
+          <div className="mt-8 pt-6 border-t border-slate-800/80 text-center">
+            <Link
+              href="/"
+              className="text-xs text-slate-400 hover:text-amber-400 transition inline-flex items-center gap-1.5"
+            >
+              <ExternalLink className="w-3.5 h-3.5" />
+              <span>Back to Public Website</span>
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // ─── ADMIN DASHBOARD ──────────────────────────────────────────────────────────
+  const filteredServices = services.filter((s) => {
+    const matchesSearch =
+      s.title.toLowerCase().includes(serviceSearch.toLowerCase()) ||
+      s.description.toLowerCase().includes(serviceSearch.toLowerCase());
+    const matchesCategory =
+      categoryFilter === "all" || s.category === categoryFilter;
+    return matchesSearch && matchesCategory;
+  });
+
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans">
+      {/* Top Navbar */}
+      <header className="bg-slate-900 border-b border-slate-800 sticky top-0 z-30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg bg-amber-400 text-slate-950 flex items-center justify-center font-black">
+              <Zap className="w-5 h-5 fill-slate-950" />
+            </div>
+            <div>
+              <span className="font-extrabold text-white text-sm sm:text-base">Naples Electrical</span>
+              <span className="ml-2 px-2 py-0.5 text-[10px] font-bold uppercase rounded bg-amber-400/15 text-amber-400 border border-amber-400/30">
+                Admin CMS
+              </span>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <Link
+              href="/"
+              target="_blank"
+              className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center gap-1.5 transition"
+            >
+              <span>Live Site</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </Link>
+            <button
+              onClick={handleLogout}
+              className="px-3 py-1.5 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 text-xs font-semibold flex items-center gap-1.5 transition border border-red-500/20"
+            >
+              <LogOut className="w-3.5 h-3.5" />
+              <span>Logout</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Tab switcher */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex gap-6 border-t border-slate-800/60 overflow-x-auto">
+          {[
+            { id: "services", label: "Services Manager", icon: Briefcase, count: services.length },
+            { id: "leads", label: "Lead Inquiries", icon: Mail, count: leads.length },
+            { id: "config", label: "Company Settings", icon: Settings },
+          ].map((tab) => {
+            const Icon = tab.icon;
+            const active = activeTab === tab.id;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id as typeof activeTab)}
+                className={`py-3.5 text-xs sm:text-sm font-bold flex items-center gap-2 border-b-2 transition whitespace-nowrap ${
+                  active
+                    ? "border-amber-400 text-amber-400"
+                    : "border-transparent text-slate-400 hover:text-slate-200"
+                }`}
+              >
+                <Icon className="w-4 h-4" />
+                <span>{tab.label}</span>
+                {tab.count !== undefined && (
+                  <span
+                    className={`px-1.5 py-0.2 rounded-full text-[10px] font-extrabold ${
+                      active ? "bg-amber-400 text-slate-950" : "bg-slate-800 text-slate-400"
+                    }`}
+                  >
+                    {tab.count}
+                  </span>
+                )}
+              </button>
+            );
+          })}
+        </div>
+      </header>
+
+      {/* Main Content Area */}
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {loadingData ? (
+          <div className="py-20 text-center text-slate-500 flex flex-col items-center gap-3">
+            <Loader2 className="w-8 h-8 animate-spin text-amber-400" />
+            <span className="text-sm">Loading CMS content...</span>
+          </div>
+        ) : (
+          <>
+            {/* ─── TAB 1: SERVICES MANAGER ─── */}
+            {activeTab === "services" && (
+              <div className="space-y-6">
+                {/* Header Controls */}
+                <div className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center justify-between bg-slate-900 p-4 rounded-2xl border border-slate-800">
+                  <div className="flex items-center gap-3 flex-1 max-w-md">
+                    <div className="relative w-full">
+                      <Search className="w-4 h-4 text-slate-500 absolute left-3 top-3" />
+                      <input
+                        type="text"
+                        placeholder="Search services by keyword..."
+                        value={serviceSearch}
+                        onChange={(e) => setServiceSearch(e.target.value)}
+                        className="w-full pl-9 pr-4 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-400"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs text-slate-400 font-semibold hidden sm:inline">Category:</span>
+                    {(["all", "residential", "commercial"] as const).map((cat) => (
+                      <button
+                        key={cat}
+                        onClick={() => setCategoryFilter(cat)}
+                        className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase transition ${
+                          categoryFilter === cat
+                            ? "bg-amber-400 text-slate-950"
+                            : "bg-slate-800 text-slate-400 hover:text-white"
+                        }`}
+                      >
+                        {cat}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Services Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                  {filteredServices.map((service) => (
+                    <div
+                      key={service.slug}
+                      className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden flex flex-col justify-between hover:border-slate-700 transition"
+                    >
+                      <div>
+                        {/* Service hero preview */}
+                        <div className="relative h-36 w-full bg-slate-950">
+                          <Image
+                            src={service.heroImage}
+                            alt={service.title}
+                            fill
+                            className="object-cover opacity-85"
+                          />
+                          <div className="absolute top-3 left-3 px-2 py-0.5 rounded bg-slate-900/90 backdrop-blur text-[10px] font-black uppercase text-amber-400 border border-white/10">
+                            {service.category}
+                          </div>
+                          <div className="absolute top-3 right-3 px-2 py-0.5 rounded bg-slate-900/90 backdrop-blur text-[10px] font-bold text-slate-300 border border-white/10">
+                            {service.faqs.length} FAQs
+                          </div>
+                        </div>
+
+                        <div className="p-5 space-y-2">
+                          <h3 className="font-extrabold text-base text-white leading-tight">
+                            {service.title}
+                          </h3>
+                          <p className="text-xs text-slate-400 line-clamp-2 leading-relaxed">
+                            {service.tagline}
+                          </p>
+                          <div className="pt-2 flex flex-wrap gap-1.5">
+                            {service.features.slice(0, 3).map((f, i) => (
+                              <span
+                                key={i}
+                                className="px-2 py-0.5 bg-slate-800 text-slate-300 text-[10px] rounded-md font-medium truncate max-w-[200px]"
+                              >
+                                {f}
+                              </span>
+                            ))}
+                            {service.features.length > 3 && (
+                              <span className="px-1.5 py-0.5 text-slate-500 text-[10px]">
+                                +{service.features.length - 3} more
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="p-4 bg-slate-950/60 border-t border-slate-800/80 flex items-center justify-between">
+                        <Link
+                          href={`/services/${service.slug}`}
+                          target="_blank"
+                          className="text-xs text-slate-400 hover:text-amber-400 flex items-center gap-1 transition"
+                        >
+                          <span>Preview</span>
+                          <ExternalLink className="w-3 h-3" />
+                        </Link>
+                        <button
+                          onClick={() => setEditingService(JSON.parse(JSON.stringify(service)))}
+                          className="px-3.5 py-1.5 bg-amber-400/10 hover:bg-amber-400/20 text-amber-400 border border-amber-400/30 rounded-lg text-xs font-bold flex items-center gap-1.5 transition"
+                        >
+                          <Edit3 className="w-3.5 h-3.5" />
+                          <span>Edit Service</span>
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* ─── TAB 2: LEADS INQUIRIES ─── */}
+            {activeTab === "leads" && (
+              <div className="space-y-6">
+                <div className="flex items-center justify-between bg-slate-900 p-5 rounded-2xl border border-slate-800">
+                  <div>
+                    <h2 className="text-lg font-black text-white">Received Quote Inquiries</h2>
+                    <p className="text-xs text-slate-400 mt-0.5">
+                      Customer leads captured directly through the quote modal.
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="px-3 py-1 bg-amber-400/15 border border-amber-400/30 text-amber-400 text-xs font-bold rounded-full">
+                      {leads.filter((l) => l.status === "new").length} New Leads
+                    </span>
+                  </div>
+                </div>
+
+                {leads.length === 0 ? (
+                  <div className="bg-slate-900 border border-slate-800 rounded-2xl p-12 text-center text-slate-500">
+                    <Mail className="w-12 h-12 mx-auto mb-3 opacity-40" />
+                    <p className="text-sm font-semibold">No quote inquiries received yet.</p>
+                  </div>
+                ) : (
+                  <div className="space-y-4">
+                    {leads.map((lead) => (
+                      <div
+                        key={lead.id}
+                        className="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-4 hover:border-slate-700 transition"
+                      >
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800/80 pb-3">
+                          <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 rounded-full bg-amber-400 text-slate-950 font-black text-sm flex items-center justify-center shrink-0">
+                              {lead.name.slice(0, 2).toUpperCase()}
+                            </div>
+                            <div>
+                              <div className="font-extrabold text-white text-base flex items-center gap-2">
+                                <span>{lead.name}</span>
+                                <span className="text-xs px-2 py-0.5 rounded font-bold uppercase bg-slate-800 text-slate-300">
+                                  {lead.propertyType}
+                                </span>
+                              </div>
+                              <div className="text-xs text-slate-400">
+                                Requested {new Date(lead.timestamp).toLocaleString()}
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-3">
+                            <select
+                              value={lead.status}
+                              onChange={(e) =>
+                                handleUpdateLeadStatus(lead.id, e.target.value as Lead["status"])
+                              }
+                              className={`px-3 py-1.5 rounded-lg text-xs font-bold border focus:outline-none ${
+                                lead.status === "new"
+                                  ? "bg-amber-400/20 text-amber-400 border-amber-400/40"
+                                  : lead.status === "contacted"
+                                  ? "bg-blue-500/20 text-blue-400 border-blue-500/40"
+                                  : "bg-emerald-500/20 text-emerald-400 border-emerald-500/40"
+                              }`}
+                            >
+                              <option value="new">Status: New</option>
+                              <option value="contacted">Status: Contacted</option>
+                              <option value="completed">Status: Completed</option>
+                            </select>
+
+                            <button
+                              onClick={() => handleDeleteLead(lead.id)}
+                              className="p-1.5 text-slate-500 hover:text-red-400 transition"
+                              title="Delete Lead"
+                            >
+                              <Trash2 className="w-4 h-4" />
+                            </button>
+                          </div>
+                        </div>
+
+                        {/* Lead details */}
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                          <div className="space-y-1">
+                            <span className="text-slate-500 uppercase font-bold text-[10px]">Contact Info</span>
+                            <div className="text-white font-medium flex items-center gap-1.5">
+                              <Phone className="w-3.5 h-3.5 text-amber-400" />
+                              <a href={`tel:${lead.phone}`} className="hover:underline">
+                                {lead.phone}
+                              </a>
+                            </div>
+                            {lead.email && (
+                              <div className="text-slate-300 flex items-center gap-1.5">
+                                <Mail className="w-3.5 h-3.5 text-amber-400" />
+                                <a href={`mailto:${lead.email}`} className="hover:underline">
+                                  {lead.email}
+                                </a>
+                              </div>
+                            )}
+                          </div>
+
+                          <div className="space-y-1">
+                            <span className="text-slate-500 uppercase font-bold text-[10px]">Service & Urgency</span>
+                            <div className="text-amber-400 font-bold">{lead.service}</div>
+                            <div className="text-slate-300">{lead.urgency}</div>
+                          </div>
+
+                          <div className="space-y-1">
+                            <span className="text-slate-500 uppercase font-bold text-[10px]">Location & Details</span>
+                            <div className="text-slate-300">
+                              {lead.address || "No address provided"}
+                            </div>
+                            {lead.details && (
+                              <div className="text-slate-400 italic">
+                                &ldquo;{lead.details}&rdquo;
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* ─── TAB 3: COMPANY SETTINGS ─── */}
+            {activeTab === "config" && config && (
+              <form onSubmit={handleSaveConfig} className="space-y-6 max-w-4xl">
+                <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-6">
+                  <div>
+                    <h2 className="text-lg font-black text-white">Company Information & Contact</h2>
+                    <p className="text-xs text-slate-400 mt-0.5">
+                      Update phone numbers, email, state licensing, and operating hours across the entire website.
+                    </p>
+                  </div>
+
+                  {configSaveSuccess && (
+                    <div className="p-3.5 bg-emerald-500/15 border border-emerald-500/30 rounded-xl text-emerald-300 text-xs flex items-center gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-400" />
+                      <span className="font-medium">{configSaveMsg || "Company settings saved successfully!"}</span>
+                    </div>
+                  )}
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                      <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                        Display Phone Number
+                      </label>
+                      <input
+                        type="text"
+                        value={config.phone}
+                        onChange={(e) => setConfig({ ...config, phone: e.target.value })}
+                        className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                        Raw Phone for Links (e.g. +12394841808)
+                      </label>
+                      <input
+                        type="text"
+                        value={config.phoneRaw}
+                        onChange={(e) => setConfig({ ...config, phoneRaw: e.target.value })}
+                        className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                        Email Address
+                      </label>
+                      <input
+                        type="email"
+                        value={config.email}
+                        onChange={(e) => setConfig({ ...config, email: e.target.value })}
+                        className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                        State License #
+                      </label>
+                      <input
+                        type="text"
+                        value={config.licenseNumber}
+                        onChange={(e) => setConfig({ ...config, licenseNumber: e.target.value })}
+                        className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                        Weekday Hours
+                      </label>
+                      <input
+                        type="text"
+                        value={config.hoursWeekdays}
+                        onChange={(e) => setConfig({ ...config, hoursWeekdays: e.target.value })}
+                        className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                        Saturday Hours
+                      </label>
+                      <input
+                        type="text"
+                        value={config.hoursSaturday}
+                        onChange={(e) => setConfig({ ...config, hoursSaturday: e.target.value })}
+                        className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                      Service Areas Notice
+                    </label>
+                    <input
+                      type="text"
+                      value={config.serviceAreasText}
+                      onChange={(e) => setConfig({ ...config, serviceAreasText: e.target.value })}
+                      className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+                    />
+                  </div>
+
+                  <div className="pt-2">
+                    <button
+                      type="submit"
+                      disabled={isSavingConfig}
+                      className="px-6 py-3 bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs sm:text-sm rounded-xl transition flex items-center gap-2 shadow-lg shadow-amber-400/10 disabled:opacity-50"
+                    >
+                      {isSavingConfig ? (
+                        <>
+                          <Loader2 className="w-4 h-4 animate-spin" />
+                          <span>Saving Changes...</span>
+                        </>
+                      ) : (
+                        <span>Save Company Settings</span>
+                      )}
+                    </button>
+                  </div>
+                </div>
+              </form>
+            )}
+          </>
+        )}
+      </main>
+
+      {/* ─── MODAL: EDIT SERVICE DRAWER ─── */}
+      {editingService && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-950/80 backdrop-blur-sm overflow-y-auto">
+          <div className="bg-slate-900 border border-slate-800 rounded-3xl max-w-3xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden my-auto">
+            {/* Header */}
+            <div className="p-6 border-b border-slate-800 flex items-center justify-between shrink-0">
+              <div>
+                <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded bg-amber-400/20 text-amber-400">
+                  Editing: {editingService.slug}
+                </span>
+                <h3 className="text-xl font-black text-white mt-1">
+                  {editingService.title}
+                </h3>
+              </div>
+              <button
+                onClick={() => setEditingService(null)}
+                className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Form */}
+            <form onSubmit={handleSaveService} className="flex-1 overflow-y-auto p-6 space-y-6">
+              {serviceSaveSuccess && (
+                <div className="p-3.5 bg-emerald-500/15 border border-emerald-500/30 rounded-xl text-emerald-300 text-xs flex items-center gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-400" />
+                  <span className="font-medium">{serviceSaveMsg || "Service updated successfully!"}</span>
+                </div>
+              )}
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">
+                    Service Title
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={editingService.title}
+                    onChange={(e) =>
+                      setEditingService({ ...editingService, title: e.target.value })
+                    }
+                    className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">
+                    Badge Text
+                  </label>
+                  <input
+                    type="text"
+                    value={editingService.badge}
+                    onChange={(e) =>
+                      setEditingService({ ...editingService, badge: e.target.value })
+                    }
+                    className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">
+                  Tagline
+                </label>
+                <input
+                  type="text"
+                  value={editingService.tagline}
+                  onChange={(e) =>
+                    setEditingService({ ...editingService, tagline: e.target.value })
+                  }
+                  className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">
+                  Short Description (Card Summary)
+                </label>
+                <textarea
+                  rows={2}
+                  value={editingService.description}
+                  onChange={(e) =>
+                    setEditingService({ ...editingService, description: e.target.value })
+                  }
+                  className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">
+                  Long Detailed Description (Service Page)
+                </label>
+                <textarea
+                  rows={4}
+                  value={editingService.longDescription}
+                  onChange={(e) =>
+                    setEditingService({ ...editingService, longDescription: e.target.value })
+                  }
+                  className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+                />
+              </div>
+
+              {/* Features List */}
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider">
+                    Bullet Point Features ({editingService.features.length})
+                  </label>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setEditingService({
+                        ...editingService,
+                        features: [...editingService.features, "New feature capability"],
+                      })
+                    }
+                    className="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-amber-400 rounded-lg text-xs font-bold flex items-center gap-1 transition"
+                  >
+                    <Plus className="w-3.5 h-3.5" />
+                    <span>Add Bullet</span>
+                  </button>
+                </div>
+
+                <div className="space-y-2">
+                  {editingService.features.map((feature, idx) => (
+                    <div key={idx} className="flex gap-2 items-center">
+                      <input
+                        type="text"
+                        value={feature}
+                        onChange={(e) => {
+                          const updated = [...editingService.features];
+                          updated[idx] = e.target.value;
+                          setEditingService({ ...editingService, features: updated });
+                        }}
+                        className="flex-1 px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-xs text-white focus:outline-none focus:ring-1 focus:ring-amber-400"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const updated = editingService.features.filter((_, i) => i !== idx);
+                          setEditingService({ ...editingService, features: updated });
+                        }}
+                        className="p-2 text-slate-500 hover:text-red-400 transition"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* FAQs List */}
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider">
+                    Frequently Asked Questions ({editingService.faqs.length})
+                  </label>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setEditingService({
+                        ...editingService,
+                        faqs: [
+                          ...editingService.faqs,
+                          { question: "New FAQ Question?", answer: "Detailed answer goes here." },
+                        ],
+                      })
+                    }
+                    className="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-amber-400 rounded-lg text-xs font-bold flex items-center gap-1 transition"
+                  >
+                    <Plus className="w-3.5 h-3.5" />
+                    <span>Add FAQ</span>
+                  </button>
+                </div>
+
+                <div className="space-y-3">
+                  {editingService.faqs.map((faq, idx) => (
+                    <div
+                      key={idx}
+                      className="p-3 bg-slate-950 border border-slate-800 rounded-xl space-y-2 relative"
+                    >
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const updated = editingService.faqs.filter((_, i) => i !== idx);
+                          setEditingService({ ...editingService, faqs: updated });
+                        }}
+                        className="absolute top-2 right-2 p-1 text-slate-500 hover:text-red-400 transition"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+
+                      <input
+                        type="text"
+                        placeholder="Question"
+                        value={faq.question}
+                        onChange={(e) => {
+                          const updated = [...editingService.faqs];
+                          updated[idx] = { ...updated[idx], question: e.target.value };
+                          setEditingService({ ...editingService, faqs: updated });
+                        }}
+                        className="w-[90%] px-3 py-1.5 bg-slate-900 border border-slate-700 rounded-lg text-xs font-bold text-white focus:outline-none focus:ring-1 focus:ring-amber-400"
+                      />
+                      <textarea
+                        rows={2}
+                        placeholder="Answer"
+                        value={faq.answer}
+                        onChange={(e) => {
+                          const updated = [...editingService.faqs];
+                          updated[idx] = { ...updated[idx], answer: e.target.value };
+                          setEditingService({ ...editingService, faqs: updated });
+                        }}
+                        className="w-full px-3 py-1.5 bg-slate-900 border border-slate-700 rounded-lg text-xs text-slate-300 focus:outline-none focus:ring-1 focus:ring-amber-400"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Submit Buttons */}
+              <div className="pt-4 flex gap-3 border-t border-slate-800 shrink-0">
+                <button
+                  type="button"
+                  onClick={() => setEditingService(null)}
+                  className="px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-bold transition"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={isSavingService}
+                  className="flex-1 py-2.5 bg-amber-400 hover:bg-amber-300 text-slate-950 font-black rounded-xl text-xs sm:text-sm transition flex items-center justify-center gap-2 disabled:opacity-50"
+                >
+                  {isSavingService ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <span>Saving Service...</span>
+                    </>
+                  ) : (
+                    <span>Save Changes</span>
+                  )}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}

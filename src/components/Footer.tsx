@@ -3,6 +3,7 @@
 import React from "react";
 import NextImage from "next/image";
 import { Phone, MessageSquare, Mail, MapPin, ArrowRight } from "lucide-react";
+import { siteConfig } from "@/lib/siteConfig";
 
 // Inline social SVG icons (lucide-react doesn't export social icons)
 const FacebookIcon = () => (
@@ -86,30 +87,30 @@ export default function Footer({ onOpenQuote }: FooterProps) {
             {/* Contact info */}
             <div className="space-y-3">
               <a
-                href="tel:+12394841808"
+                href={`tel:${siteConfig.phoneRaw}`}
                 className="flex items-center gap-3 text-sm font-semibold text-white hover:text-amber-400 transition"
               >
                 <div className="p-2 rounded-lg bg-slate-800 border border-slate-700 shrink-0">
                   <Phone className="w-4 h-4 text-amber-400" />
                 </div>
-                (239) 484-1808
+                {siteConfig.phone}
               </a>
 
               <a
-                href="mailto:info@napleselectrical.com"
+                href={`mailto:${siteConfig.email}`}
                 className="flex items-center gap-3 text-sm font-semibold text-slate-300 hover:text-amber-400 transition"
               >
                 <div className="p-2 rounded-lg bg-slate-800 border border-slate-700 shrink-0">
                   <Mail className="w-4 h-4 text-amber-400" />
                 </div>
-                info@napleselectrical.com
+                {siteConfig.email}
               </a>
 
               <div className="flex items-start gap-3 text-sm text-slate-400">
                 <div className="p-2 rounded-lg bg-slate-800 border border-slate-700 shrink-0 mt-0.5">
                   <MapPin className="w-4 h-4 text-amber-400" />
                 </div>
-                <span>Naples, FL 34102<br />Collier County, Florida</span>
+                <span>{siteConfig.address}<br />Collier County, Florida</span>
               </div>
             </div>
 
@@ -177,7 +178,7 @@ export default function Footer({ onOpenQuote }: FooterProps) {
 
             <div className="flex gap-2.5">
               <a
-                href="tel:+12394841808"
+                href={`tel:${siteConfig.phoneRaw}`}
                 className="flex-1 py-3 px-4 bg-white/10 hover:bg-white/15 text-white font-bold text-sm rounded-full border border-white/20 transition flex items-center justify-center gap-1.5"
               >
                 <Phone className="w-4 h-4 text-amber-400" />
@@ -185,7 +186,7 @@ export default function Footer({ onOpenQuote }: FooterProps) {
               </a>
 
               <a
-                href="sms:+12394841808"
+                href={`sms:${siteConfig.phoneRaw}`}
                 className="flex-1 py-3 px-4 bg-white/10 hover:bg-white/15 text-white font-bold text-sm rounded-full border border-white/20 transition flex items-center justify-center gap-1.5"
               >
                 <MessageSquare className="w-4 h-4 text-amber-400" />
@@ -196,8 +197,8 @@ export default function Footer({ onOpenQuote }: FooterProps) {
             {/* License Badge */}
             <div className="bg-slate-800/80 border border-slate-700 rounded-xl p-4">
               <div className="text-xs text-slate-400 font-semibold uppercase tracking-wider mb-1">State Licensed</div>
-              <div className="text-sm font-bold text-white">#EC13016758</div>
-              <div className="text-xs text-slate-400 mt-1">Licensed Electrical Contractor<br />State of Florida</div>
+              <div className="text-sm font-bold text-white">#{siteConfig.licenseNumber}</div>
+              <div className="text-xs text-slate-400 mt-1">Licensed Electrical Contractor<br />{siteConfig.licenseAuthority}</div>
             </div>
           </div>
 

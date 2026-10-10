@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { getServiceBySlug, getAllSlugs } from "@/lib/services";
 import ServicePageWrapper from "@/components/ServicePageWrapper";
 import { Check, Phone, MessageSquare, ArrowUpRight, ShieldCheck, Zap, HelpCircle } from "lucide-react";
+import { siteConfig } from "@/lib/siteConfig";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -144,14 +145,14 @@ export default async function ServiceDetailPage({ params }: Props) {
                   <ArrowUpRight className="w-4 h-4" />
                 </Link>
                 <a
-                  href="tel:+12394841808"
+                  href={`tel:${siteConfig.phoneRaw}`}
                   className="inline-flex items-center justify-center px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs sm:text-sm rounded-full border border-slate-300 transition gap-1.5"
                 >
                   <Phone className="w-4 h-4 text-amber-600" />
-                  <span>Call (239) 484-1808</span>
+                  <span>Call {siteConfig.phone}</span>
                 </a>
                 <a
-                  href="sms:+12394841808"
+                  href={`sms:${siteConfig.phoneRaw}`}
                   className="inline-flex items-center justify-center px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs sm:text-sm rounded-full border border-slate-300 transition gap-1.5"
                 >
                   <MessageSquare className="w-4 h-4 text-amber-600" />
@@ -292,14 +293,14 @@ export default async function ServiceDetailPage({ params }: Props) {
                   <ArrowUpRight className="w-4 h-4" />
                 </Link>
                 <a
-                  href="tel:+12394841808"
+                  href={`tel:${siteConfig.phoneRaw}`}
                   className="inline-flex items-center justify-center px-6 py-3 bg-white/10 hover:bg-white/15 text-white font-bold text-xs sm:text-sm rounded-full border border-white/20 transition gap-1.5"
                 >
                   <Phone className="w-4 h-4 text-amber-400" />
-                  <span>Call (239) 484-1808</span>
+                  <span>Call {siteConfig.phone}</span>
                 </a>
                 <a
-                  href="sms:+12394841808"
+                  href={`sms:${siteConfig.phoneRaw}`}
                   className="inline-flex items-center justify-center px-6 py-3 bg-white/10 hover:bg-white/15 text-white font-bold text-xs sm:text-sm rounded-full border border-white/20 transition gap-1.5"
                 >
                   <MessageSquare className="w-4 h-4 text-amber-400" />
@@ -307,7 +308,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                 </a>
               </div>
               <p className="text-xs text-slate-400 pt-2">
-                State Certified Electrical Contractor #EC13016758 • Fully Insured & Bonded
+                State Certified Electrical Contractor #{siteConfig.licenseNumber} • Fully Insured &amp; Bonded
               </p>
             </div>
           </section>

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Phone, MessageSquare, Menu, X, Shield, Zap } from "lucide-react";
+import { siteConfig } from "@/lib/siteConfig";
 
 interface HeaderProps {
   onOpenQuote: (service?: string) => void;
@@ -36,21 +37,21 @@ export default function Header({ onOpenQuote }: HeaderProps) {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-6">
             <span className="flex items-center gap-1.5 text-amber-400 font-bold">
-              <Shield className="w-3.5 h-3.5 text-amber-400" /> Licensed, Bonded & Insured (#EC13016758)
+              <Shield className="w-3.5 h-3.5 text-amber-400" /> Licensed, Bonded &amp; Insured (#{siteConfig.licenseNumber})
             </span>
-            <span>Serving Naples, Marco Island, Fort Myers, Collier & Lee County</span>
+            <span>{siteConfig.serviceAreasText}</span>
           </div>
           <div className="flex items-center gap-4">
-            <span className="font-medium text-slate-300">24/7 Emergency Service Available</span>
+            <span className="font-medium text-slate-300">{siteConfig.emergencyText}</span>
             <a
-              href="tel:+12394841808"
+              href={`tel:${siteConfig.phoneRaw}`}
               className="font-bold text-amber-400 hover:text-amber-300 transition"
             >
-              Call: (239) 484-1808
+              Call: {siteConfig.phone}
             </a>
             <span className="text-slate-600">•</span>
             <a
-              href="sms:+12394841808"
+              href={`sms:${siteConfig.phoneRaw}`}
               className="font-bold text-amber-400 hover:text-amber-300 transition flex items-center gap-1"
             >
               <MessageSquare className="w-3 h-3 text-amber-400" />
@@ -113,14 +114,14 @@ export default function Header({ onOpenQuote }: HeaderProps) {
           {/* Action Buttons */}
           <div className="hidden lg:flex items-center gap-3">
             <a
-              href="tel:+12394841808"
+              href={`tel:${siteConfig.phoneRaw}`}
               className="text-xs font-bold text-slate-700 hover:text-amber-600 flex items-center gap-1.5 px-3 py-2 rounded-full border border-slate-200 hover:border-amber-400 transition"
             >
               <Phone className="w-3.5 h-3.5 text-amber-600" />
               Call
             </a>
             <a
-              href="sms:+12394841808"
+              href={`sms:${siteConfig.phoneRaw}`}
               className="text-xs font-bold text-slate-700 hover:text-amber-600 flex items-center gap-1.5 px-3 py-2 rounded-full border border-slate-200 hover:border-amber-400 bg-slate-50 transition"
               title="Send Text/SMS Message"
             >
