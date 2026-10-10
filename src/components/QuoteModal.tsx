@@ -96,35 +96,24 @@ export default function QuoteModal({
 
   if (!isOpen) return null;
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitError(null);
 
-    try {
-      const res = await fetch("/api/quote", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          service,
-          propertyType,
-          urgency,
-          ...formData,
-        }),
-      });
+    // Reset form fields
+    setFormData({
+      name: "",
+      phone: "",
+      email: "",
+      address: "",
+      details: "",
+    });
 
-      if (!res.ok) {
-        const errorData = await res.json().catch(() => ({}));
-        throw new Error(errorData.error || "Failed to submit quote request");
-      }
-
-      setSubmitted(true);
-    } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : "Something went wrong. Please call us directly.";
-      setSubmitError(msg);
-    } finally {
+    setTimeout(() => {
       setIsSubmitting(false);
-    }
+      setSubmitted(true);
+    }, 300);
   };
 
   return (

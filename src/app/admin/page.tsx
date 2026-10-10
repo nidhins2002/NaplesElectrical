@@ -10,8 +10,6 @@ import {
   ExternalLink,
   Settings,
   Briefcase,
-  Mail,
-  Phone,
   Search,
   Plus,
   Trash2,
@@ -30,7 +28,6 @@ import {
   ImageIcon,
 } from "lucide-react";
 import { ServiceData } from "@/lib/services";
-import { Lead } from "@/lib/leads";
 
 interface SiteConfig {
   phone: string;
@@ -51,13 +48,12 @@ export default function AdminPage() {
   const [loginError, setLoginError] = useState("");
   const [isLoggingIn, setIsLoggingIn] = useState(false);
 
-  // Active tab: 'services' | 'config' | 'leads'
-  const [activeTab, setActiveTab] = useState<"services" | "config" | "leads">("services");
+  // Active tab: 'services' | 'config'
+  const [activeTab, setActiveTab] = useState<"services" | "config">("services");
 
   // Data states
   const [services, setServices] = useState<ServiceData[]>([]);
   const [config, setConfig] = useState<SiteConfig | null>(null);
-  const [leads, setLeads] = useState<Lead[]>([]);
   const [loadingData, setLoadingData] = useState(false);
 
   // Search & Filter
@@ -110,10 +106,9 @@ export default function AdminPage() {
   const fetchAllData = React.useCallback(async () => {
     setLoadingData(true);
     try {
-      const [servicesRes, configRes, leadsRes, gitRes] = await Promise.all([
+      const [servicesRes, configRes, gitRes] = await Promise.all([
         fetch("/api/admin/services"),
         fetch("/api/admin/site-config"),
-        fetch("/api/admin/leads"),
         fetch("/api/admin/github-status"),
       ]);
 
@@ -124,10 +119,6 @@ export default function AdminPage() {
       if (configRes.ok) {
         const cData = await configRes.json();
         setConfig(cData.config || null);
-      }
-      if (leadsRes.ok) {
-        const lData = await leadsRes.json();
-        setLeads(lData.leads || []);
       }
       if (gitRes.ok) {
         const gData = await gitRes.json();
@@ -312,38 +303,6 @@ export default function AdminPage() {
     }
   };
 
-  // Update Lead Status
-  const handleUpdateLeadStatus = async (id: string, status: "new" | "contacted" | "completed") => {
-    try {
-      const res = await fetch("/api/admin/leads", {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id, status }),
-      });
-      if (res.ok) {
-        setLeads((prev) =>
-          prev.map((l) => (l.id === id ? { ...l, status } : l))
-        );
-      }
-    } catch (err) {
-      console.error("Failed to update lead status:", err);
-    }
-  };
-
-  // Delete Lead
-  const handleDeleteLead = async (id: string) => {
-    if (!confirm("Are you sure you want to delete this lead inquiry?")) return;
-
-    try {
-      const res = await fetch(`/api/admin/leads?id=${id}`, { method: "DELETE" });
-      if (res.ok) {
-        setLeads((prev) => prev.filter((l) => l.id !== id));
-      }
-    } catch (err) {
-      console.error("Failed to delete lead:", err);
-    }
-  };
-
   // Loading view
   if (isAuthenticated === null) {
     return (
@@ -470,7 +429,6 @@ export default function AdminPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex gap-6 border-t border-slate-800/60 overflow-x-auto">
           {[
             { id: "services", label: "Services Manager", icon: Briefcase, count: services.length },
-            { id: "leads", label: "Lead Inquiries", icon: Mail, count: leads.length },
             { id: "config", label: "Company Settings", icon: Settings },
           ].map((tab) => {
             const Icon = tab.icon;
@@ -736,128 +694,7 @@ export default function AdminPage() {
               </div>
             )}
 
-            {/* ─── TAB 2: LEADS INQUIRIES ─── */}
-            {activeTab === "leads" && (
-              <div className="space-y-6">
-                <div className="flex items-center justify-between bg-slate-900 p-5 rounded-2xl border border-slate-800">
-                  <div>
-                    <h2 className="text-lg font-black text-white">Received Quote Inquiries</h2>
-                    <p className="text-xs text-slate-400 mt-0.5">
-                      Customer leads captured directly through the quote modal.
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="px-3 py-1 bg-amber-400/15 border border-amber-400/30 text-amber-400 text-xs font-bold rounded-full">
-                      {leads.filter((l) => l.status === "new").length} New Leads
-                    </span>
-                  </div>
-                </div>
-
-                {leads.length === 0 ? (
-                  <div className="bg-slate-900 border border-slate-800 rounded-2xl p-12 text-center text-slate-500">
-                    <Mail className="w-12 h-12 mx-auto mb-3 opacity-40" />
-                    <p className="text-sm font-semibold">No quote inquiries received yet.</p>
-                  </div>
-                ) : (
-                  <div className="space-y-4">
-                    {leads.map((lead) => (
-                      <div
-                        key={lead.id}
-                        className="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-4 hover:border-slate-700 transition"
-                      >
-                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800/80 pb-3">
-                          <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-full bg-amber-400 text-slate-950 font-black text-sm flex items-center justify-center shrink-0">
-                              {lead.name.slice(0, 2).toUpperCase()}
-                            </div>
-                            <div>
-                              <div className="font-extrabold text-white text-base flex items-center gap-2">
-                                <span>{lead.name}</span>
-                                <span className="text-xs px-2 py-0.5 rounded font-bold uppercase bg-slate-800 text-slate-300">
-                                  {lead.propertyType}
-                                </span>
-                              </div>
-                              <div className="text-xs text-slate-400">
-                                Requested {new Date(lead.timestamp).toLocaleString()}
-                              </div>
-                            </div>
-                          </div>
-
-                          <div className="flex items-center gap-3">
-                            <select
-                              value={lead.status}
-                              onChange={(e) =>
-                                handleUpdateLeadStatus(lead.id, e.target.value as Lead["status"])
-                              }
-                              className={`px-3 py-1.5 rounded-lg text-xs font-bold border focus:outline-none ${
-                                lead.status === "new"
-                                  ? "bg-amber-400/20 text-amber-400 border-amber-400/40"
-                                  : lead.status === "contacted"
-                                  ? "bg-blue-500/20 text-blue-400 border-blue-500/40"
-                                  : "bg-emerald-500/20 text-emerald-400 border-emerald-500/40"
-                              }`}
-                            >
-                              <option value="new">Status: New</option>
-                              <option value="contacted">Status: Contacted</option>
-                              <option value="completed">Status: Completed</option>
-                            </select>
-
-                            <button
-                              onClick={() => handleDeleteLead(lead.id)}
-                              className="p-1.5 text-slate-500 hover:text-red-400 transition"
-                              title="Delete Lead"
-                            >
-                              <Trash2 className="w-4 h-4" />
-                            </button>
-                          </div>
-                        </div>
-
-                        {/* Lead details */}
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-                          <div className="space-y-1">
-                            <span className="text-slate-500 uppercase font-bold text-[10px]">Contact Info</span>
-                            <div className="text-white font-medium flex items-center gap-1.5">
-                              <Phone className="w-3.5 h-3.5 text-amber-400" />
-                              <a href={`tel:${lead.phone}`} className="hover:underline">
-                                {lead.phone}
-                              </a>
-                            </div>
-                            {lead.email && (
-                              <div className="text-slate-300 flex items-center gap-1.5">
-                                <Mail className="w-3.5 h-3.5 text-amber-400" />
-                                <a href={`mailto:${lead.email}`} className="hover:underline">
-                                  {lead.email}
-                                </a>
-                              </div>
-                            )}
-                          </div>
-
-                          <div className="space-y-1">
-                            <span className="text-slate-500 uppercase font-bold text-[10px]">Service & Urgency</span>
-                            <div className="text-amber-400 font-bold">{lead.service}</div>
-                            <div className="text-slate-300">{lead.urgency}</div>
-                          </div>
-
-                          <div className="space-y-1">
-                            <span className="text-slate-500 uppercase font-bold text-[10px]">Location & Details</span>
-                            <div className="text-slate-300">
-                              {lead.address || "No address provided"}
-                            </div>
-                            {lead.details && (
-                              <div className="text-slate-400 italic">
-                                &ldquo;{lead.details}&rdquo;
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            )}
-
-            {/* ─── TAB 3: COMPANY SETTINGS ─── */}
+            {/* ─── TAB 2: COMPANY SETTINGS ─── */}
             {activeTab === "config" && config && (
               <form onSubmit={handleSaveConfig} className="space-y-6 max-w-4xl">
                 <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-6">
