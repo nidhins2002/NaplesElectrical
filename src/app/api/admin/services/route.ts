@@ -67,6 +67,18 @@ export async function POST(req: Request) {
       commitMessage: `cms: update service "${updatedService.title}" via admin portal`,
     });
 
+    if (!gitSync.committedToGithub) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: gitSync.message,
+          service: updatedService,
+          gitSync,
+        },
+        { status: 400 }
+      );
+    }
+
     return NextResponse.json({
       success: true,
       service: updatedService,

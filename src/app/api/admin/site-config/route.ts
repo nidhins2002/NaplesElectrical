@@ -54,6 +54,18 @@ export async function POST(req: Request) {
       commitMessage: "cms: update company site settings via admin portal",
     });
 
+    if (!gitSync.committedToGithub) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: gitSync.message,
+          config: merged,
+          gitSync,
+        },
+        { status: 400 }
+      );
+    }
+
     return NextResponse.json({
       success: true,
       config: merged,

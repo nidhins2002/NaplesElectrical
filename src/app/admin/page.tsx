@@ -20,6 +20,12 @@ import {
   Loader2,
   X,
   Edit3,
+  GitBranch,
+  AlertTriangle,
+  ChevronDown,
+  ChevronUp,
+  RefreshCw,
+  Key,
 } from "lucide-react";
 import { ServiceData } from "@/lib/services";
 import { Lead } from "@/lib/leads";
@@ -61,19 +67,49 @@ export default function AdminPage() {
   const [isSavingService, setIsSavingService] = useState(false);
   const [serviceSaveSuccess, setServiceSaveSuccess] = useState(false);
   const [serviceSaveMsg, setServiceSaveMsg] = useState("");
+  const [serviceSaveError, setServiceSaveError] = useState("");
 
   // Site Config Saving
   const [isSavingConfig, setIsSavingConfig] = useState(false);
   const [configSaveSuccess, setConfigSaveSuccess] = useState(false);
   const [configSaveMsg, setConfigSaveMsg] = useState("");
+  const [configSaveError, setConfigSaveError] = useState("");
+
+  // GitHub Sync Status
+  const [gitStatus, setGitStatus] = useState<{
+    mode: "api" | "local-cli" | "disconnected";
+    repo: string;
+    branch: string;
+    hasToken: boolean;
+    isLocalGit: boolean;
+    message: string;
+  } | null>(null);
+  const [showGitHelp, setShowGitHelp] = useState(false);
+  const [isCheckingGit, setIsCheckingGit] = useState(false);
+
+  const fetchGitStatus = async () => {
+    setIsCheckingGit(true);
+    try {
+      const res = await fetch("/api/admin/github-status");
+      if (res.ok) {
+        const data = await res.json();
+        setGitStatus(data);
+      }
+    } catch (err) {
+      console.error("Failed to check GitHub status:", err);
+    } finally {
+      setIsCheckingGit(false);
+    }
+  };
 
   const fetchAllData = React.useCallback(async () => {
     setLoadingData(true);
     try {
-      const [servicesRes, configRes, leadsRes] = await Promise.all([
+      const [servicesRes, configRes, leadsRes, gitRes] = await Promise.all([
         fetch("/api/admin/services"),
         fetch("/api/admin/site-config"),
         fetch("/api/admin/leads"),
+        fetch("/api/admin/github-status"),
       ]);
 
       if (servicesRes.ok) {
@@ -87,6 +123,10 @@ export default function AdminPage() {
       if (leadsRes.ok) {
         const lData = await leadsRes.json();
         setLeads(lData.leads || []);
+      }
+      if (gitRes.ok) {
+        const gData = await gitRes.json();
+        setGitStatus(gData);
       }
     } catch (err) {
       console.error("Failed to fetch admin data:", err);
@@ -159,6 +199,7 @@ export default function AdminPage() {
     setIsSavingService(true);
     setServiceSaveSuccess(false);
     setServiceSaveMsg("");
+    setServiceSaveError("");
 
     try {
       const res = await fetch("/api/admin/services", {
@@ -168,19 +209,21 @@ export default function AdminPage() {
       });
 
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Failed to save service");
+      if (!res.ok) throw new Error(data.error || "Failed to commit service to GitHub");
 
       setServices((prev) =>
         prev.map((s) => (s.slug === editingService.slug ? editingService : s))
       );
       setServiceSaveSuccess(true);
       setServiceSaveMsg(data.gitSync?.message || "Service saved successfully!");
+      fetchGitStatus();
       setTimeout(() => {
         setServiceSaveSuccess(false);
         setEditingService(null);
-      }, 2000);
+      }, 2500);
     } catch (err: unknown) {
-      alert(err instanceof Error ? err.message : "Error saving service");
+      const msg = err instanceof Error ? err.message : "Error saving service";
+      setServiceSaveError(msg);
       console.error(err);
     } finally {
       setIsSavingService(false);
@@ -195,6 +238,7 @@ export default function AdminPage() {
     setIsSavingConfig(true);
     setConfigSaveSuccess(false);
     setConfigSaveMsg("");
+    setConfigSaveError("");
 
     try {
       const res = await fetch("/api/admin/site-config", {
@@ -204,13 +248,15 @@ export default function AdminPage() {
       });
 
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Failed to save configuration");
+      if (!res.ok) throw new Error(data.error || "Failed to commit settings to GitHub");
 
       setConfigSaveSuccess(true);
       setConfigSaveMsg(data.gitSync?.message || "Company settings saved successfully!");
+      fetchGitStatus();
       setTimeout(() => setConfigSaveSuccess(false), 5000);
     } catch (err: unknown) {
-      alert(err instanceof Error ? err.message : "Error saving configuration");
+      const msg = err instanceof Error ? err.message : "Error saving configuration";
+      setConfigSaveError(msg);
       console.error(err);
     } finally {
       setIsSavingConfig(false);
@@ -416,6 +462,123 @@ export default function AdminPage() {
           </div>
         ) : (
           <>
+            {/* ─── GITHUB SYNC STATUS BANNER ─── */}
+            {gitStatus && (
+              <div
+                className={`mb-6 p-4 rounded-2xl border transition-all ${
+                  gitStatus.mode === "api"
+                    ? "bg-emerald-950/30 border-emerald-500/30 text-emerald-200"
+                    : gitStatus.mode === "local-cli"
+                    ? "bg-blue-950/30 border-blue-500/30 text-blue-200"
+                    : "bg-amber-950/30 border-amber-500/40 text-amber-200"
+                }`}
+              >
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div className="flex items-start sm:items-center gap-3">
+                    <div
+                      className={`p-2.5 rounded-xl shrink-0 ${
+                        gitStatus.mode === "api"
+                          ? "bg-emerald-500/20 text-emerald-400"
+                          : gitStatus.mode === "local-cli"
+                          ? "bg-blue-500/20 text-blue-400"
+                          : "bg-amber-500/20 text-amber-400"
+                      }`}
+                    >
+                      {gitStatus.mode === "api" ? (
+                        <CheckCircle2 className="w-5 h-5" />
+                      ) : gitStatus.mode === "local-cli" ? (
+                        <GitBranch className="w-5 h-5" />
+                      ) : (
+                        <AlertTriangle className="w-5 h-5" />
+                      )}
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span className="font-extrabold text-white text-sm">
+                          {gitStatus.mode === "api"
+                            ? "Live Cloud GitHub Commit Active"
+                            : gitStatus.mode === "local-cli"
+                            ? "Local Git Auto-Push Active (Development)"
+                            : "Cloud Sync Disabled — GITHUB_TOKEN Missing"}
+                        </span>
+                        <span
+                          className={`text-[10px] uppercase font-black px-2 py-0.5 rounded-full ${
+                            gitStatus.mode === "api"
+                              ? "bg-emerald-500/20 text-emerald-300"
+                              : gitStatus.mode === "local-cli"
+                              ? "bg-blue-500/20 text-blue-300"
+                              : "bg-amber-500/20 text-amber-300"
+                          }`}
+                        >
+                          {gitStatus.repo} ({gitStatus.branch})
+                        </span>
+                      </div>
+                      <p className="text-xs text-slate-300 mt-0.5">
+                        {gitStatus.mode === "api"
+                          ? "Every change saved here commits directly to GitHub and triggers automatic Vercel redeployment."
+                          : gitStatus.mode === "local-cli"
+                          ? "Running in local development. When you save, it runs local git commit & git push to origin main automatically."
+                          : "Changes saved on Vercel cannot commit to GitHub until you add GITHUB_TOKEN in your Vercel project settings."}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2 shrink-0 self-end sm:self-auto">
+                    <button
+                      type="button"
+                      onClick={fetchGitStatus}
+                      disabled={isCheckingGit}
+                      className="p-2 bg-slate-800/80 hover:bg-slate-700 text-slate-300 rounded-xl text-xs transition"
+                      title="Refresh Git connection status"
+                    >
+                      <RefreshCw className={`w-4 h-4 ${isCheckingGit ? "animate-spin" : ""}`} />
+                    </button>
+                    {gitStatus.mode === "disconnected" && (
+                      <button
+                        type="button"
+                        onClick={() => setShowGitHelp(!showGitHelp)}
+                        className="px-3 py-1.5 bg-amber-400 text-slate-950 font-black text-xs rounded-xl hover:bg-amber-300 transition flex items-center gap-1"
+                      >
+                        <Key className="w-3.5 h-3.5" />
+                        <span>Setup Instructions</span>
+                        {showGitHelp ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+                      </button>
+                    )}
+                  </div>
+                </div>
+
+                {showGitHelp && (
+                  <div className="mt-4 pt-4 border-t border-amber-500/20 text-xs text-slate-200 space-y-2.5">
+                    <p className="font-bold text-amber-300">
+                      How to connect live Vercel deployments to GitHub in 2 minutes:
+                    </p>
+                    <ol className="list-decimal list-inside space-y-1.5 text-slate-300 pl-1">
+                      <li>
+                        Go to{" "}
+                        <a
+                          href="https://github.com/settings/tokens"
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-amber-400 underline font-semibold"
+                        >
+                          GitHub Developer Settings → Personal Access Tokens (Classic)
+                        </a>
+                      </li>
+                      <li>
+                        Click <strong>Generate new token (classic)</strong>, name it <code>NaplesElectrical-CMS</code>, and check the <strong>repo</strong> box.
+                      </li>
+                      <li>
+                        Open your project on <strong>Vercel Dashboard → Settings → Environment Variables</strong>.
+                      </li>
+                      <li>
+                        Add <code>GITHUB_TOKEN</code> with your generated token value.
+                      </li>
+                    </ol>
+                  </div>
+                )}
+              </div>
+            )}
+
             {/* ─── TAB 1: SERVICES MANAGER ─── */}
             {activeTab === "services" && (
               <div className="space-y-6">
@@ -663,6 +826,13 @@ export default function AdminPage() {
                     </div>
                   )}
 
+                  {configSaveError && (
+                    <div className="p-3.5 bg-red-500/15 border border-red-500/30 rounded-xl text-red-300 text-xs flex items-center gap-2.5">
+                      <AlertTriangle className="w-4 h-4 shrink-0 text-red-400" />
+                      <span className="font-medium">{configSaveError}</span>
+                    </div>
+                  )}
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
                       <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
@@ -800,6 +970,13 @@ export default function AdminPage() {
                 <div className="p-3.5 bg-emerald-500/15 border border-emerald-500/30 rounded-xl text-emerald-300 text-xs flex items-center gap-2.5">
                   <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-400" />
                   <span className="font-medium">{serviceSaveMsg || "Service updated successfully!"}</span>
+                </div>
+              )}
+
+              {serviceSaveError && (
+                <div className="p-3.5 bg-red-500/15 border border-red-500/30 rounded-xl text-red-300 text-xs flex items-center gap-2.5">
+                  <AlertTriangle className="w-4 h-4 shrink-0 text-red-400" />
+                  <span className="font-medium">{serviceSaveError}</span>
                 </div>
               )}
 
